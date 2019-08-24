@@ -1,0 +1,124 @@
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2019 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    alignment = 'top_right',
+    border_width = 1,
+    cpu_avg_samples = 4,
+    default_color = 'grey',
+    default_outline_color = 'grey',
+    default_shade_color = 'black',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'DejaVu Sans Book:size=10',
+    gap_x = 5,
+    gap_y = 35,
+    minimum_height = 5,
+    minimum_width = 400,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_x = true,
+    background = true,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    own_window_argb_visual = true,
+    own_window_argb_value = 50,
+    own_window_transparent = false,
+    own_window_colour = '000000',
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+}
+
+conky.text = [[
+$hr
+${color yellow}System:${alignr}$color${sysname} ${kernel} ${machine}$color
+${color yellow}Uptime:${alignr}$color$uptime
+${color yellow}RAM Usage:${alignr}$color$mem/$memmax - $memperc%
+${color yellow}Swap Usage:${alignr}$color$swap/$swapmax - $swapperc%
+$hr
+${color yellow}CPU Usage:${alignr}$color$cpu%
+${offset 10}${color orange}CPU01: $color${cpubar cpu1 5,250}${alignr}${cpu cpu1}%
+${offset 10}${color orange}CPU02: $color${cpubar cpu2 5,250}${alignr}${cpu cpu2}%
+${offset 10}${color orange}CPU03: $color${cpubar cpu3 5,250}${alignr}${cpu cpu3}%
+${offset 10}${color orange}CPU04: $color${cpubar cpu4 5,250}${alignr}${cpu cpu4}%
+${offset 10}${color orange}CPU05: $color${cpubar cpu5 5,250}${alignr}${cpu cpu5}%
+${offset 10}${color orange}CPU06: $color${cpubar cpu6 5,250}${alignr}${cpu cpu6}%
+${offset 10}${color orange}CPU07: $color${cpubar cpu7 5,250}${alignr}${cpu cpu7}%
+${offset 10}${color orange}CPU08: $color${cpubar cpu8 5,250}${alignr}${cpu cpu8}%
+${offset 10}${color orange}CPU09: $color${cpubar cpu9 5,250}${alignr}${cpu cpu9}%
+${offset 10}${color orange}CPU10: $color${cpubar cpu10 5,250}${alignr}${cpu cpu10}%
+${offset 10}${color orange}CPU11: $color${cpubar cpu11 5,250}${alignr}${cpu cpu11}%
+${offset 10}${color orange}CPU12: $color${cpubar cpu12 5,250}${alignr}${cpu cpu12}%
+$hr
+${color yellow}Load (1m/5m/15m):${alignr}$color${loadavg 1}/${loadavg 2}/${loadavg 3}
+${offset 10}${color yellow}${loadgraph 60,380 07CC0D FF0000 -t}
+${color yellow}Processes:${alignr}$color $processes
+${offset 10}${color orange}Running:${alignr}$color $running_processes
+$hr
+${color yellow}File systems:
+${offset 10}${color orange}/${alignr}$color${fs_used /}/${fs_size /}
+$hr
+## 
+## wifi network wlo1 
+##
+${color yellow}Wifi: ${color}${addr wlo1}
+${offset 10}${color orange}Up:$color ${upspeed wlo1}${goto 220}${color orange}Down:$color ${downspeed wlo1}
+${offset 10}${color orange}${downspeedgraph wlo1 40,180 07CC0D FF0000 -t}${goto 220}${upspeedgraph wlo1 40,180 07CC0D FF0000 -t}
+##
+## ethernet network eno2
+##
+${color yellow}Ethernet: ${color}${addr eno2}
+${offset 10}${color orange}Up:$color ${upspeed eno2}${goto 220}${color orange}Down:$color ${downspeed eno2}
+${offset 10}${color orange}${downspeedgraph eno2 40,180 07CC0D FF0000 -t}${goto 220}${upspeedgraph eno2 40,180 07CC0D FF0000 -t}
+##
+## vpn network tun0 
+##
+${color yellow}VPN: ${color}${addr tun0}
+${offset 10}${color orange}Up:$color ${upspeed tun0}${goto 220}${color orange}Down:$color ${downspeed tun0}
+${offset 10}${color orange}${downspeedgraph tun0 40,180 07CC0D FF0000 -t}${goto 220}${upspeedgraph tun0 40,180 07CC0D FF0000 -t}
+##
+## top 4 processes 
+##
+#$color$hr
+#${color yellow}Name              PID   CPU%   MEM%
+#${color} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+#${color} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+#${color} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+#${color} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+]]
