@@ -37,8 +37,7 @@ function get_abs_dirname() {
 #-------------------------------------------------------------------------
 setup_dotfile() {
     src=$( realpath $1 )
-    src_dir=$( dirname $src )
-    dst=$( echo $src | sed "s|${src_dir}|$HOME|g" )
+    dst=$( echo $src | sed "s|${REPO_PATH}|$HOME|g" )
 
     ## backup $dst if it presents, or remove it if a symlink
     if [ -s $dst ]; then
@@ -68,5 +67,5 @@ fi
 REPO_PATH=$( get_abs_dirname $0 )
 
 for f in ${@}; do
-    setup_dotfile $f dryrun
+    setup_dotfile $f
 done
