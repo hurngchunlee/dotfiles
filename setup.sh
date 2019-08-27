@@ -40,7 +40,7 @@ setup_dotfile() {
     dst=$( echo $src | sed "s|${REPO_PATH}|$HOME|g" )
 
     ## backup $dst if it presents, or remove it if a symlink
-    if [ -s $dst ]; then
+    if [ -L $dst ]; then
         echo -n "removing $dst... "
         if [ $# -eq 1 ]; then rm -f $dst; fi
         print_state $?
