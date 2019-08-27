@@ -154,3 +154,6 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+# Set wallpaper of the desktop
+exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
