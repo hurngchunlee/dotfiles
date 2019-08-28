@@ -1,6 +1,32 @@
 #!/bin/sh
+
+revert() {
+  xset dpms 0 0 0
+}
+
 lock() {
-    i3lock-fancy -gp -- scrot -z
+
+    B='#00000000'  # black, but fully transparent
+    C='#f2f2f2cc'  # clear ish
+    D='#37b9f5cc'  # default
+    T='#ee00eeff'  # text
+    W='#880000cc'  # wrong
+    V='#bb00bbcc'  # verifying
+    K='#00cc00cc'  # key typing
+
+    trap revert HUP INT TERM
+    xset +dpms dpms 5 5 5
+    i3lock-color --screen 1 --clock  \
+                 --indicator         \
+                 --insidevercolor=$C \
+                 --ringvercolor=$V   \
+                 --insidecolor=$C    \
+                 --ringcolor=$D      \
+                 --linecolor=$B      \
+                 --separatorcolor=$B \
+                 --keyhlcolor=$K     \
+                 -n -i ~/.screenlock
+    revert
 }
 
 case "$1" in
