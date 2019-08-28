@@ -11,16 +11,23 @@ sudo apt install libev-dev \
                  libxcb-xinerama0 \
                  libxcb-randr0 \
                  libxcb-xrm0 \
+                 libxcb-randr0-dev \
                  libxcb-xinerama0-dev \
                  libxcb-xkb-dev \
                  libxcb-image0-dev \
                  libxcb-util-dev \
+                 libxcb-xrm-dev \
                  libxkbcommon-x11-dev \
                  libjpeg-turbo8-dev \
                  libpam0g-dev
 
 echo "checking out i3lock-color source code ..."
 mkdir -p ~/tmp
+
+if [ -d ~/tmp/i3lock-color ]; then
+    rm -rf ~/tmp/i3lock-color
+fi
+
 cd ~/tmp && \
 git clone https://github.com/PandorasFox/i3lock-color.git && \
 cd i3lock-color
@@ -30,6 +37,6 @@ autoreconf -i && ./configure && make
 
 echo "installing i3lock-color to $HOME/.local/bin ..."
 if [ -f x86_64-pc-linux-gnu/i3lock ]; then
-    install -m 0755 $(pwd)/x86_64-pc-linux-gnu/i3lock $HOME/.local/bin/i3lock-color
+    install -D -m 0755 $(pwd)/x86_64-pc-linux-gnu/i3lock $HOME/.local/bin/i3lock-color
     echo "i3lock-color installed as $(which i3lock-color)"
 fi
