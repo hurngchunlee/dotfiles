@@ -39,7 +39,7 @@ bindsym $mod+b exec brave-browser
 bindsym $mod+m exec evolution
 
 # start rofi-pass
-bindsym $mod+p exec /home/honlee/opt/bin/rofi-pass
+bindsym $mod+p exec rofi-pass
 
 # kill focused window
 bindsym $mod+Shift+q kill
