@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    i3lock
+    i3lock-fancy -gp -- scrot -z
 }
 
 case "$1" in
