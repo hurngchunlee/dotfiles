@@ -202,7 +202,7 @@ bar {
 }
 
 # Set wallpaper of the desktop
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec_always --no-startup-id feh --randomize --bg-fill ~/.wallpaper
 
 # Autostart applications
 exec --no-startup-id owncloud            # start owncloud
