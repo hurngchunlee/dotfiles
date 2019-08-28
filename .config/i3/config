@@ -110,7 +110,8 @@ set $workspace2 "2:"
 set $workspace3 "3:"
 set $workspace4 "4:"
 set $workspace5 "5:"
-set $workspace6 "6:"
+set $workspace6 "6:"
+set $workspace7 "7:"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -142,6 +143,7 @@ assign [class="Code"] $workspace4
 assign [class="Slack"] $workspace5
 assign [class="Mattermost"] $workspace5
 assign [class="Remmina"] $workspace6
+assign [class="Vncviewer"] $workspace7
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
