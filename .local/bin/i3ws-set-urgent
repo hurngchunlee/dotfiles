@@ -1,0 +1,8 @@
+#!/bin/bash
+
+appname=$1
+
+if [[ $appname == *evolution* ]]; then
+    wmctrl -r evolution -b add,demands_attention
+fi
+
