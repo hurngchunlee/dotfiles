@@ -25,22 +25,22 @@ lock() {
                  --linecolor=$B      \
                  --separatorcolor=$B \
                  --keyhlcolor=$K     \
-                 -n -i ~/.screenlock
+                 -i ~/.screenlock $@
     revert
 }
 
 case "$1" in
     lock)
-        lock
+        lock -n
         ;;
     logout)
         i3-msg exit
         ;;
     suspend)
-        lock && systemctl suspend
+        lock && sleep 1 && systemctl suspend
         ;;
     hibernate)
-        lock && systemctl hibernate
+        lock && sleep 1 && systemctl hibernate
         ;;
     reboot)
         systemctl reboot
