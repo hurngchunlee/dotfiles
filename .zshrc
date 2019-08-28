@@ -120,3 +120,7 @@ export PATH=$HOME/opt/bin:$PATH
 
 # don't do glob expansion for scp command
 alias scp='noglob scp'
+
+# it seems that --disable-gpu prevent flickering whe xbackligh is enabled??
+# ref: https://askubuntu.com/questions/279088/google-chrome-flickering 
+alias brave-browser='brave-browser --disable-gpu'
