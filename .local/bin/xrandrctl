@@ -1,0 +1,140 @@
+#!/bin/bash
+
+#----------------------------------------------------------------------------------------------
+# function to get the names of the connected external (i.e. non-primary) displays.
+#----------------------------------------------------------------------------------------------
+function connected_external_displays() {
+    xrandr --query | grep ' connected ' | grep -v ' primary ' | awk '{print $1}'
+}
+
+#----------------------------------------------------------------------------------------------
+# function to check if the given display name is a valid display.
+#----------------------------------------------------------------------------------------------
+function is_valid_display() {
+    xrandr --query | grep $1 2>&1
+    return $?
+}
+
+#----------------------------------------------------------------------------------------------
+# function to get the name of the primary display.
+#----------------------------------------------------------------------------------------------
+function primary_display() {
+    xrandr --query | grep ' connected ' | grep ' primary ' | awk '{print $1}'
+}
+
+#----------------------------------------------------------------------------------------------
+# function to get the preferred mode of a display.
+#----------------------------------------------------------------------------------------------
+function preferred_mode() {
+    xrandr --query | grep -A 1 ${1} | tail -1 | awk '{print $1}'
+}
+
+#----------------------------------------------------------------------------------------------
+# function to compose xrandr option for turning off a display. 
+#
+# args:
+#   1: display name
+#----------------------------------------------------------------------------------------------
+function xrandr_opt_display_off() {
+    echo "--output ${1} --off"
+}
+
+#----------------------------------------------------------------------------------------------
+# function to compose xrandr option for turning on a display.
+#
+#
+# args:
+#   1: display name
+#   2: resolution x
+#   3: resolution y
+#   4: position x
+#   5: position y
+#   6: "primary" for set it as the primary display (optional)
+#----------------------------------------------------------------------------------------------
+function xrandr_opt_display_on() {
+    opt="--output ${1} --mode ${2}x${3} --pos ${4}x${5} --rotate normal"
+    if [ $# -eq 6 ] && [ "${6}" == "primary" ]; then
+        echo "${opt} --primary"
+    else
+	echo "${opt}"
+    fi
+}
+
+#----------------------------------------------------------------------------------------------
+# function to set the primary display and turn others off.
+#----------------------------------------------------------------------------------------------
+function set_primary_only() {
+    xrandr_opt=""
+    for d in $( connected_external_displays ); do
+        xrandr_opt="${xrandr_opt} $(xrandr_opt_display_off ${d})"
+    done
+
+    pd_name=$(primary_display)
+    xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name 1920 1080 0 0 primary)"
+
+    # run xrandr command
+    xrandr $xrandr_opt
+}
+
+#----------------------------------------------------------------------------------------------
+# function to set the external display on the top of the primary display.
+#
+#
+# args:
+#   1: external display name
+#   2: position (top, left, right, mirror)
+#----------------------------------------------------------------------------------------------
+function set_external() {
+    xd_name=$1
+    xd_mode=$(preferred_mode $xd_name)
+    xd_res_x=$(echo $xd_mode | awk -F 'x' '{print $1}')
+    xd_res_y=$(echo $xd_mode | awk -F 'x' '{print $2}')
+
+    pd_name=$(primary_display)
+    pd_mode=$(preferred_mode $pd_name)
+    pd_res_x=$(echo $pd_mode | awk -F 'x' '{print $1}')
+    pd_res_y=$(echo $pd_mode | awk -F 'x' '{print $2}')
+
+    case $2 in
+        left)
+            xrandr_opt="$(xrandr_opt_display_on ${xd_name} ${xd_res_x} ${xd_res_y} 0 0)"
+            xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name ${pd_res_x} ${pd_res_y} ${xd_res_x} 0 primary)"
+	    ;;
+        right)
+            xrandr_opt="$(xrandr_opt_display_on ${xd_name} ${xd_res_x} ${xd_res_y} ${pd_res_x} 0)"
+            xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name ${pd_res_x} ${pd_res_y} 0 0 primary)"
+	    ;;
+        mirror)
+            # calculate scaling factor (optmized for the primary display)
+            sx=$(echo "${pd_res_x}/${xd_res_x}" | bc -l)
+            sy=$(echo "${pd_res_y}/${xd_res_y}" | bc -l)
+
+	    xrandr_opt="$(xrandr_opt_display_on ${xd_name} ${xd_res_x} ${xd_res_y} 0 0) --same-as ${pd_name} --scale ${sx}x${sy}"
+            xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name ${pd_res_x} ${pd_res_y} 0 0 primary)"
+            ;;
+        top | * )
+            xrandr_opt="$(xrandr_opt_display_on ${xd_name} ${xd_res_x} ${xd_res_y} 0 0)"
+            xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name ${pd_res_x} ${pd_res_y} 0 ${xd_res_y} primary)"
+	    ;;
+    esac
+
+    # run xrandr command
+    xrandr ${xrandr_opt}
+}
+
+# main program
+if [ $# -eq 0 ]; then
+    ## no argument is given, display on primary screen only
+    set_primary_only
+    exit $?
+else
+    ## check if argument $1 is a valid display
+    is_valid_display $1
+    if [ $? -ne 0 ]; then
+        echo "invalid display: $1" 1>&2
+        exit 1
+    fi
+    ## turn on a specific display
+    set_external $@
+    exit $?
+fi
