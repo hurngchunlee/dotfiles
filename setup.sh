@@ -50,6 +50,9 @@ setup_dotfile() {
         print_state $?
     fi
 
+    ## make sure the parent directory of $dst is presented 
+    mkdir -p $(dirname $dst)
+
     ## make symlink
     echo -n "symlinking $src to $dst... "
     if [ $# -eq 1 ]; then ln -s $src $dst; fi
