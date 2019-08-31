@@ -255,3 +255,4 @@ exec --no-startup-id owncloud            # start owncloud
 exec --no-startup-id evolution           # start evolution mail client
 exec --no-startup-id slack               # start slack
 exec --no-startup-id mattermost-desktop  # start mattermost
+exec --no-startup-id cronopete           # start cronopete backup utility
