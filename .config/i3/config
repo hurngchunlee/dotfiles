@@ -242,6 +242,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 # decrease
 bar {
         status_command i3status -c ~/.config/i3/i3status.conf
         font pango:DejaVuSansMono Nerd Font 10
+        position top
 }
 
 # always start on the primary display only when i3 is (re)-loaded/started
