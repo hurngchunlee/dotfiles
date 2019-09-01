@@ -254,7 +254,7 @@ exec_always --no-startup-id feh --randomize --bg-scale ~/.wallpaper
 # Autostart applications
 exec --no-startup-id nm-applet           # start network-manager applet
 exec --no-startup-id owncloud            # start owncloud
-exec --no-startup-id evolution           # start evolution mail client
-exec --no-startup-id slack               # start slack
-exec --no-startup-id mattermost-desktop  # start mattermost
+#exec --no-startup-id evolution           # start evolution mail client
+#exec --no-startup-id slack               # start slack
+#exec --no-startup-id mattermost-desktop  # start mattermost
 exec --no-startup-id cronopete           # start cronopete backup utility
