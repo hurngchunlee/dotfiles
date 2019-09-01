@@ -105,8 +105,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # set workspaces
-set $workspace1 "1:"
-set $workspace2 "2:"
+set $workspace1 "1:"
+set $workspace2 "2:"
 set $workspace3 "3:"
 set $workspace4 "4:"
 set $workspace5 "5:"
@@ -140,7 +140,7 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # associate applications to workspace
-assign [class="Evolution"] $workspace1
+assign [class="Evolution"] $workspace2
 assign [class="Code"] $workspace4
 assign [class="Slack"] $workspace5
 assign [class="Mattermost"] $workspace5
