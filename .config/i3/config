@@ -245,6 +245,9 @@ bar {
         position top
 }
 
+# start compton 
+exec --no-startup-id compton
+
 # always start on the primary display only when i3 is (re)-loaded/started
 exec_always --no-startup-id ~/.local/bin/xrandrctl
 
