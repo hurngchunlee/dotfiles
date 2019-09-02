@@ -64,12 +64,18 @@ function xrandr_opt_display_on() {
 # function to set the primary display and turn others off.
 #----------------------------------------------------------------------------------------------
 function set_primary_only() {
+    pd_name=$(primary_display)
+
+    # do nothing if the primary display is not connected (i.e. $pd_name is empty)
+    if [ "$pd_name" == "" ]; then
+        return 0
+    fi
+
     xrandr_opt=""
     for d in $( connected_external_displays ); do
         xrandr_opt="${xrandr_opt} $(xrandr_opt_display_off ${d})"
     done
 
-    pd_name=$(primary_display)
     xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name 1920 1080 0 0 primary)"
 
     # run xrandr command
