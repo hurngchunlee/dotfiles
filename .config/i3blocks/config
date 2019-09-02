@@ -91,9 +91,15 @@ separator=false
 # OpenVPN support
 #
 # Support multiple VPN, with colors.
-[openvpn]
+#[openvpn]
+#label=
+#instance=tun0
+#interval=20
+
+[nm-vpn]
+command=~/.config/i3blocks/nm-vpn
 label=
-interval=20
+interval=3
 
 # Battery indicator
 #
