@@ -257,8 +257,8 @@ bar {
 }
 
 # color of windows
-client.focused #0088CC #0088CC #ffffff #d9d9d9 #d9d9d9
-client.urgent  #2f343a #900000 #ffffff #900000 #900000
+client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
+client.urgent  #2f343a #900000 #ffffff #ff661a #2f343a
 
 # start compton 
 exec --no-startup-id compton
