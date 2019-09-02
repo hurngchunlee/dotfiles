@@ -40,7 +40,8 @@ window {
 }
 
 mainbox {
-	children: [inputbar, message, mode-switcher, listview];
+	/*children: [inputbar, message, mode-switcher, listview];*/
+	children: [inputbar, listview];
 	spacing: 30px;
 	/*margin: 20%;*/
 	padding: 30px 0;
