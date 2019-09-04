@@ -1,6 +1,13 @@
 #!/bin/bash
 
 #----------------------------------------------------------------------------------------------
+# function to reload wallpaper.
+#----------------------------------------------------------------------------------------------
+function reload_wallpaper() {
+    feh --randomize --bg-fill ~/Pictures/wallpapers/*
+}
+
+#----------------------------------------------------------------------------------------------
 # function to get the names of the connected external (i.e. non-primary) displays.
 #----------------------------------------------------------------------------------------------
 function connected_external_displays() {
@@ -79,7 +86,7 @@ function set_primary_only() {
     xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name 1920 1080 0 0 primary)"
 
     # run xrandr command
-    xrandr $xrandr_opt
+    xrandr $xrandr_opt && reload_wallpaper
 }
 
 #----------------------------------------------------------------------------------------------
@@ -125,7 +132,7 @@ function set_external() {
     esac
 
     # run xrandr command
-    xrandr ${xrandr_opt}
+    xrandr ${xrandr_opt} && reload_wallpaper
 }
 
 # main program
