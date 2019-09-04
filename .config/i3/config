@@ -276,7 +276,7 @@ exec --no-startup-id compton
 exec_always --no-startup-id ~/.local/bin/xrandrctl
 
 # Set wallpaper of the desktop
-exec_always --no-startup-id feh --randomize --bg-scale ~/Pictures/wallpapers/*
+exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 # Autostart applications
 exec --no-startup-id nm-applet           # start network-manager applet
