@@ -27,6 +27,7 @@
 command=/usr/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
+full_text=
 
 # system load
 #
@@ -100,6 +101,23 @@ separator=false
 command=~/.config/i3blocks/nm-vpn
 label=
 interval=3
+separator=false
+
+[bluetooth]
+command=~/.config/i3blocks/bluetooth
+interval=once
+
+[separator]
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+[volume]
+command=~/.config/i3blocks/volume-pulseaudio
+interval=once
+signal=1
 
 # Battery indicator
 #
@@ -114,16 +132,6 @@ interval=3
 command=~/.config/i3blocks/battery2
 markup=pango
 interval=30
-
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-command=~/.config/i3blocks/volume-pulseaudio
-interval=once
-signal=1
 
 # Date Time
 #

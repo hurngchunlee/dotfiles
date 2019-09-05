@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#------------------------------------------------------------------
+# function for checking if the bluetooth device is blocked (off)
+#
+# - return 0 if it is blocked; otherwise 1
+#------------------------------------------------------------------
+is_bluetooth_off() {
+    rfkill list bluetooth | grep block | grep yes > /dev/null 2>&1
+    return $?
+}
+
+#------------------------------------------------------------------
+# function toggle the bluetooth device, depending on current state 
+#------------------------------------------------------------------
+switch_bluetooth() {
+    is_bluetooth_off
+    if [ $? -eq 0 ]; then
+        rfkill unblock bluetooth
+    else
+        rfkill block bluetooth
+    fi
+}
+
+#-----------------------------------------------------------------
+# main program
+#
+# left-click on the block toggles the switch
+#-----------------------------------------------------------------
+OFF_SYMBOL=${OFF_SYMBOL:-''}
+OFF_COLOR=${OFF_COLOR:-"#a0a0a0"}
+
+ON_SYMBOL=${ON_SYMBOL:-''}
+ON_COLOR=${ON_COLOR:-"#ffffff"}
+
+case "$BLOCK_BUTTON" in
+    1) switch_bluetooth ;;
+esac
+
+is_bluetooth_off
+if [ $? -eq 0 ]; then
+    echo $OFF_SYMBOL "OFF"
+    echo $OFF_SYMBOL "OFF"
+    echo $OFF_COLOR 
+else
+    echo $ON_SYMBOL "ON"
+    echo $ON_SYMBOL "ON"
+    echo $ON_COLOR 
+fi
