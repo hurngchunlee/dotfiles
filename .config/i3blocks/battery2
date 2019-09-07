@@ -55,19 +55,33 @@ else:
     FA_PLUG = "\uf1e6"
 
     # stands for using battery
-    FA_BATTERY = "\uf240"
+    FA_BATTERY_100 = "\uf240"  # used between 75% to 100%
+    FA_BATTERY_75  = "\uf241"  # used between 50% to 75%
+    FA_BATTERY_50  = "\uf242"  # used between 25% to 50%
+    FA_BATTERY_25  = "\uf243"  # used between 10% to 25%
+    FA_BATTERY_00  = "\uf244"  # used below 10%
 
     # stands for unknown status of battery
     FA_QUESTION = "\uf128"
 
+    def battery_symbol(percent):
+        if percent < 10:
+            return FA_BATTERY_00
+        if percent < 25:
+            return FA_BATTERY_25
+        if percent < 50:
+            return FA_BATTERY_50
+        if percent < 75:
+            return FA_BATTERY_75
+        return FA_BATTERY_100
 
     if state == "Discharging":
-        fulltext = FA_BATTERY + " "
+        fulltext = battery_symbol(percentleft) + " "
     elif state == "Full":
         fulltext = FA_PLUG + " "
         timeleft = ""
     elif state == "Unknown":
-        fulltext = FA_QUESTION + " " + FA_BATTERY + " "
+        fulltext = FA_QUESTION + " " + battery_symbol(0) + " "
         timeleft = ""
     else:
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
@@ -93,7 +107,7 @@ else:
         return "#FFFFFF"
 
     form =  '<span color="{}">{}%</span>'
-    fulltext += form.format(color(percentleft), percentleft)
+    fulltext = form.format(color(percentleft), fulltext + str(percentleft))
     fulltext += timeleft
 
 print(fulltext)
