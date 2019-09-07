@@ -41,6 +41,9 @@ bindsym $mod+m exec evolution
 # start rofi-pass
 bindsym $mod+p exec rofi-pass
 
+# start gnome screenshot interactive
+bindsym Control+Print exec gnome-screenshot -i
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
