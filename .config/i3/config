@@ -15,6 +15,15 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:DejaVuSansMono Nerd Font 10
 
+# configuration for i3-gaps
+for_window [class=".*"] border pixel 2 
+
+#smart_gaps    on
+#smart_borders on
+
+gaps inner 10
+gaps outer 5
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
