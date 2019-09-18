@@ -264,10 +264,11 @@ bar {
     #status_command i3status -c ~/.config/i3/i3status.conf
     status_command i3blocks
     #status_command lemonbar
-    font pango:DejaVuSansMono Nerd Font 10
+    #font pango:DejaVuSansMono Nerd Font 10
     position top
     colors {
-        separator #666666
+        #separator #666666
+        separator #DE935F
         background #222222
         statusline #ffffff
         focused_workspace #0088CC #0088CC #ffffff
