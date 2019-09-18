@@ -39,6 +39,7 @@
 !! URxvt configuration 
 URxvt*scrollBar: false
 URxvt.font:     xft:InconsolataLGC Nerd Font Mono:size=12:antialias=true
+!!URxvt.font:     xft:DroidSansMono Nerd Font Mono:size=12:antialias=true
 !!URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:style=Bold:pixelsize=16:antialias=true
 !!URxvt.font:     xft:DejaVuSansMono Nerd Font Mono:size=12:antialias=true
 !!URxvt.boldFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold:size=12:antialias=true
