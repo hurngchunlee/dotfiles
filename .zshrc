@@ -126,6 +126,3 @@ alias scp='noglob scp'
 # it seems that --disable-gpu prevent flickering whe xbackligh is enabled??
 # ref: https://askubuntu.com/questions/279088/google-chrome-flickering 
 alias brave-browser='brave-browser --disable-gpu'
-
-# run ranger through urxvt for working image preview
-alias ranger='urxvt -e ranger'
