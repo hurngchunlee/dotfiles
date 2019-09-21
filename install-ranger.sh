@@ -12,6 +12,8 @@ cd ~/tmp/ranger_devicons && make install
 
 echo 'install ranger with fuzzy finder ...'
 
+sudo apt install mlocate findutils
+
 if [ -d ~/tmp/fzf ]; then
     rm -rf ~/tmp/fzf
 fi
