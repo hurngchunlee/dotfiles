@@ -120,6 +120,9 @@ export MODULEPATH=/opt/_modules:$HOME/opt/_modules:$MODULEPATH
 # extend PATH to include local utilities
 export PATH=$HOME/opt/bin:$PATH
 
+# set TERM to a more compatible one
+export TERM='xterm-256color'
+
 # don't do glob expansion for scp command
 alias scp='noglob scp'
 
