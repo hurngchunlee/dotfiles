@@ -1,3 +1,6 @@
+""" enable relative line number
+set relativenumber
+
 """ enable powerline vim
 set laststatus=2
 set t_Co=256
