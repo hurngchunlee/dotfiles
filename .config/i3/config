@@ -316,7 +316,7 @@ client.urgent  #2f343a #900000 #ffffff #ff661a #2f343a
 exec --no-startup-id compton
 
 # always start on the primary display only when i3 is (re)-loaded/started
-exec_always --no-startup-id ~/.local/bin/xrandrctl
+#exec_always --no-startup-id ~/.local/bin/xrandrctl
 
 # Set wallpaper of the desktop
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
