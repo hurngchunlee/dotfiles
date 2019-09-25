@@ -236,6 +236,34 @@ bindsym Mod4+h mode "$mode_hdmi_display"
 # keybinding to only use the primary display
 bindsym Mod4+p exec --no-startup-id ~/.local/bin/xrandrctl
 
+# mode for move workspace across displays
+set $mode_move_workspace Move workspace to display (u) up, (d) down, (l) left, (r) right
+mode "$mode_move_workspace" {
+    bindsym t move workspace to output up, mode "default"
+    bindsym l move workspace to output left, mode "default"
+    bindsym r move workspace to output right, mode "default"
+    bindsym b move workspace to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+w mode "$mode_move_workspace"
+
+# mode for move container across displays
+set $mode_move_container Move container to display (u) up, (d) down, (l) left, (r) right
+mode "$mode_move_container" {
+    bindsym t move container to output up, mode "default"
+    bindsym l move container to output left, mode "default"
+    bindsym r move container to output right, mode "default"
+    bindsym b move container to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+o mode "$mode_move_container"
+
 # Pulse Audio controls
 ## for i3bar
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
