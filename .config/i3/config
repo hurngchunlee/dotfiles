@@ -323,7 +323,7 @@ exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 # Autostart applications
 exec --no-startup-id nm-applet           # start network-manager applet
-exec --no-startup-id owncloud            # start owncloud
+exec --no-startup-id "sh -c 'sleep 3; owncloud'" # start owncloud
 #exec --no-startup-id evolution           # start evolution mail client
 #exec --no-startup-id slack               # start slack
 #exec --no-startup-id mattermost-desktop  # start mattermost
