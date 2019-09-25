@@ -73,6 +73,10 @@ function xrandr_opt_display_on() {
 function set_primary_only() {
     pd_name=$(primary_display)
 
+    pd_mode=$(preferred_mode $pd_name)
+    pd_res_x=$(echo $pd_mode | awk -F 'x' '{print $1}')
+    pd_res_y=$(echo $pd_mode | awk -F 'x' '{print $2}')
+
     # do nothing if the primary display is not connected (i.e. $pd_name is empty)
     if [ "$pd_name" == "" ]; then
         return 0
@@ -83,7 +87,7 @@ function set_primary_only() {
         xrandr_opt="${xrandr_opt} $(xrandr_opt_display_off ${d})"
     done
 
-    xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name 1920 1080 0 0 primary)"
+    xrandr_opt="${xrandr_opt} $(xrandr_opt_display_on $pd_name $pd_res_x $pd_res_y 0 0 primary)"
 
     # run xrandr command
     xrandr $xrandr_opt && reload_wallpaper
