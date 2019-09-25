@@ -1,0 +1,17 @@
+#!/bin/bash -x
+
+# This script receives commands in format of the i3's "bindsym" format, and fires the command with i3-msg.
+#
+# Note: this script is in complete and to be further optimized!!
+#
+# Add the following line in i3 config file ("rofi" is required):
+#
+# bindsym Control+h exec --no-startup-id i3-msg -t get_config | egrep '^bindsym' | sed 's/$mod+/Mod1+/g' | sed 's/Mod1+/Alt+/g' | sed 's/Mod4+/Supr+/g' | rofi -dmenu -mesg 'i3 keybindings' | xargs i3help
+
+if [ $# -lt 3 ]; then
+    echo "unknown action: $@" 1>&2
+    exit 1
+fi
+
+# run the command through i3-msg
+i3-msg "$(echo ${@:3})"
