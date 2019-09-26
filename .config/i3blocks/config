@@ -29,6 +29,12 @@ separator_block_width=15
 markup=none
 full_text=
 
+# ffk help
+[help]
+full_text=
+command=~/.config/i3blocks/ffk
+interval=once
+
 # system load
 #
 [load_average]
@@ -53,6 +59,7 @@ separator=false
 [temperature]
 label=
 interval=10
+separator=false
 
 # Memory usage
 #
