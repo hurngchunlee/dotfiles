@@ -154,15 +154,15 @@ interval=30
 #interval=1
 
 [calendar]
-command=~/.config/i3blocks/calendar
-interval=1
+command=~/.config/i3blocks/calendar -f '+%a %d.%m.%Y %H:%M'
+interval=60
 label=
 
 # Generic media player support
 #
 # This displays "ARTIST - SONG" if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-[mediaplayer]
-instance=spotify
-interval=5
-signal=10
+#[mediaplayer]
+#instance=spotify
+#interval=5
+#signal=10
