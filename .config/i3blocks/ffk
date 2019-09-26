@@ -8,6 +8,8 @@ menu() {
     cat << EOF
 i3
 pass
+vim
+screen
 EOF
 }
 
@@ -31,6 +33,23 @@ Alt+1 autotype (username :tab password)
 Alt+2 type username
 Alt+3 type password
 Alt+n insert new pass entry
+EOF
+}
+
+# ffk for vim 
+ffk_vim() {
+    cat << EOF
+Ctrl+v select text with virtual block
+EOF
+}
+
+# ffk for screen 
+ffk_screen() {
+    cat << EOF
+Ctrl+a d detach from a session
+Ctrl+a [ enter scrollback mode
+  Ctrl+b scroll page up
+  Ctrl+f scroll page down
 EOF
 }
 
