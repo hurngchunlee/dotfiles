@@ -9,8 +9,20 @@ menu() {
 i3
 rofi-pass
 vim
+ranger
 screen
 EOF
+}
+
+# ffk for ranger 
+ffk_ranger() {
+    cat << EOF
+Ctrl+h show/hide hidden files 
+Ctrl+v switch to mark items for actions (v to unmark)
+--------
+:delete delete selected files
+EOF
+
 }
 
 # ffk for i3
