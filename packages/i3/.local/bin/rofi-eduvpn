@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#--------------------------------
+# turn on/off eduVPN connections
+#--------------------------------
+
+DIR_PROFILE=$HOME/.config/eduvpn
+
+declare -a conn_names
+declare -a conn_uuids
+
+function list() {
+    nmcli con show | awk '$(NF-1) == "vpn" {$NF=""; $(NF-1)=""; print $0}' | while read l; do
+        if [ -f $DIR_PROFILE/$(echo $l | awk '{print $NF}').json ]; then
+            echo $l | awk '{print $NF}'
+        fi
+    done
+}
+
+id=0
+for uuid in $(list); do
+    conn_uuids=("${conn_uuids[@]}" "${id}:${uuid}")
+    conn_names=("${conn_names[@]}" "${id}:$(nmcli -f 'connection.id,general.state' -t con show $uuid | awk -F ':' '{print $NF}' | paste -sd ':' -)")
+    id=$(( $id + 1 ))
+done
+
+vpn=$(printf '%s\n' "${conn_names[@]}" | rofi -dmenu -p "vpn")
+if [ $? -eq 1 ]; then
+    exit
+else
+    id=$(echo $vpn | awk -F ':' '{print $1}')
+    echo $vpn ${conn_uuids[$id]}
+fi
