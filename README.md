@@ -1,6 +1,6 @@
-# My dotfiles
+# A repository for personal dotfiles on Linux
 
-A repository for managing my Linux dotfiles.
+![Screenshot](screenshot.png)
 
 ## Usage
 
