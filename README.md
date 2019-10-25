@@ -12,7 +12,7 @@ $ git clone https://github.com/hurngchunlee/dotfiles.git
 
 Packages in the [packages](packages) directory can be applied by using the [GUN stow](https://www.gnu.org/software/stow/) utility.
 
-For instance, one can do
+For instance, the command below will setup i3 related configurations under the `$HOME` directory.
 
 ```bash
 $ cd dotfiles/packages
