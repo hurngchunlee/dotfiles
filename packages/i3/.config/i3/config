@@ -318,6 +318,9 @@ exec --no-startup-id compton
 # always start on the primary display only when i3 is (re)-loaded/started
 #exec_always --no-startup-id ~/.local/bin/xrandrctl
 
+# Set DPI for display
+exec --no-startup-id xrandr --dpi 120
+
 # Set wallpaper of the desktop
 exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 

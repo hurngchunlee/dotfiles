@@ -1,3 +1,12 @@
+!! Font rendering
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.dpi: 120
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
 !! Color scheme
 ! special
 *.foreground:   #c5c8c6
