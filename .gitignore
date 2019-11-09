@@ -1,4 +1,5 @@
 **/*.pyc
 **/*.pyo
 **/*.py~
+**/.config/ranger/bookmarks
 **/.local/share/fonts/**/.uuid
