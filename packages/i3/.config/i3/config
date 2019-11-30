@@ -172,7 +172,7 @@ assign [class="Ranger"] $workspacex
 for_window [class="Yad"] floating enable
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -265,7 +265,7 @@ mode "$mode_move_container" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+o mode "$mode_move_container"
+bindsym $mod+Shift+c mode "$mode_move_container"
 
 # Pulse Audio controls
 ## for i3bar
