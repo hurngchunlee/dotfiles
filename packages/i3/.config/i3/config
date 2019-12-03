@@ -170,7 +170,7 @@ assign [class="Ranger"] $workspacex
 
 # make yad as floating window
 for_window [class="Yad"] floating enable
-for_window [class="Eduvpn-client"] floating enable
+#for_window [class="Eduvpn-client"] floating enable
 
 # reload the configuration file
 #bindsym $mod+Shift+c reload
