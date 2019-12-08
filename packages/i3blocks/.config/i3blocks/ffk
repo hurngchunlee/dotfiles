@@ -11,7 +11,18 @@ rofi-pass
 vim
 ranger
 screen
+zathura
 EOF
+}
+
+# ffk for zathura 
+ffk_zathura() {
+    cat << EOF
+s width-fit
+a page-fit 
+q quit 
+EOF
+
 }
 
 # ffk for ranger 
