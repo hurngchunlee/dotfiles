@@ -83,7 +83,7 @@ interval=30
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-instance=eno1
+instance=eno2
 label= 
 color=#00FF00
 interval=10
@@ -91,7 +91,7 @@ separator=false
 
 [wifi]
 instance=wlo1
-label=
+label= 
 interval=10
 separator=false
 
@@ -104,7 +104,7 @@ separator=false
 #interval=20
 
 [nm-vpn]
-label=
+label= 
 interval=3
 separator=false
 
