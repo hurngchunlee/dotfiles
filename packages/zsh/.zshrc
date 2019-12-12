@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -129,6 +129,9 @@ alias scp='noglob scp'
 # it seems that --disable-gpu prevent flickering whe xbackligh is enabled??
 # ref: https://askubuntu.com/questions/279088/google-chrome-flickering 
 alias brave-browser='brave-browser --disable-gpu'
+
+# alias vi to vim
+alias vi='vim'
 
 # enable vim mode
 #bindkey -v
