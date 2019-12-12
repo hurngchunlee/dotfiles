@@ -30,7 +30,7 @@
 	spacing: 0;
 	background-color: transparent;
 
-	font: "DejaVu Sans Mono Book 12";
+	font: "Noto Sans CJK TC 12";
 }
 
 window {
