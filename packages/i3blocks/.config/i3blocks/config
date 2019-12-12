@@ -59,24 +59,25 @@ separator=false
 label= 
 interval=10
 separator=false
+SENSOR_CHIP=coretemp-isa-*
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
-[memory]
-label= 
-separator=false
-interval=30
+#[memory]
+#label= 
+#separator=false
+#interval=30
 
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label= 
-instance=/
-interval=30
+#[disk]
+#label= 
+#instance=/
+#interval=30
 
 # Network interface monitoring
 #
