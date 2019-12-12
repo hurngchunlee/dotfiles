@@ -24,21 +24,20 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/share/i3blocks/$BLOCK_NAME
+command=~/.local/share/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 full_text=
 
 # ffk help
-[help]
+[ffk]
 full_text=
-command=~/.config/i3blocks/ffk
 interval=once
 
 # system load
 #
 [load_average]
-label=
+label= 
 interval=5
 separator=false
 
@@ -46,8 +45,8 @@ separator=false
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=
+[cpu_usage2]
+label= 
 interval=3
 separator=false
 
@@ -57,7 +56,7 @@ separator=false
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [temperature]
-label=
+label= 
 interval=10
 separator=false
 
@@ -65,7 +64,7 @@ separator=false
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=
+label= 
 separator=false
 interval=30
 
@@ -75,7 +74,7 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=
+label= 
 instance=/
 interval=30
 
@@ -85,7 +84,7 @@ interval=30
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
 instance=eno1
-label=
+label= 
 color=#00FF00
 interval=10
 separator=false
@@ -105,13 +104,11 @@ separator=false
 #interval=20
 
 [nm-vpn]
-command=~/.config/i3blocks/nm-vpn
 label=
 interval=3
 separator=false
 
 [bluetooth]
-command=~/.config/i3blocks/bluetooth
 interval=once
 
 [separator]
@@ -121,8 +118,7 @@ interval=once
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-[volume]
-command=~/.config/i3blocks/volume-pulseaudio
+[volume-pulseaudio]
 interval=once
 signal=1
 
@@ -135,8 +131,7 @@ signal=1
 #instance=1
 #interval=30
 
-[battery]
-command=~/.config/i3blocks/battery2
+[battery2]
 markup=pango
 interval=30
 
@@ -154,9 +149,9 @@ interval=30
 #interval=1
 
 [calendar]
-command=~/.config/i3blocks/calendar -f '+%a %d.%m.%Y %H:%M'
+command=~/.local/share/i3blocks/calendar -f '+%a %d.%m.%Y %H:%M'
 interval=60
-label=
+label= 
 
 # Generic media player support
 #
