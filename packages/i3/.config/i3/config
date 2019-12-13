@@ -45,7 +45,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start a browser 
-bindsym $mod+b exec brave-browser --disable-gpu
+bindsym $mod+b exec brave --disable-gpu
 
 # start evolution mail client
 bindsym $mod+m exec evolution
@@ -158,6 +158,7 @@ bindsym $mod+Shift+x move container to workspace $workspacex
 # associate applications to workspace
 assign [class="Evolution"] $workspace2
 assign [class="Code"] $workspace4
+assign [class="code-oss"] $workspace4
 assign [class="Slack"] $workspace5
 assign [class="Mattermost"] $workspace5
 assign [class="Remmina"] $workspace6

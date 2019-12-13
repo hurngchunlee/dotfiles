@@ -114,7 +114,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # enable alias made by environment modules 
-source /etc/profile.d/modules.sh
+source /etc/profile.d/env-modules.sh
 export MODULEPATH=/opt/_modules:$HOME/opt/_modules:$MODULEPATH
 
 # extend PATH to include local utilities
