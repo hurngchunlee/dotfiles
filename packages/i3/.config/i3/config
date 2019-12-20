@@ -327,7 +327,7 @@ exec --no-startup-id compton
 exec --no-startup-id xrandr --dpi 120
 
 # Set wallpaper of the desktop
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+exec_always --no-startup-id feh --randomize --bg-fill --no-xinerama ~/Pictures/wallpapers/*
 
 # Autostart applications
 exec --no-startup-id nm-applet           # start network-manager applet
