@@ -2,7 +2,7 @@
 # function to select a display port with a connected display.
 #----------------------------------------------------------------------------------------------
 function rofi_connected_display_selector() {
-    xrandr | awk '$2 ~ /^connected/ {print $1}' | rofi -dmenu -p "select port with display connected"
+    xrandr | awk '$2 ~ /^connected/ {print $1}' | rofi -dmenu -p "select display port"
 }
 
 #----------------------------------------------------------------------------------------------
