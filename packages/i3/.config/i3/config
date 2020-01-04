@@ -225,7 +225,7 @@ bindsym $mod+Pause mode "$mode_system"
 bindsym Control+$mod+Delete mode "$mode_system"
 
 # mode for control external display on first connected HDMI
-set $mode_hdmi_display HDMI display (t) top, (l) left, (r) right, (m) mirror
+set $mode_hdmi_display display on HDMI1 port (t) top, (l) left, (r) right, (m) mirror
 mode "$mode_hdmi_display" {
     bindsym t exec --no-startup-id ~/.local/bin/xrandrctl HDMI1 top, mode "default"
     bindsym l exec --no-startup-id ~/.local/bin/xrandrctl HDMI1 left, mode "default"
@@ -237,6 +237,20 @@ mode "$mode_hdmi_display" {
     bindsym Escape mode "default"
 }
 bindsym Mod4+h mode "$mode_hdmi_display"
+
+# mode for control external display on VGA port (DP2) 
+set $mode_vga_display display on DP2 port (t) top, (l) left, (r) right, (m) mirror
+mode "$mode_vga_display" {
+    bindsym t exec --no-startup-id ~/.local/bin/xrandrctl DP2 top, mode "default"
+    bindsym l exec --no-startup-id ~/.local/bin/xrandrctl DP2 left, mode "default"
+    bindsym r exec --no-startup-id ~/.local/bin/xrandrctl DP2 right, mode "default"
+    bindsym m exec --no-startup-id ~/.local/bin/xrandrctl DP2 mirror, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Mod4+v mode "$mode_vga_display"
 
 # keybinding to only use the primary display
 bindsym Mod4+p exec --no-startup-id ~/.local/bin/xrandrctl
@@ -296,10 +310,11 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 # decrease
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    ## use i3status
     #status_command i3status -c ~/.config/i3/i3status.conf
+    ## use i3blocks
+    #status_command 2>~/tmp/i3block.err i3blocks
     status_command i3blocks
-    #status_command lemonbar
-    #font pango:DejaVuSansMono Nerd Font 10
     position top
     colors {
         #separator #666666
