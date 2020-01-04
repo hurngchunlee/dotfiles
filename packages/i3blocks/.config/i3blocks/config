@@ -114,6 +114,11 @@ interval=once
 
 [separator]
 
+# rofi-xdisplay 
+[rofi-xdisplay]
+full_text=
+interval=once
+
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
