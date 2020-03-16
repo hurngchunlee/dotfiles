@@ -14,3 +14,6 @@ USERNAME_field='user'
 
 # default action
 default_do='copyPass'
+
+# send notification event
+notify='true'
