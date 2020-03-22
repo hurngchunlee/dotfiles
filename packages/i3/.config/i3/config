@@ -161,6 +161,7 @@ assign [class="Code"] $workspace4
 assign [class="code-oss"] $workspace4
 assign [class="Slack"] $workspace5
 assign [class="Mattermost"] $workspace5
+assign [class="Rambox"] $workspace5
 assign [class="Remmina"] $workspace6
 assign [class="Vncviewer"] $workspace7
 assign [class="libreoffice-writer"] $workspace8
