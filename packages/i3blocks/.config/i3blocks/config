@@ -124,9 +124,10 @@ interval=once
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-[volume-pulseaudio]
+[volume-pulseaudio-simple]
 interval=once
 signal=1
+LONG_FORMAT="${SYMB} ${VOL}%"
 
 # Battery indicator
 #
