@@ -29,6 +29,13 @@ separator_block_width=15
 markup=none
 full_text=
 
+# rofi-emoji 
+[rofi-emoji]
+color=#33cc33
+full_text=
+interval=once
+separator=false
+
 # ffk help
 [ffk]
 full_text=

@@ -69,6 +69,9 @@ bindsym $mod+q kill
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show-icons -show drun
 
+# rofi-emoji
+bindsym $mod+i exec BLOCK_BUTTON=1 ~/.local/share/i3blocks/rofi-emoji
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
