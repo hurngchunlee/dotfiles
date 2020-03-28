@@ -29,18 +29,6 @@ separator_block_width=15
 markup=none
 full_text=
 
-# rofi-emoji 
-[rofi-emoji]
-color=#33cc33
-full_text=
-interval=once
-separator=false
-
-# ffk help
-[ffk]
-full_text=
-interval=once
-
 # system load
 #
 [load_average]
@@ -149,6 +137,18 @@ LONG_FORMAT="${SYMB} ${VOL}%"
 command=~/.local/share/i3blocks/calendar -f '+%a %d.%m.%Y %H:%M'
 interval=60
 label= 
+
+# rofi-emoji 
+[rofi-emoji]
+color=#33cc33
+full_text=
+interval=once
+
+# ffk help
+[ffk]
+color=#ffcc00
+full_text=
+interval=once
 
 # Generic media player support
 #
