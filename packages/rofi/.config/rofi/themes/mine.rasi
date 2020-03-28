@@ -78,7 +78,7 @@ case-indicator {
 
 mode-switcher, message {
 	border: 1px 0;
-	border-color: @base0D;
+	border-color: @base0A;
 }
 
 button, textbox {
