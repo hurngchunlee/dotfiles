@@ -79,18 +79,19 @@ EOF
 #--------------------------
 # main program start here!!
 #--------------------------
-# prevent i3block to load rofi window on start.
-test -z "$BLOCK_BUTTON" && exit
-
-opt=$( menu | rofi -dmenu -p 'system' )
-rofi_exit=$?
-while [ $rofi_exit -ne 1 ]; do
-    # user selected a sub-menu
-    opt=$( ffk_${opt} | rofi -dmenu -p ${opt} )
+case $BLOCK_BUTTON in
+1)
+    opt=$( menu | rofi -dmenu -p 'system' )
     rofi_exit=$?
-    if [ $rofi_exit -ne 1 ]; then
-        # go back to main menu if user doesn't quit the rofi window explicitly
-        opt=$( menu | rofi -dmenu -p 'system' )
+    while [ $rofi_exit -ne 1 ]; do
+        # user selected a sub-menu
+        opt=$( ffk_${opt} | rofi -dmenu -p ${opt} )
         rofi_exit=$?
-    fi
-done
+        if [ $rofi_exit -ne 1 ]; then
+            # go back to main menu if user doesn't quit the rofi window explicitly
+            opt=$( menu | rofi -dmenu -p 'system' )
+            rofi_exit=$?
+        fi
+    done
+    ;;
+esac
