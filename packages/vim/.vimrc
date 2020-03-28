@@ -1,3 +1,6 @@
+""" set syntax on
+syntax on
+
 """ enable relative line number
 set relativenumber
 
