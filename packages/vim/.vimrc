@@ -1,8 +1,8 @@
 """ set syntax on
 syntax on
 
-""" enable relative line number
-set relativenumber
+""" enable hybrid number and relative line number
+set number relativenumber
 
 """ enable powerline vim
 set laststatus=2
