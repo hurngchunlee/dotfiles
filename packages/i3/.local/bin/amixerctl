@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Retrives volume level from an active interface.
+#
+# The way to retrieve volume level is copied from the
+# volume-pulseaudio i3block script.
+#
+# https://github.com/vivien/i3blocks-contrib/tree/master/volume-pulseaudio
+function get_volume_level {
+    ACTIVE=$(pacmd list-sinks | grep "state\: RUNNING" -B4 -A7 | grep "index:\|name:\|volume: front\|muted:")
+    [ -z "$ACTIVE" ] && ACTIVE=$(pacmd list-sinks | grep "index:\|name:\|volume: front\|muted:" | grep -A3 '*')
+    for name in INDEX NAME VOL MUTED; do
+        read $name
+    done < <(echo "$ACTIVE")
+
+    INDEX=$(echo "$INDEX" | grep -o '[0-9]\+')
+    VOL=$(echo "$VOL" | grep -o "[0-9]*%" | head -1 )
+    VOL="${VOL%?}"
+    MUTED=$(echo $MUTED | awk '{print $NF}')
+
+    echo $VOL
+    echo $MUTED
+}
+
+# Compose and send notification using the dunstify.
+function notify() {
+
+    msgId='1001'
+    dunstify="dunstify -r ${msgId} -a amixerctl"
+
+    for name in volume muted; do
+        read $name
+    done < <(get_volume_level)
+
+    emoji="🔈"
+    if [[ $volume == 0 || "$muted" == "yes" ]]; then
+        emoji="🔇"
+    else 
+        case $1 in
+        inc)
+            emoji="🔊"
+            ;;
+        dec)
+            emoji="🔉"
+            ;;
+        esac
+    fi
+
+    ${dunstify} "$emoji ${volume}%"
+}
+
+case $1 in
+inc)
+    amixer -q -D pulse sset Master 5%+ &&
+        canberra-gtk-play -i audio-volume-change -d "amixerctl" &&
+        pkill -RTMIN+1 i3blocks && notify inc
+    ;;
+dec)
+    amixer -q -D pulse sset Master 5%- &&
+        canberra-gtk-play -i audio-volume-change -d "amixerctl" &&
+        pkill -RTMIN+1 i3blocks && notify dec
+    ;;
+toggle)
+    amixer -q -D pulse sset Master toggle &&
+        pkill -RTMIN+1 i3blocks && notify
+esac

@@ -294,14 +294,14 @@ bindsym $mod+Shift+c mode "$mode_move_container"
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-## for i3blocks w/ volume-pulseaudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+## volume control with amixer and pluseaudio for volume level display
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/amixerctl inc
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/amixerctl dec
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/amixerctl toggle
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15 # decrease screen brightness
+## screen brightness control with xbacklight
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/xbacklightctl inc
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/xbacklightctl dec
 
 # Touchpad controls
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
