@@ -2,10 +2,10 @@
 _rofi () {
     if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
         # for x11 
-        rofi -theme ~/.config/rofi/themes/mine -no-auto-select "$@"
+        rofi -theme ~/.config/rofi/themes/mine -no-auto-select -i "$@"
     else
         # for wayland
-        rofi -theme ~/.config/rofi/themes/mine -normal-window -no-auto-select "$@"
+        rofi -theme ~/.config/rofi/themes/mine -normal-window -no-auto-select -i "$@"
     fi
 }
 
