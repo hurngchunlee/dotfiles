@@ -73,7 +73,7 @@ entry {
 }
 
 case-indicator {
-	text-color: @base0F;
+	text-color: @base0A;
 }
 
 mode-switcher, message {
