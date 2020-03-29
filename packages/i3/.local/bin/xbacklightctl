@@ -1,14 +1,24 @@
 #!/bin/bash
 
-msgId='1000'
+function notify() {
+    msgId='1000'
 
-dunstify="dunstify -r ${msgId} -a xbacklightctl"
+    dunstify="dunstify -r ${msgId} -a xbacklightctl"
+
+    symb_fill="🌞"
+    symb_open="⛅"
+
+    bl_level=$(printf '%.0f' $(xbacklight -get))
+
+    ${dunstify} "🔆 ${bl_level}%" \
+        "$(~/.local/bin/progressbar 10 ${symb_fill} ${symb_open} ${bl_level})"
+}
 
 case $1 in
 inc)
-    xbacklight -inc 15 && ${dunstify} "🔆 $(printf '%.0f' $(xbacklight -get))"
+    xbacklight -inc 10 && notify
     ;;
 dec)
-    xbacklight -dec 15 && ${dunstify} "🔆 $(printf '%.0f' $(xbacklight -get))"
+    xbacklight -dec 10 && notify
     ;;
 esac

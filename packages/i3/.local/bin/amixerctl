@@ -46,7 +46,10 @@ function notify() {
         esac
     fi
 
-    ${dunstify} "$emoji ${volume}%"
+    symb_fill="🧡"
+    symb_open="💚"
+    ${dunstify} "$emoji ${volume}%" \
+        "$(~/.local/bin/progressbar 10 ${symb_fill} ${symb_open} ${volume})"
 }
 
 case $1 in
