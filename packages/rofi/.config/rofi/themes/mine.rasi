@@ -74,6 +74,8 @@ entry {
 
 case-indicator {
 	text-color: @base0A;
+        padding: 5px;
+	font-style: "oblique";
 }
 
 mode-switcher, message {
