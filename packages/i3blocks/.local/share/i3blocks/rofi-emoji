@@ -6,7 +6,7 @@ EMOJI_LIST=${EMOJI_LIST:-$HOME/.local/share/i3blocks/emoji}
 
 case $BLOCK_BUTTON in
 1)
-    sel=$(cat $EMOJI_LIST | egrep -v '^#' | rofi -dmenu)
+    sel=$(cat $EMOJI_LIST | egrep -v '^#' | rofi -dmenu -i)
     [ $? -eq 0 ] &&
         echo $sel | awk '{print $1}' | xclip -i -r &&
         notify-send "copied: $sel"
