@@ -85,6 +85,9 @@ case "$extension" in
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
+    # JSON files
+    json)
+        try jq -C . "$path" && { dump; exit 4; } || exit 2;;
     # ODT Files
     # - disabled as for some reason it takes 100% CPU and nothing turns out
     #odt|ods|odp|sxw)
