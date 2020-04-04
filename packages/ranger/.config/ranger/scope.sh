@@ -87,7 +87,8 @@ case "$extension" in
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
     # JSON files
     json)
-        try jq -C . "$path" && { dump; exit 4; } || exit 2;;
+        try jq -C . "$path" && { dump; exit 4; }
+        ;; # fall back to highlight/cat if the text browsers fail
     # ODT Files
     # - disabled as for some reason it takes 100% CPU and nothing turns out
     #odt|ods|odp|sxw)
@@ -102,7 +103,7 @@ esac
 
 case "$mimetype" in
     # Syntax highlight for text files:
-    text/* | */xml)
+    text/* | */xml | */json )
         if [ "$(tput colors)" -ge 256 ]; then
             pygmentize_format=terminal256
             highlight_format=xterm256
@@ -110,7 +111,7 @@ case "$mimetype" in
             pygmentize_format=terminal
             highlight_format=ansi
         fi
-        try safepipe highlight --out-format=${highlight_format} "$path" && { dump | trim; exit 5; }
+        try safepipe highlight --out-format=${highlight_format} --style=zenburn "$path" && { dump | trim; exit 5; }
         try safepipe pygmentize -f ${pygmentize_format} "$path" && { dump | trim; exit 5; }
         exit 2;;
     # Ascii-previews of images:
