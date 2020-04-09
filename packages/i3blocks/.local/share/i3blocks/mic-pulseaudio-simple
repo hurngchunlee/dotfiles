@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DEFAULT_COLOR=${DEFAULT_COLOR:-"#ffffff"}
+MUTED_COLOR=${MUTED_COLOR:-"#a0a0a0"}
+
+MIC_DEFAULT_SYMBOL=${MIC_UNMUTED_SYMBOL:-''}
+MIC_MUTED_SYMBOL=${MIC_MUTED_SYMBOL:-''}
+
+# check if mic is on 
+function is_mic_on() {
+    amixer get Capture | egrep -o '\[on\]' >/dev/null 2>&1
+    return $?
+}
+
+case "$BLOCK_BUTTON" in
+1)
+    pavucontrol -t 4 &
+    ;;
+esac
+
+is_mic_on
+
+[ $? -eq 0 ] &&
+    ( echo "${MIC_DEFAULT_SYMBOL}"; echo "${MIC_DEFAULT_SYMBOL}"; echo "${DEFAULT_COLOR}" ) ||
+    ( echo "${MIC_MUTED_SYMBOL}"; echo "${MIC_MUTED_SYMBOL}"; echo "${MUTED_COLOR}" )

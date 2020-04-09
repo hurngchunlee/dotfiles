@@ -115,6 +115,12 @@ full_text=
 interval=once
 separator=false
 
+# mic indicator
+[mic-pulseaudio-simple]
+interval=once
+signal=1
+separator=false
+
 # volume indicator
 [volume-pulseaudio-simple]
 interval=once

@@ -298,6 +298,7 @@ bindsym $mod+Shift+c mode "$mode_move_container"
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/amixerctl inc
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/amixerctl dec
 bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/amixerctl toggle
+bindsym XF86AudioMicMute exec --no-startup-id ~/.local/bin/micctl toggle
 
 ## screen brightness control with xbacklight
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/xbacklightctl inc
