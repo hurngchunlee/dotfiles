@@ -1,0 +1,6 @@
+{
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "terminal.external.linuxExec": "urxvt",
+    "editor.fontFamily": "'InconsolataLGC Nerd Font Mono','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+}
