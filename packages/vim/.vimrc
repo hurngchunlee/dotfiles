@@ -4,7 +4,18 @@ syntax on
 """ enable hybrid number and relative line number
 set number relativenumber
 
-""" set up for airline
+""" plugins
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/NERDTree'
+call plug#end()
+
+""" configuration for nerdtree
+map <C-f> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+""" configuration for airline
 set t_Co=256
 
 let g:airline#extensions#tabline#enabled = 1
