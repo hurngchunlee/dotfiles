@@ -12,13 +12,15 @@ Plug 'preservim/NERDTree'
 call plug#end()
 
 """ configuration for nerdtree
-map <C-f> :NERDTreeToggle<CR>
+map <A-o> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """ configuration for airline
 set t_Co=256
 
 let g:airline#extensions#tabline#enabled = 1
+nnoremap <A-tab>   :bnext<CR>
+
 let g:airline#extensions#branch#enabled = 1
 
 if !exists('g:airline_symbols')
