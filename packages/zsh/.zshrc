@@ -94,7 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -130,8 +130,8 @@ alias scp='noglob scp'
 # ref: https://askubuntu.com/questions/279088/google-chrome-flickering 
 alias brave-browser='brave-browser --disable-gpu'
 
-# alias vi to vim
-alias vi='vim'
+# alias vi to nvim
+alias vi='nvim'
 
 # enable vim mode
 #bindkey -v
