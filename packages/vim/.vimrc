@@ -1,19 +1,46 @@
-"""" set syntax on
-syntax on
-
 """ enable hybrid number and relative line number
 set number relativenumber
+
+""" set vim encoding to UTF-8
+set encoding=UTF-8
 
 """ plugins
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/NERDTree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tomasiser/vim-code-dark'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-""" configuration for nerdtree
+""" general styling
+highlight VertSplit cterm=None
+
+""" set syntax highlighting
+syntax on
+
+""" set color scheme
+colorscheme codedark
+
+""" nerdtree toggle settings
 map <A-o> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+""" remove the default nerdtree arrow indicating folder open/close
+let NERDTreeDirArrowExpandable = ""
+let NERDTreeDirArrowCollapsible = ""
+
+""" enable folder open/close effect of devicons
+let g:DevIconsEnableFoldersOpenClose = 1
+
+""" highlight nerdtree with icons and colors
+" let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+let g:NERDTreeSyntaxEnabledExtensions = ['c', 'h', 'c++', 'cpp', 'js', 'json', 'md', 'css', 'html', 'go']
 
 """ configuration for airline
 set t_Co=256
@@ -26,6 +53,8 @@ let g:airline#extensions#branch#enabled = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+let g:airline_theme = 'codedark'
 
 " unicode symbols
 "let g:airline_left_sep = '»'
