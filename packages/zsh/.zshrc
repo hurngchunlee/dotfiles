@@ -113,7 +113,7 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# enable alias made by environment modules 
+# enable alias made by environment modules
 source /etc/profile.d/env-modules.sh
 export MODULEPATH=/opt/_modules:$HOME/opt/_modules:$MODULEPATH
 
@@ -127,7 +127,7 @@ export TERM='xterm-256color'
 alias scp='noglob scp'
 
 # it seems that --disable-gpu prevent flickering whe xbackligh is enabled??
-# ref: https://askubuntu.com/questions/279088/google-chrome-flickering 
+# ref: https://askubuntu.com/questions/279088/google-chrome-flickering
 alias brave-browser='brave-browser --disable-gpu'
 
 # alias vi to nvim
