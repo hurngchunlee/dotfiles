@@ -324,7 +324,7 @@ bar {
     position top
     colors {
         #separator #666666
-        separator #DE935F
+        separator #ff661a
         background #222222
         statusline #ffffff
         focused_workspace #0088CC #0088CC #ffffff
@@ -336,7 +336,7 @@ bar {
 
 # color of windows
 client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
-client.urgent  #2f343a #900000 #ffffff #ff661a #2f343a
+client.urgent  #900000 #900000 #ffffff #ff661a #900000
 
 # start compton 
 exec --no-startup-id compton
