@@ -3,3 +3,4 @@
 **/*.py~
 **/.config/ranger/bookmarks
 **/.local/share/fonts/**/.uuid
+**/.config/ranger/history
