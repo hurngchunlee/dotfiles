@@ -10,7 +10,7 @@ Xft.lcdfilter: lcddefault
 !! Eighties dark
 ! special
 *.foreground:   #d3d0c8
-*.background:   #2d2d2d
+*.background:   #000000
 *.cursorColor:  #d3d0c8
 
 ! black
@@ -95,3 +95,5 @@ URxvt.perl-ext-common: default,resize-font,clipboard
 URxvt.keysym.C-equal: resize-font:bigger
 URxvt.keysym.C-minus: resize-font:smaller
 URxvt.keysym.C-0: resize-font:reset
+URxvt.clipboard.autocopy: true
+URxvt.keysym.C-v: perl:clipboard:paste
