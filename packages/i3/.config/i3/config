@@ -19,7 +19,7 @@ font pango:DroidSansMono Nerd Font 10
 #font pango:InconsolataLGC Nerd Font 10
 
 # configuration for i3-gaps
-for_window [class=".*"] border pixel 2 
+for_window [class=".*"] border pixel 2
 
 #smart_gaps    on
 #smart_borders on
@@ -44,7 +44,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# start a browser 
+# start a browser
 bindsym $mod+b exec brave --disable-gpu
 
 # start evolution mail client
@@ -243,7 +243,7 @@ mode "$mode_hdmi_display" {
 }
 bindsym Mod4+h mode "$mode_hdmi_display"
 
-# mode for control external display on VGA port (DP2) 
+# mode for control external display on VGA port (DP2)
 set $mode_vga_display display on DP2 port (t) top, (l) left, (r) right, (m) mirror
 mode "$mode_vga_display" {
     bindsym t exec --no-startup-id ~/.local/bin/xrandrctl DP2 top, mode "default"
@@ -338,7 +338,10 @@ bar {
 client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
 client.urgent  #900000 #900000 #ffffff #ff661a #900000
 
-# start compton 
+# start autocutsel to synchronize X PRIMARY and CLIPBOARD
+exec --no-startup-id autocutsel -s PRIMARY -f -buttonup && autocutsel -s CLIPBOARD -f
+
+# start compton
 exec --no-startup-id compton
 
 # always start on the primary display only when i3 is (re)-loaded/started
