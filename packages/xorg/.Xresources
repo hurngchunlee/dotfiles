@@ -91,7 +91,7 @@ URxvt.font:     xft:InconsolataLGC Nerd Font Mono:pixelsize=18:antialias=true,xf
 !!URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:style=Bold:pixelsize=16:antialias=true
 !!URxvt.font:     xft:DejaVuSansMono Nerd Font Mono:pixelsize=18:antialias=true,xft:Noto Sans Mono CJK TC:antialias=true
 !!URxvt.boldFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold:size=12:antialias=true
-URxvt.perl-ext-common: default,resize-font
+URxvt.perl-ext-common: default,resize-font,clipboard
 URxvt.keysym.C-equal: resize-font:bigger
 URxvt.keysym.C-minus: resize-font:smaller
 URxvt.keysym.C-0: resize-font:reset
