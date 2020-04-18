@@ -342,7 +342,10 @@ client.urgent  #900000 #900000 #ffffff #ff661a #900000
 exec --no-startup-id autocutsel -s PRIMARY -f -buttonup && autocutsel -s CLIPBOARD -f
 
 # start compton
-exec --no-startup-id compton
+#exec --no-startup-id compton
+
+# start picom 
+exec --no-startup-id picom -b
 
 # always start on the primary display only when i3 is (re)-loaded/started
 #exec_always --no-startup-id ~/.local/bin/xrandrctl
