@@ -85,8 +85,10 @@ Xft.lcdfilter: lcddefault
 !*.color15:      #ffffff
 
 !! URxvt configuration
-URxvt*scrollBar: false
+URxvt.scrollBar: false
+URxvt.internalBorder: 0
 URxvt.font:     xft:InconsolataLGC Nerd Font Mono:pixelsize=18:antialias=true,xft:WenQuanYi Zen Hei Mono:antialias=true
+URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:pixelsize=18:antialias=true,xft:WenQuanYi Zen Hei Mono:antialias=true
 !!URxvt.font:     xft:DroidSansMono Nerd Font Mono:pixelsize=18:antialias=true,,xft:WenQuanYi Zen Hei Mono:antialias=true
 !!URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:style=Bold:pixelsize=16:antialias=true
 !!URxvt.font:     xft:DejaVuSansMono Nerd Font Mono:pixelsize=18:antialias=true,xft:Noto Sans Mono CJK TC:antialias=true
