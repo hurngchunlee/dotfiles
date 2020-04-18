@@ -17,14 +17,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lilydjwg/colorizer'
 call plug#end()
 
-""" general styling
-highlight VertSplit cterm=None
+""" set color scheme
+colorscheme codedark
 
 """ set syntax highlighting
 syntax on
-
-""" set color scheme
-colorscheme codedark
+set cursorline
+set cursorcolumn
 
 """ nerdtree toggle settings
 map <A-o> :NERDTreeToggle<CR>
