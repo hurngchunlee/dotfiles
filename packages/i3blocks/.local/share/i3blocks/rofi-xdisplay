@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #----------------------------------------------------------------------------------------------
 # function to select a display port with a connected display.
 #----------------------------------------------------------------------------------------------
@@ -212,38 +214,37 @@ function set_external() {
     xrandr ${xrandr_opt} && reload_wallpaper
 }
 
-
 #--------------------------
 # main program start here!!
 #--------------------------
-# prevent i3block to load rofi window on start.
-test -z "$BLOCK_BUTTON" && exit
-
-# select connected display
-display=$(rofi_connected_display_selector)
-if [ "$display" == "" ]; then
-    echo "display not selected" 1>&2
-    exit 0
-fi
-
-# select preferred resolution and refresh ratio
-mode=$(rofi_display_mode_selector $display | sed 's/[*+]//g')
-if [ "$mode" == "" ]; then
-    echo "display mode not selected" 1>&2
-    exit 0
-fi
-
-if [ "$display" == "$(primary_display)" ]; then
-    # primary display selected, set to the "primary only mode"
-    echo $display $mode 1>&2
-    set_primary_only "$display" "$mode"
-else
-    # external display selected, set it with the given relation to the primary display.
-    relation=$(rofi_display_relation | sed 's/extend://')
-    if [ "$relation" == "" ]; then
-        echo "display relation not selected" 1>&2
+case $BLOCK_BUTTON in
+1)
+    # select connected display
+    display=$(rofi_connected_display_selector)
+    if [ "$display" == "" ]; then
+        echo "display not selected" 1>&2
         exit 0
     fi
-    echo $display $mode $relation 1>&2
-    set_external "$display" "$mode" "$relation"
-fi
+
+    # select preferred resolution and refresh ratio
+    mode=$(rofi_display_mode_selector $display | sed 's/[*+]//g')
+    if [ "$mode" == "" ]; then
+        echo "display mode not selected" 1>&2
+        exit 0
+    fi
+
+    if [ "$display" == "$(primary_display)" ]; then
+        # primary display selected, set to the "primary only mode"
+        echo $display $mode 1>&2
+        set_primary_only "$display" "$mode"
+    else
+        # external display selected, set it with the given relation to the primary display.
+        relation=$(rofi_display_relation | sed 's/extend://')
+        if [ "$relation" == "" ]; then
+            echo "display relation not selected" 1>&2
+            exit 0
+        fi
+        echo $display $mode $relation 1>&2
+        set_external "$display" "$mode" "$relation"
+    fi
+esac
