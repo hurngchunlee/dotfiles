@@ -1,0 +1,26 @@
+alt + b:
+    brave --disable-gpu
+
+alt + p:
+    rofi-pass
+
+alt + d:
+    rofi -show-icons -show drun
+
+alt + i:
+    BLOCK_BUTTON=1 ~/.local/share/i3blocks/rofi-emoji
+
+# X display control with rofi-xdisplay
+super + {d,p}
+    BLOCK_BUTTON={1,p} ~/.local/share/i3blocks/rofi-xdisplay
+
+# volume control with amixer and pluseaudio for volume level display
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    ~/.local/bin/amixerctl {inc,dec,toggle}
+
+XF86AudioMicMute 
+    ~/.local/bin/micctl toggle
+
+# screen brightness control with xbacklight
+XF86MonBrightness{Up,Down}
+    ~/.local/bin/xbacklightctl {inc,dec}
