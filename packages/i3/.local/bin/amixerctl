@@ -52,18 +52,23 @@ function notify() {
         "$(~/.local/bin/progressbar 10 ${symb_fill} ${symb_open} ${volume})"
 }
 
+# reload i3blocks process, but always return 0.
+function reload_i3blocks {
+    pkill -RTMIN+1 i3blocks || return 0
+}
+
 case $1 in
 inc)
     amixer -q -D pulse sset Master 5%+ &&
         canberra-gtk-play -i audio-volume-change -d "amixerctl" &&
-        pkill -RTMIN+1 i3blocks && notify inc
+        reload_i3blocks && notify inc
     ;;
 dec)
     amixer -q -D pulse sset Master 5%- &&
         canberra-gtk-play -i audio-volume-change -d "amixerctl" &&
-        pkill -RTMIN+1 i3blocks && notify dec
+        reload_i3blocks && notify dec
     ;;
 toggle)
     amixer -q -D pulse sset Master toggle &&
-        pkill -RTMIN+1 i3blocks && notify
+        reload_i3blocks && notify
 esac

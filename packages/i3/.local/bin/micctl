@@ -15,8 +15,13 @@ function notify() {
     
 }
 
+# reload i3blocks process, but always return 0.
+function reload_i3blocks {
+    pkill -RTMIN+1 i3blocks || return 0
+}
+
 case $1 in
 toggle)
     amixer -q -D pulse sset Capture toggle &&
-        pkill -RTMIN+1 i3blocks && notify
+        reload_i3blocks && notify
 esac
