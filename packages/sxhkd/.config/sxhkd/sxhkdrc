@@ -1,5 +1,37 @@
+# WM
+alt + {h,j,k,l}:
+    i3-msg focus {left,down,up,right}
+
+alt + shift + {h,j,k,l}:
+    i3-msg move {left,down,up,right}
+
+alt + {f,space}:
+    i3-msg {fullscreen,floating} toggle
+
+alt + {s,t,e}:
+    i3-msg layout {stacking,tabbed,toggle split}
+
+alt + q:
+    i3-msg kill
+
+alt + r:
+    i3-msg mode "resize" 
+
+alt + shift + r:
+    i3-msg restart
+
+super + {v,h}:
+    i3-msg split{v,h}
+
+# app launcher
+alt + Return:
+    alacritty
+
 alt + b:
     brave --disable-gpu
+
+alt + m:
+    evolution
 
 alt + p:
     rofi-pass
@@ -24,3 +56,5 @@ XF86AudioMicMute
 # screen brightness control with xbacklight
 XF86MonBrightness{Up,Down}
     ~/.local/bin/xbacklightctl {inc,dec}
+
+# vim:ft=sxhkdrc

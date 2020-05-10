@@ -19,81 +19,6 @@ gaps outer 0
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec alacritty
-#bindsym $mod+Return exec i3-sensible-terminal
-
-# start a browser
-bindsym $mod+b exec brave --disable-gpu
-
-# start a mail client
-bindsym $mod+m exec evolution
-
-# start rofi-pass
-bindsym $mod+p exec rofi-pass
-
-# start gnome screenshot interactive
-bindsym $mod+Print exec gnome-screenshot -i
-
-# kill focused window
-bindsym $mod+q kill
-
-# start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show-icons -show drun
-
-# start rofi-emoji
-bindsym $mod+i exec BLOCK_BUTTON=1 ~/.local/share/i3blocks/rofi-emoji
-
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# move focused window with the cursor keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 # set workspaces
 set $workspace1 "1:"
 set $workspace2 "2:"
@@ -149,15 +74,6 @@ assign [class="Ranger"] $workspacex
 for_window [class="Yad"] floating enable
 for_window [class="Evolution-alarm-notify"] floating enable
 
-# reload the configuration file
-#bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -166,10 +82,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -181,8 +97,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 # mode for control screenlock, suspend, logout, reboot and shutdown
 # (ref: https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html)
@@ -199,8 +113,6 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-#bindsym $mod+Pause mode "$mode_system"
-#bindsym Control+$mod+Delete mode "$mode_system"
 
 # mode for move workspace across displays
 set $mode_move_workspace Move workspace to display (u) up, (d) down, (l) left, (r) right
@@ -228,36 +140,9 @@ mode "$mode_move_container" {
     bindsym Escape mode "default"
 }
 
-# enter workspace-move keybinding mode
-bindsym $win+w mode "$mode_move_workspace"
-
-# enter container-move keybinding mode
-bindsym $win+c mode "$mode_move_container"
-
-# enter system (lock, logout, reboot, etc.) keybinding mode
 bindsym $win+e mode "$mode_system"
-
-# X display control with rofi-xdisplay
-bindsym $win+d exec --no-startup-id BLOCK_BUTTON=1 ~/.local/share/i3blocks/rofi-xdisplay
-
-# X display control to set primary only
-bindsym $win+p exec --no-startup-id BLOCK_BUTTON=p ~/.local/share/i3blocks/rofi-xdisplay
-
-## volume control with amixer and pluseaudio for volume level display
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/amixerctl inc
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/amixerctl dec
-bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/amixerctl toggle
-bindsym XF86AudioMicMute exec --no-startup-id ~/.local/bin/micctl toggle
-
-## screen brightness control with xbacklight
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.local/bin/xbacklightctl inc
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.local/bin/xbacklightctl dec
-
-# Media player controls
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
+bindsym $win+w mode "$mode_move_workspace"
+bindsym $win+c mode "$mode_move_container"
 
 # i3 bar 
 bar {
@@ -277,6 +162,9 @@ bar {
 # color of windows
 client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
 client.urgent  #900000 #900000 #ffffff #ff661a #900000
+
+# start sxhkd
+exec --no-startup-id sxhkd
 
 # start autocutsel to synchronize X PRIMARY and CLIPBOARD
 exec --no-startup-id autocutsel -s PRIMARY -f -buttonup && autocutsel -s CLIPBOARD -f
