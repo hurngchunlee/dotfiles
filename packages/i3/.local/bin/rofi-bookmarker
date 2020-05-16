@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# open bookmark URL with $BROWSER
+function bk_open() {
+    f=$(find $BOOKMARK_DIR -type f | sed "s|$BOOKMARK_DIR/||" | sort | rofi -dmenu -mesg "open a bookmark") || return 1
+
+    [ ! -z "$f" ] && ${YQ} r "${BOOKMARK_DIR}/${f}" url | xargs $BROWSER
+}
+
+# copy URL from a selected browser window
+function copy_url_from_browser() {
+
+    # save current active window id
+    mywid=$(xdotool getactivewindow)
+
+    w=$(wmctrl -l | egrep -e "\s-\s+(Brave|Chrome)$" | rofi -dmenu -mesg "copy from a selected browser window")
+
+    wid=$(echo $w | awk '{print strtonum($1)}')
+    [ $wid -eq 0 ] && return
+
+    # switch to browser window $wid, copy the URL from the url bar,
+    # switch back to the window $mywid
+    xdotool windowactivate $wid key "ctrl+l" "ctrl+c" &&
+	xdotool windowactivate $mywid &&
+	xclip -o
+}
+
+# bookmark the given URL
+function bk_mark() {
+    url=$1
+    f=$(find $BOOKMARK_DIR -type f | sed "s|$BOOKMARK_DIR/||" | sort | rofi -dmenu -mesg "$url") || return 1
+
+    f="$BOOKMARK_DIR/$f"
+    [ ! -f "$f" ] && mkdir -p $(dirname "$f") && touch "$f"
+
+    ${YQ} w "$f" url "$url" > "$f"
+}
+
+# print out simple usage 
+function usage() {
+    cat << EOF
+Usage: $0 [open|mark]
+
+Arguments:
+
+  open - open a bookmark link in a browser
+  mark - bookmark a link from a browaser
+EOF
+}
+
+# main program
+[ $# -lt 1 ] && usage && exit 1
+
+# define BOOKMARK_DIR variable if it is not set explicitly
+[ -z $BOOKMARK_DIR ] && BOOKMARK_DIR=$HOME/.config/bookmarks
+
+# resolve BOOKMARK_DIR from symlink to its absolute path
+BOOKMARK_DIR=$(readlink -f $BOOKMARK_DIR)
+
+# leave the program if the $BOOKMARK_DIR doesn't exist
+[ ! -d $BOOKMARK_DIR ] && echo "bookmark directory not found: $BOOKMARK_DIR" >&2 && exit 1
+
+# define BROWSER variable if it is not set explicitly
+[ -z $BROWSER ] && BROWSER="brave --disable-gpu"
+
+YQ=$(which yq)
+[ $? -ne 0 ] && echo "yq (https://github.com/mikefarah/yq) not available" >&2 && exit 1
+
+case $1 in
+    open)
+        # open a bookmark URL
+	bk_open
+	;;
+    mark)
+        # copy an URL from a browser window and save it in $BOOKMARK_DIR
+	url=$(copy_url_from_browser) && bk_mark $url
+	;;
+    *)
+        usage && exit 1
+	;;
+esac
