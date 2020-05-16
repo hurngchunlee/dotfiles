@@ -30,17 +30,23 @@ alt + Return:
 alt + b:
     brave --disable-gpu
 
-alt + m:
-    evolution
+shift + alt + o:
+    ~/.local/bin/rofi-bookmarker open
 
-alt + p:
-    rofi-pass
+shift + alt + m:
+    ~/.local/bin/rofi-bookmarker mark
 
 alt + d:
     rofi -show-icons -show drun
 
 alt + i:
     BLOCK_BUTTON=1 ~/.local/share/i3blocks/rofi-emoji
+
+alt + m:
+    evolution
+
+alt + p:
+    rofi-pass
 
 # X display control with rofi-xdisplay
 super + {d,p}
