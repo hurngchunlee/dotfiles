@@ -16,7 +16,7 @@ function copy_url_from_browser() {
     w=$(wmctrl -l | egrep -e "\s-\s+(Brave|Chrome)$" | rofi -dmenu -mesg "copy from a selected browser window")
 
     wid=$(echo $w | awk '{print strtonum($1)}')
-    [ $wid -eq 0 ] && return
+    [ $wid -eq 0 ] && return 1
 
     # switch to browser window $wid, copy the URL from the url bar,
     # switch back to the window $mywid
