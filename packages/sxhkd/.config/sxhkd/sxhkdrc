@@ -20,6 +20,9 @@ alt + r:
 alt + shift + r:
     i3-msg restart
 
+alt + shift + b:
+    i3-msg bar mode toggle
+
 super + {v,h}:
     i3-msg split{v,h}
 
