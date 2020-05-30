@@ -147,6 +147,7 @@ bindsym $win+c mode "$mode_move_container"
 # i3 bar 
 bar {
     status_command i3blocks
+    separator_symbol ""
     position top
     colors {
         separator #ff661a
@@ -156,6 +157,7 @@ bar {
         active_workspace #333333 #333333 #ffffff
         inactive_workspace #333333 #333333 #888888
         urgent_workspace #900000 #900000 #ffffff
+        binding_mode #8600b3 #8600b3 #ffffff
     }
 }
 
