@@ -63,6 +63,9 @@ BOOKMARK_DIR=$(readlink -f $BOOKMARK_DIR)
 # define BROWSER variable if it is not set explicitly
 [ -z $BROWSER ] && BROWSER="brave --disable-gpu"
 
+# add $HOME/.local/bin into PATH
+export PATH=$HOME/.local/bin:$PATH
+
 YQ=$(which yq)
 [ $? -ne 0 ] && echo "yq (https://github.com/mikefarah/yq) not available" >&2 && exit 1
 
