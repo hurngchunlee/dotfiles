@@ -136,4 +136,8 @@ element normal active, element selected active, element alternate active {
 	text-color: @base0B;
 }
 
+element-icon {
+	size: 1.0em;
+}
+
 /* vim:ft=css
