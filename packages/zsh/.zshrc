@@ -1,28 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#POWERLEVEL9K_MODE='awesome-fontconfig'
-POWERLEVEL9K_MODE='nerdfont-complete'
-ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status dir_writable)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="﬌ "
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{cyan}\uF054%F{073}\uF054%F{109}\uF054%f "
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
+## Path to your oh-my-zsh installation.
+#export ZSH="$HOME/.oh-my-zsh"
+#
+## Set name of the theme to load --- if set to "random", it will
+## load a random theme each time oh-my-zsh is loaded, in which case,
+## to know which specific one was loaded, run: echo $RANDOM_THEME
+## See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+##ZSH_THEME="robbyrussell"
+##POWERLEVEL9K_MODE='awesome-fontconfig'
+#POWERLEVEL9K_MODE='nerdfont-complete'
+#ZSH_THEME="powerlevel10k/powerlevel10k"
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status dir_writable)
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+##POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="﬌ "
+##POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{cyan}\uF054%F{073}\uF054%F{109}\uF054%f "
+#POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+##POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -82,9 +82,9 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+#plugins=(git zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -144,3 +144,6 @@ alias vi='nvim'
 
 # enable vim mode
 #bindkey -v
+#
+# starship prompt
+eval "$(starship init zsh)"
