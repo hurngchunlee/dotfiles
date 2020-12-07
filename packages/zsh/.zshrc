@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$PATH
 
 ## Path to your oh-my-zsh installation.
-#export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 #
 ## Set name of the theme to load --- if set to "random", it will
 ## load a random theme each time oh-my-zsh is loaded, in which case,
@@ -84,7 +84,7 @@ export PATH=$HOME/.local/bin:$PATH
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git zsh-syntax-highlighting)
 
-#source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -109,6 +109,11 @@ export EDITOR='nvim'
 # else
 #   export EDITOR='mvim'
 # fi
+
+# LS_COLOR setting from ~/.local/share/lscolors.sh
+# see: https://github.com/trapd00r/LS_COLORS
+[ -f ~/.local/share/lscolors.sh ] &&
+    . ~/.local/share/lscolors.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
