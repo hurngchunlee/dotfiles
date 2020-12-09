@@ -82,7 +82,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git zsh-syntax-highlighting)
+plugins=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,11 +109,6 @@ export EDITOR='nvim'
 # else
 #   export EDITOR='mvim'
 # fi
-
-# LS_COLOR setting from ~/.local/share/lscolors.sh
-# see: https://github.com/trapd00r/LS_COLORS
-[ -f ~/.local/share/lscolors.sh ] &&
-    . ~/.local/share/lscolors.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
