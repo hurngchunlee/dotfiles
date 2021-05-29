@@ -20,13 +20,13 @@ lock() {
     i3lock --clock  \
            --indicator         \
            --color='#000000'   \
-           --insidevercolor=$C \
-           --ringvercolor=$V   \
-           --insidecolor=$C    \
-           --ringcolor=$D      \
-           --linecolor=$B      \
-           --separatorcolor=$B \
-           --keyhlcolor=$K     \
+           --insidever-color=$C \
+           --ringver-color=$V   \
+           --inside-color=$C    \
+           --ring-color=$D      \
+           --line-color=$B      \
+           --separator-color=$B \
+           --keyhl-color=$K     \
            -C -i ~/.screenlock $@
     revert
 }
