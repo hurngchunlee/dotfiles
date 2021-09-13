@@ -34,13 +34,13 @@
 	font: "Noto Sans CJK TC 12";
 }
 
-window {
+#window {
 	transparency: "real";
 	/*fullscreen: true;*/
 	background-color: @background01; 
 }
 
-mainbox {
+#mainbox {
 	/*children: [inputbar, message, mode-switcher, listview];*/
 	children: [inputbar, listview, message];
 	spacing: 20px;
@@ -50,17 +50,17 @@ mainbox {
 	border-color: @base0A;
 }
 
-inputbar {
+#inputbar {
 	padding: 0 30px;
 	children: [textbox-prompt-colon, entry, case-indicator];
 }
 
-prompt {
+#prompt {
 	/*text-color: @base0D;*/
 	text-color: @base0A;
 }
 
-textbox-prompt-colon {
+#textbox-prompt-colon {
 	expand: false;
 	str: " ";
 	margin: 0 1ch 0 0;
@@ -68,37 +68,37 @@ textbox-prompt-colon {
 	font: "InconsolataLGC Nerd Font Mono 14";
 }
 
-entry {
+#entry {
 	text-color: @base07;
 }
 
-case-indicator {
+#case-indicator {
 	text-color: @base0A;
         padding: 5px;
 	font-style: "oblique";
 }
 
-mode-switcher, message {
+#mode-switcher.message {
 	border: 1px 0;
 	border-color: @base0A;
 }
 
-button, textbox {
+#button {
 	background-color: @base03;
 	text-color: @base07;
 	padding: 5px;
 }
 
-button selected {
+#button.selected {
 	background-color: @base0D;
 }
 
-listview {
+#listview {
 	scrollbar: true;
 	margin: 0 10px 0 30px;
 }
 
-scrollbar {
+#scrollbar {
 	background-color: @background01;
 	handle-color: @base0D;
 	handle-width: 10px;
@@ -107,36 +107,51 @@ scrollbar {
 	margin: 0 0 0 20px;
 }
 
-element {
+#element {
 	padding: 5px;
 	highlight: @highlight01;
 }
 
-element normal {
+#element.normal.normal {
 	background-color: transparent;
-}
-
-element selected {
-	background-color: @base0D;
-}
-
-element alternate {
-	/*background-color: @base03;*/
-}
-
-element normal normal, element selected normal, element alternate normal {
 	text-color: @base07;
 }
-
-element normal urgent, element selected urgent, element alternate urgent {
+#element.normal.urgent {
+	background-color: transparent;
 	text-color: @base0F;
 }
-
-element normal active, element selected active, element alternate active {
+#element.normal.active {
+	background-color: transparent;
+	text-color: @base0B;
+}
+#element.selected.normal {
+	background-color: @base0D;
+	text-color: @base07;
+}
+#element.selected.urgent {
+	background-color: @base0D;
+	text-color: @base0F;
+}
+#element.selected.active {
+	background-color: @base0D;
+	text-color: @base0B;
+}
+#element.alternate.normal {
+	text-color: @base07;
+}
+#element.alternate.urgent {
+	text-color: @base0F;
+}
+#element.alternate.active {
 	text-color: @base0B;
 }
 
-element-icon {
+#element-text {
+	background-color: inherit;
+	text-color: inherit;
+}
+
+#element-icon {
 	size: 1.0em;
 }
 
