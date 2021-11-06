@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Retrives volume level from the defaul sink of pulseaudio.
+function get_volume_level {
+    pamixer --get-volume
+    [ "$(pamixer --get-mute)" == "true" ] && echo "yes" || echo "no"
+}
+
+# Compose and send notification using the dunstify.
+function notify() {
+
+    msgId='1001'
+    dunstify="dunstify -r ${msgId} -a pamixerctl"
+
+    for name in volume muted; do
+        read $name
+    done < <(get_volume_level)
+
+    emoji="🔈"
+    if [[ $volume == 0 || "$muted" == "yes" ]]; then
+        emoji="🔇"
+    else 
+        case $1 in
+        inc)
+            emoji="🔊"
+            ;;
+        dec)
+            emoji="🔉"
+            ;;
+        esac
+    fi
+
+    symb_fill="🧡"
+    symb_open="💚"
+    ${dunstify} "$emoji ${volume}%" \
+        "$(~/.local/bin/progressbar 10 ${symb_fill} ${symb_open} ${volume})"
+}
+
+# reload i3blocks process, but always return 0.
+function reload_i3blocks {
+    pkill -RTMIN+1 i3blocks || return 0
+}
+
+case $1 in
+inc)
+    pamixer -i 5 &&
+        canberra-gtk-play -i audio-volume-change -d "pamixerctl" &&
+        reload_i3blocks && notify inc
+    ;;
+dec)
+    pamixer -d 5 &&
+        canberra-gtk-play -i audio-volume-change -d "pamixerctl" &&
+        reload_i3blocks && notify dec
+    ;;
+toggle)
+    pamixer --toggle-mute &&
+        reload_i3blocks && notify
+esac

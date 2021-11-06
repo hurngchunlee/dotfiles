@@ -57,7 +57,7 @@ super + {d,p}
 
 # volume control with amixer and pluseaudio for volume level display
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-    ~/.local/bin/amixerctl {inc,dec,toggle}
+    ~/.local/bin/pamixerctl {inc,dec,toggle}
 
 XF86AudioMicMute 
     ~/.local/bin/micctl toggle

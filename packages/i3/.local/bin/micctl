@@ -22,6 +22,7 @@ function reload_i3blocks {
 
 case $1 in
 toggle)
-    amixer -q -D pulse sset Capture toggle &&
+    #amixer -q -D pulse sset Capture toggle &&
+    pamixer --default-source -t &&
         reload_i3blocks && notify
 esac

@@ -8,7 +8,7 @@ MIC_MUTED_SYMBOL=${MIC_MUTED_SYMBOL:-''}
 
 # check if mic is on 
 function is_mic_on() {
-    amixer get Capture | egrep -o '\[on\]' >/dev/null 2>&1
+    pamixer --default-source --get-mute | grep 'false' >/dev/null 2>&1
     return $?
 }
 
