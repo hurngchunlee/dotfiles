@@ -1,0 +1,76 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: DroidSansMono Nerd Font;
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgb(43, 48, 59);
+    border-bottom: 3px solid rgb(100, 114, 125);
+    color: white;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 0.8);
+  border: 1px solid rgba(100, 114, 125, 0.8);
+}
+tooltip label {
+  color: white;
+}
+
+#workspaces button {
+    padding: 5px 10px;
+    background: transparent;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: #0172aa;
+    border-bottom: 3px solid #0088CC;
+}
+
+#workspaces button.urgent {
+    background: #600000;
+    border-bottom: 3px solid  #900000;
+}
+
+#mode, #clock, #battery, #tray, #cpu {
+    padding: 0 10px;
+    background: transparent;
+    border-bottom: 3px solid rgb(100, 114, 125);
+    color: white;
+}
+
+#tray menu {
+    /* font setting doesn't seem to work within the context menu style */
+    /* font-family: Noto Sans CJK TC; */
+    background: rgba(43, 48, 59, 0.8);
+    border: 1px solid rgba(100, 114, 125, 0.8);
+    color: white;
+}
+
+#battery.charging {
+    color: #91B362;
+}
+
+#battery.warning {
+    color: #F9AF4F;
+}
+
+@keyframes blink {
+    to {
+        color: #900000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #600000;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

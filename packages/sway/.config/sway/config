@@ -1,0 +1,250 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# set $mod to Alt key
+set $mod Mod1
+
+# set $win to Windows key
+set $win Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# default applications 
+set $term alacritty
+set $email evolution 
+set $browser brave
+set $menu rofi -show-icons -show drun | xargs swaymsg exec --
+
+# Font
+font pango:DroidSansMono Nerd Font 12
+
+# windows border and gaps
+default_border pixel 3
+default_floating_border pixel 3
+gaps inner 10
+gaps outer 0
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# enable touchpad tab-to-click, natual scroll
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# set workspaces
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspacex "x"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+x workspace $workspacex
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+x move container to workspace $workspacex
+
+# associate applications to workspaces
+assign [app_id="evolution"] $workspace2
+assign [class="Code"] $workspace4
+assign [class="code-oss"] $workspace4
+assign [class="Rambox"] $workspace5
+assign [class="Remmina"] $workspace6
+assign [class="Vncviewer"] $workspace7
+assign [app_id="libreoffice-writer"] $workspace8
+assign [app_id="libreoffice-calc"] $workspace8
+assign [app_id="libreoffice-impress"] $workspace8
+assign [class="Joplin"] $workspace9
+assign [class="Typora"] $workspace9
+assign [class="Urxvt"] $workspacex
+
+# make applications open as floating window
+for_window [class="Yad"] floating enable
+for_window [class="Evolution-alarm-notify"] floating enable
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# mode for control screenlock, suspend, logout, reboot and shutdown
+# (ref: https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html)
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec swaylock -f -i ~/.screenlock -l -c 2B303B, mode "default"
+    bindsym e exec --no-startup-id ~/.local/bin/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.local/bin/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.local/bin/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.local/bin/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.local/bin/i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# mode for move workspace across displays
+set $mode_move_workspace Move workspace to display (u) up, (d) down, (l) left, (r) right
+mode "$mode_move_workspace" {
+    bindsym t move workspace to output up, mode "default"
+    bindsym l move workspace to output left, mode "default"
+    bindsym r move workspace to output right, mode "default"
+    bindsym b move workspace to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# mode for move container across displays
+set $mode_move_container Move container to display (u) up, (d) down, (l) left, (r) right
+mode "$mode_move_container" {
+    bindsym t move container to output up, mode "default"
+    bindsym l move container to output left, mode "default"
+    bindsym r move container to output right, mode "default"
+    bindsym b move container to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $win+e mode "$mode_system"
+bindsym $win+w mode "$mode_move_workspace"
+bindsym $win+c mode "$mode_move_container"
+
+## open terminal
+bindsym $mod+Return exec $term
+
+## open email client 
+bindsym $mod+m exec $email
+
+## open browser 
+bindsym $mod+b exec $browser
+
+## open application menu 
+bindsym $mod+d exec $menu
+
+## open password manager 
+bindsym $mod+p exec rofi-pass
+
+## move around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+## swap window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+## window orientation
+bindsym $win+h splith
+bindsym $win+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+space floating toggle
+
+## sound control and backlight
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/pamixerctl inc
+bindsym XF86AudioLowerVolume exec ~/.local/bin/pamixerctl dec
+bindsym XF86AudioMute exec ~/.local/bin/pamixerctl toggle
+bindsym XF86AudioMicMute exec ~/.local/bin/micctl toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $win+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+## kill forcused window
+bindsym $mod+q kill
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# waybar 
+bar {
+    swaybar_command waybar
+}
+
+# color of windows
+client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
+client.urgent  #900000 #900000 #ffffff #ff661a #900000
+
+# Set DPI for display
+#exec --no-startup-id xrandr --dpi 120
+#output "*" scale 1.25
+
+# import gsettings  
+exec_always ~/.local/bin/import-gsettings
+
+# for xdg-desktop-portal-wlr
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Set wallpaper
+#exec_always --no-startup-id feh --randomize --bg-fill --no-xinerama ~/Pictures/wallpapers/*
+output "*" bg ~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill
+
+# lock and turn off/on screen
+exec swayidle -w \
+     timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
+     resume 'swaymsg "output * dpms on"'
+
+# start Network-Manager applet
+exec nm-applet --indicator
+
+# input method
+exec_always fcitx5 -d --replace
+
+# start owncloud client
+exec --no-startup-id "sh -c 'sleep 3; owncloud'"
