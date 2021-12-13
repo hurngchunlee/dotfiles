@@ -4,7 +4,7 @@
     "spacing": 4,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["cpu", "battery", "clock", "tray"],
+    "modules-right": ["cpu", "battery", "pulseaudio", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
@@ -34,6 +34,22 @@
         },
         "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}[]",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
     },
     "clock": {
         "format-alt": "{:%a, %d. %b  %H:%M}"

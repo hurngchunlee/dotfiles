@@ -44,7 +44,7 @@ tooltip label {
     color: white;
 }
 
-#clock, #battery, #tray, #cpu {
+#clock, #battery, #tray, #cpu, #pulseaudio {
     padding: 0 10px;
     background: transparent;
     border-bottom: 3px solid rgb(100, 114, 125);
