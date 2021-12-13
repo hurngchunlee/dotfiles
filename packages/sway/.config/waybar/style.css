@@ -37,7 +37,14 @@ tooltip label {
     border-bottom: 3px solid  #900000;
 }
 
-#mode, #clock, #battery, #tray, #cpu {
+#mode {
+    padding: 0 10px;
+    background: #8600b3;
+    border-bottom: 3px solid #ad53cc;
+    color: white;
+}
+
+#clock, #battery, #tray, #cpu {
     padding: 0 10px;
     background: transparent;
     border-bottom: 3px solid rgb(100, 114, 125);
