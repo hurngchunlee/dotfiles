@@ -1,3 +1,7 @@
 #!/bin/bash
-FILENAME="screenshot-`date +%F-%T`"
-grim -g "$(slurp)" ~/Downloads/$FILENAME.png
+
+dir=$HOME/tmp/screenshots
+mkdir -p $dir
+
+output="$dir/screenshot-$(date +%FT%T).png"
+grim -g "$(slurp -c 960000)" - | swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"

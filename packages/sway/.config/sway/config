@@ -164,7 +164,10 @@ bindsym $mod+b exec $browser
 bindsym $mod+d exec $menu
 
 ## open password manager 
-bindsym $mod+p exec rofi-pass
+bindsym $mod+p exec tessen -b rofi -a copy
+
+## make screenshot
+bindsym $win+p exec ~/.local/bin/screenshot
 
 ## move around
 bindsym $mod+$left focus left
@@ -234,6 +237,9 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 # Set wallpaper
 #exec_always --no-startup-id feh --randomize --bg-fill --no-xinerama ~/Pictures/wallpapers/*
 output "*" bg ~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill
+
+# clipboard management: copy to primary clickboard for pasting with middle-clicking
+exec wl-paste -t text --watch wl-copy -p
 
 # lock and turn off/on screen
 exec swayidle -w \
