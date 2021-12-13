@@ -49,6 +49,7 @@ set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
 set $workspacex "x"
+set $workspaceg "g"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -61,6 +62,7 @@ bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+x workspace $workspacex
+bindsym $mod+g workspace $workspaceg
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workspace1
@@ -73,6 +75,7 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+x move container to workspace $workspacex
+bindsym $mod+Shift+g move container to workspace $workspaceg
 
 # associate applications to workspaces
 assign [app_id="evolution"] $workspace2
