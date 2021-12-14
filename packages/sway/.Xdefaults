@@ -1,0 +1,100 @@
+!! Font rendering
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.dpi: 120
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+!! Eighties dark
+! special
+*.foreground:   #d3d0c8
+*.background:   #000000
+*.cursorColor:  #d3d0c8
+
+! black
+*.color0:       #2d2d2d
+*.color8:       #747369
+
+! red
+*.color1:       #f2777a
+*.color9:       #f2777a
+
+! green
+*.color2:       #99cc99
+*.color10:      #99cc99
+
+! yellow
+*.color3:       #ffcc66
+*.color11:      #ffcc66
+
+! blue
+*.color4:       #6699cc
+*.color12:      #6699cc
+
+! magenta
+*.color5:       #cc99cc
+*.color13:      #cc99cc
+
+! cyan
+*.color6:       #66cccc
+*.color14:      #66cccc
+
+! white
+*.color7:       #d3d0c8
+*.color15:      #f2f0ec
+
+
+!! Google dark (generated from terminal.sexy)
+! special
+!*.foreground:   #c5c8c6
+!*.background:   #1d1f21
+!*.cursorColor:  #c5c8c6
+
+! black
+!*.color0:       #1d1f21
+!*.color8:       #969896
+
+! red
+!*.color1:       #cc342b
+!*.color9:       #cc342b
+
+! green
+!*.color2:       #198844
+!*.color10:      #198844
+
+! yellow
+!*.color3:       #fba922
+!*.color11:      #fba922
+
+! blue
+!*.color4:       #3971ed
+!*.color12:      #3971ed
+
+! magenta
+!*.color5:       #a36ac7
+!*.color13:      #a36ac7
+
+! cyan
+!*.color6:       #3971ed
+!*.color14:      #3971ed
+
+! white
+!*.color7:       #c5c8c6
+!*.color15:      #ffffff
+
+!! URxvt configuration
+URxvt.scrollBar: false
+URxvt.internalBorder: 0
+URxvt.font:     xft:InconsolataLGC Nerd Font Mono:pixelsize=18:antialias=true,xft:WenQuanYi Zen Hei Mono:antialias=true
+URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:pixelsize=18:antialias=true,xft:WenQuanYi Zen Hei Mono:antialias=true
+!!URxvt.font:     xft:DroidSansMono Nerd Font Mono:pixelsize=18:antialias=true,,xft:WenQuanYi Zen Hei Mono:antialias=true
+!!URxvt.boldFont: xft:InconsolataLGC Nerd Font Mono:style=Bold:pixelsize=16:antialias=true
+!!URxvt.font:     xft:DejaVuSansMono Nerd Font Mono:pixelsize=18:antialias=true,xft:Noto Sans Mono CJK TC:antialias=true
+!!URxvt.boldFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold:size=12:antialias=true
+URxvt.perl-ext-common: default,resize-font,clipboard
+URxvt.keysym.C-equal: resize-font:bigger
+URxvt.keysym.C-minus: resize-font:smaller
+URxvt.keysym.C-0: resize-font:reset
+URxvt.clipboard.autocopy: true
