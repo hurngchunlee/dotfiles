@@ -1,0 +1,2 @@
+- move the `monitor.xml` to `~gdm/.config`
+- run the `setup.sh` script
