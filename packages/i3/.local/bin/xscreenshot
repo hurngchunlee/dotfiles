@@ -1,0 +1,7 @@
+#!/bin/bash
+
+dir=$HOME/tmp/screenshots
+mkdir -p $dir
+
+output="$dir/screenshot-$(date +%FT%T).png"
+scrot -s -l mode=edge,width=3,color=#FFB454 - | swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"

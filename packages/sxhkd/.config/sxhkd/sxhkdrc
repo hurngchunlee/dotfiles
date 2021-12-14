@@ -51,6 +51,9 @@ alt + m:
 alt + p:
     rofi-pass
 
+alt + c:
+    ~/.local/bin/xscreenshot
+
 # X display control with rofi-xdisplay
 super + {d,p}
     BLOCK_BUTTON={1,p} ~/.local/share/i3blocks/rofi-xdisplay
