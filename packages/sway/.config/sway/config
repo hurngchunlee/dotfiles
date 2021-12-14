@@ -170,7 +170,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+p exec tessen -b rofi -a copy
 
 ## make screenshot
-bindsym $win+p exec ~/.local/bin/screenshot
+bindsym $mod+c exec ~/.local/bin/screenshot
 
 ## move around
 bindsym $mod+$left focus left
@@ -219,6 +219,10 @@ bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 
 # display control
+bindsym $win+d exec ~/.local/bin/rofi-outputctl
+bindsym $win+p exec ~/.local/bin/rofi-outputctl -p
+
+# laptop lid control
 set $laptop eDP-1
 bindswitch --locked lid:on output $laptop disable
 bindswitch --locked lid:off output $laptop enable
@@ -260,7 +264,7 @@ exec swayidle -w \
 exec nm-applet --indicator
 
 # input method
-exec_always fcitx5 -d --replace
+#exec_always fcitx5 -d --replace
 
 # start owncloud client
 exec --no-startup-id "sh -c 'sleep 3; owncloud'"
