@@ -218,6 +218,13 @@ bindsym $mod+q kill
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
+# display control
+set $laptop eDP-1
+bindswitch --locked lid:on output $laptop disable
+bindswitch --locked lid:off output $laptop enable
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
 # waybar 
 bar {
     swaybar_command waybar
