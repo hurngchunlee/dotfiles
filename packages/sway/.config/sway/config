@@ -17,6 +17,7 @@ set $right l
 # default applications 
 set $term alacritty
 set $email evolution 
+#set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $browser brave
 set $menu rofi -show-icons -show drun | xargs swaymsg exec --
 
@@ -26,6 +27,8 @@ font pango:DroidSansMono Nerd Font 13
 # windows border and gaps
 default_border pixel 3
 default_floating_border pixel 3
+for_window [class=".*"] border pixel
+for_window [app_id=".*"] border pixel
 gaps inner 10
 gaps outer 0
 
@@ -246,7 +249,9 @@ client.urgent  #900000 #900000 #ffffff #ff661a #900000
 exec_always ~/.local/bin/import-gsettings
 
 # for xdg-desktop-portal-wlr
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 # Set wallpaper
 #exec_always --no-startup-id feh --randomize --bg-fill --no-xinerama ~/Pictures/wallpapers/*
