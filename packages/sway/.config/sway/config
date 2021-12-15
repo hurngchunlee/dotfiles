@@ -21,7 +21,7 @@ set $browser brave
 set $menu rofi -show-icons -show drun | xargs swaymsg exec --
 
 # Font
-font pango:DroidSansMono Nerd Font 12
+font pango:DroidSansMono Nerd Font 13
 
 # windows border and gaps
 default_border pixel 3
