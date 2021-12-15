@@ -4,3 +4,5 @@
 **/.config/ranger/bookmarks
 **/.local/share/fonts/**/.uuid
 **/.config/ranger/history
+**/.config/gtk-3.0/bookmarks
+**/.config/gtk-3.0/servers
