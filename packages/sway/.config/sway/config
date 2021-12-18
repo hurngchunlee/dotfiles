@@ -238,6 +238,7 @@ bar {
 }
 
 # color of windows
+client.unfocused #64727d80 #64727d80 #ffffff #ff661a #64727d80
 client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
 client.urgent  #900000 #900000 #ffffff #ff661a #900000
 
