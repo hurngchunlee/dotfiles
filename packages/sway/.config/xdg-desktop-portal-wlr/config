@@ -1,3 +1,5 @@
-chooser_type=none
+[screencast]
+chooser_type=simple
+chooser_cmd=swaymsg -t get_outputs | jq -r '.[] | .name' | rofi -dmenu -p "select display port"
 output_name=eDP-1
 max_fps=30
