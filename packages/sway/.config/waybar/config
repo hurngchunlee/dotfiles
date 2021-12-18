@@ -4,7 +4,7 @@
     "spacing": 4,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["cpu", "battery", "pulseaudio", "clock", "tray"],
+    "modules-right": ["custom/vpn", "cpu", "battery", "pulseaudio", "clock", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
@@ -23,6 +23,16 @@
             "g": "🕹️"
         }
     },
+    "custom/vpn": {
+        "format": "{} {icon}",
+	"format-icons": {
+	    "active": ""
+	},
+        "exec": "~/.local/bin/vpninfo",
+        "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+        "return-type": "json",
+        "interval": 5
+    },
     "cpu": {
         "interval": 10,
         "format": "{load} ",
@@ -34,7 +44,9 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ﮣ",
+        "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
@@ -56,6 +68,7 @@
         "format-alt": "{:%a, %d. %b  %H:%M}"
     },
     "tray": {
+        "icon-size": 20,
         "spacing": 10
     }
 }

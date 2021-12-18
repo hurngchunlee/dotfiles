@@ -1,9 +1,10 @@
 * {
-    border: none;
+    /* the following two causes the checkbox not being shown*/
+    /* border: none; */
+    /* min-height: 0; */
     border-radius: 0;
     font-family: DroidSansMono Nerd Font;
     font-size: 18px;
-    min-height: 0;
 }
 
 window#waybar {
@@ -44,11 +45,15 @@ tooltip label {
     color: white;
 }
 
-#clock, #battery, #tray, #cpu, #pulseaudio {
+#custom-vpn, #clock, #battery, #tray, #cpu, #pulseaudio {
     padding: 0 10px;
     background: transparent;
     border-bottom: 3px solid rgb(100, 114, 125);
     color: white;
+}
+
+#custom-vpn {
+    color: #91B362;
 }
 
 #tray menu {
