@@ -17,6 +17,7 @@ tooltip {
   background: rgba(43, 48, 59, 0.8);
   border: 1px solid rgba(100, 114, 125, 0.8);
 }
+
 tooltip label {
   color: white;
 }
@@ -24,7 +25,10 @@ tooltip label {
 #workspaces button {
     padding: 5px 10px;
     background: transparent;
+    box-shadow: none;
+    text-shadow: none;
     color: white;
+    border: none;
     border-bottom: 3px solid transparent;
 }
 
@@ -33,15 +37,19 @@ tooltip label {
     border-bottom: 3px solid #0088CC;
 }
 
+#workspaces button:hover {
+    border-bottom: 3px solid #F9AF4F;
+}
+
 #workspaces button.urgent {
     background: #600000;
-    border-bottom: 3px solid  #900000;
+    border-bottom: 3px solid #900000;
 }
 
 #mode {
     padding: 0 10px;
     background: #8600b3;
-    border-bottom: 3px solid #ad53cc;
+    border: 3px solid #ad53cc;
     color: white;
 }
 
