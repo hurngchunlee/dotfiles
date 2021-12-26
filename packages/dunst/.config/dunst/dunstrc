@@ -7,7 +7,7 @@
 
     ### Size and geometry ###
     width = 300
-    height = 50
+    height =100
     origin = top-right
     offset = 3x3
 
@@ -23,7 +23,7 @@
     # present (e.g. xcompmgr, compiz, etc.).
     transparency = 10
 
-    corner_radius = 5
+    corner_radius = 8
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
