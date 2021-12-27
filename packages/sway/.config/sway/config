@@ -24,6 +24,9 @@ set $menu rofi -show-icons -show drun | xargs swaymsg exec --
 # Font
 font pango:DroidSansMono Nerd Font 13
 
+# Cursor theme and size
+seat seat0 xcursor_theme Simp1e-breeze 32 
+
 # windows border and gaps
 default_border pixel 3
 default_floating_border pixel 3
@@ -202,8 +205,8 @@ bindsym XF86AudioRaiseVolume exec ~/.local/bin/pamixerctl inc
 bindsym XF86AudioLowerVolume exec ~/.local/bin/pamixerctl dec
 bindsym XF86AudioMute exec ~/.local/bin/pamixerctl toggle
 bindsym XF86AudioMicMute exec ~/.local/bin/micctl toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessUp exec ~/.local/bin/wbacklightctl inc
+bindsym XF86MonBrightnessDown exec ~/.local/bin/wbacklightctl dec
 
 # Sway has a "scratchpad", which is a bag of holding for windows.
 # You can send windows there and get them back later.

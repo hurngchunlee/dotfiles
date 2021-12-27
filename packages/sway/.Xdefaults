@@ -7,6 +7,10 @@ Xft.dpi: 120
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
+!! Cursor theme and size
+Xcursor.theme: Simp1e-breeze
+Xcursor.size: 32
+
 !! Eighties dark
 ! special
 *.foreground:   #d3d0c8

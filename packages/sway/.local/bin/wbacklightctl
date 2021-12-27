@@ -1,0 +1,23 @@
+#!/bin/bash
+function notify() {
+    msgId='1000'
+
+    dunstify="dunstify -r ${msgId} -a xbacklightctl"
+
+    symb_fill="🌞"
+    symb_open="🔅"
+
+    bl_level=$(printf '%.0f' $(brightnessctl i -m | awk -F ',' '{print $4}' | sed 's/%//g'))
+
+    ${dunstify} "🔆 ${bl_level}%" \
+        "$(~/.local/bin/progressbar 10 ${symb_fill} ${symb_open} ${bl_level})"
+}
+
+case $1 in
+inc)
+    brightnessctl s -q +10% && notify
+    ;;
+dec)
+    brightnessctl s -q 10%- && notify
+    ;;
+esac
