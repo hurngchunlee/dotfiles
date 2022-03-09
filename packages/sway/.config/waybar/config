@@ -35,7 +35,7 @@
     },
     "cpu": {
         "interval": 10,
-        "format": "{load} ",
+        "format": "{usage}% ",
         "max-length": 10
     },
     "battery": {
@@ -68,6 +68,7 @@
         "format-alt": "{:%a, %d. %b  %H:%M}"
     },
     "tray": {
+    	"show-passive-items": true,
         "icon-size": 20,
         "spacing": 10
     }
