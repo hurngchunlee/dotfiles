@@ -169,11 +169,14 @@ bindsym $mod+m exec $email
 ## open browser 
 bindsym $mod+b exec $browser
 
+## open eduvpn gui 
+bindsym $mod+v exec eduvpn-gui
+
 ## open application menu 
 bindsym $mod+d exec $menu
 
 ## open password manager 
-bindsym $mod+p exec tessen -b rofi -a copy
+bindsym $mod+p exec ~/.local/bin/tessen -d rofi -a copy
 
 ## make screenshot
 bindsym $mod+c exec ~/.local/bin/screenshot
@@ -198,6 +201,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
+##bindsym $mod+Shift+f fullscreen global
 bindsym $mod+space floating toggle
 
 ## sound control and backlight
@@ -277,6 +281,7 @@ exec gammastep-indicator
 
 # input method
 #exec_always fcitx5 -d --replace
+#exec ibus-daemon -drxR --panel /usr/lib/ibus/ibus-ui-gtk3
 
 # start owncloud client
 exec --no-startup-id "sh -c 'sleep 3; owncloud'"
