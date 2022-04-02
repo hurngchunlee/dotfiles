@@ -17,9 +17,14 @@ set $right l
 # default applications 
 set $term alacritty
 set $email evolution 
-set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
-#set $browser brave
-set $menu rofi -show-icons -show drun | xargs swaymsg exec --
+#set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
+set $browser brave
+set $menu rofi -show-icons -show drun
+
+# file manager lf needs to be started with kitty, as it is the only terminal
+# supporting image review on wayland.
+# sourcing ~/.zshrc makes the LS_COLORS, LF_COLORS and LF_ICONS available for lf.
+set $fm kitty zsh -c "source ~/.zshrc; lf"
 
 # Font
 font pango:DroidSansMono Nerd Font 13
@@ -168,6 +173,9 @@ bindsym $mod+m exec $email
 
 ## open browser 
 bindsym $mod+b exec $browser
+
+## open LF file manager 
+bindsym $mod+z exec $fm
 
 ## open eduvpn gui 
 bindsym $mod+v exec eduvpn-gui

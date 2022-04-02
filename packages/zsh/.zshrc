@@ -160,3 +160,25 @@ alias vi='nvim'
 #
 # starship prompt
 eval "$(starship init zsh)"
+
+# icons and colors for lf file manager
+[ -f $HOME/.config/lf/icons ] && source $HOME/.config/lf/icons
+[ -f $HOME/.config/lf/colors ] && source $HOME/.config/lf/colors
+
+# shell setting for Anaconda environment
+if [ -f /opt/anaconda3/bin/conda ]; then
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+fi
