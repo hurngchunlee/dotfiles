@@ -14,18 +14,27 @@ cache() {
     [ -f "$1" ] && draw "$@"
 }
 
+file_info() {
+    file -Lb "$1" | fold -s -w $2 | while read -r l; do
+        printf "\e[47m\e[1;30m%s\e[0m\n" "$l"
+    done
+}
+
 file="$1"
+width="$2"
 shift
  
 ## file mime type
 ftype=$(file -Lb --mime-type "$file")
+
+file_info "$file" "$width"
 
 case "$ftype" in
     application/x-tar)
         tar tf "$file"
 	;;
     application/gzip)
-        gunzip -l "$file"
+	[[ "$file" =~ .*\.(tgz|tar\.gz)$ ]] && tar tf "$file" || gunzip -l "$file"
 	;;
     application/zip)
         unzip -l "$file"
@@ -38,7 +47,18 @@ case "$ftype" in
         cache="${h}.jpg"
         cache "$cache" "$@"
         pdftoppm -jpeg -singlefile "$file" "$h"
-        draw "$cache" "$@"
+	draw "$cache" "$@"
+        ;;
+    application/*office*|application/ms*|application/vnd.ms-*|application/vnd.*.opendocument.*)
+        h="$(hash "$file")"
+	d="$(dirname "$h")"
+	b="$(basename "$file")"
+	o="$(dirname "$h")/${b%.*}.png"
+        cache="${h}.png"
+        cache "$cache" "$@"
+
+	libreoffice --headless --convert-to png --outdir "$d" "$file" > /dev/null &&
+            mv "$o" "$cache" && draw "$cache" "$@"
         ;;
     image/*)
         orientation="$(identify -format '%[EXIF:Orientation]\n' -- "$file")"
@@ -65,5 +85,4 @@ case "$ftype" in
 	;;
 esac
 
-file -Lb -- "$1" | fold -s -w "$width"
 exit 0

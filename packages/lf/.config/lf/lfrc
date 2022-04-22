@@ -39,6 +39,7 @@ cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
         text/*) vim $fx;;
+        image/*) feh $fx & ;;
         application/pdf) zathura $fx & ;;
         *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
