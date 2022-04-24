@@ -92,6 +92,7 @@ bindsym $mod+Shift+g move container to workspace $workspaceg
 assign [app_id="evolution"] $workspace2
 assign [class="Code"] $workspace4
 assign [class="code-oss"] $workspace4
+assign [class="rambox"] $workspace5
 assign [class="Rambox"] $workspace5
 assign [class="Remmina"] $workspace6
 assign [class="Vncviewer"] $workspace7
