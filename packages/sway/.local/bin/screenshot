@@ -9,5 +9,3 @@ output="$dir/screenshot-$(date +%FT%T).png"
 
 grimshot save ${target} - | \
   swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"
-
-#grim -g "$(slurp -c 960000)" - | swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"
