@@ -4,4 +4,10 @@ dir=$HOME/tmp/screenshots
 mkdir -p $dir
 
 output="$dir/screenshot-$(date +%FT%T).png"
-grim -g "$(slurp -c 960000)" - | swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"
+
+[ ! -z ${1} ] && target=${1} || target=area
+
+grimshot save ${target} - | \
+  swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"
+
+#grim -g "$(slurp -c 960000)" - | swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"

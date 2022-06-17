@@ -135,6 +135,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $win+e mode "$mode_system"
 
 # mode for move workspace across displays
 set $mode_move_workspace Move workspace to display (u) up, (d) down, (l) left, (r) right
@@ -148,6 +149,7 @@ mode "$mode_move_workspace" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $win+w mode "$mode_move_workspace"
 
 # mode for move container across displays
 set $mode_move_container Move container to display (u) up, (d) down, (l) left, (r) right
@@ -161,10 +163,20 @@ mode "$mode_move_container" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
-bindsym $win+e mode "$mode_system"
-bindsym $win+w mode "$mode_move_workspace"
 bindsym $win+c mode "$mode_move_container"
+
+# mode for screenshot 
+set $mode_screenshot Take screenshot (o) output, (a) area, (w) window
+mode "$mode_screenshot" {
+    bindsym o exec ~/.local/bin/screenshot output, mode "default"
+    bindsym a exec ~/.local/bin/screenshot area, mode "default"
+    bindsym w exec ~/.local/bin/screenshot window, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+c mode "$mode_screenshot"
 
 ## open terminal
 bindsym $mod+Return exec $term
@@ -186,9 +198,6 @@ bindsym $mod+d exec $menu
 
 ## open password manager 
 bindsym $mod+p exec ~/.local/bin/tessen -d rofi -a copy
-
-## make screenshot
-bindsym $mod+c exec ~/.local/bin/screenshot
 
 ## move around
 bindsym $mod+$left focus left
