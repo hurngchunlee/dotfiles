@@ -125,7 +125,7 @@ mode "resize" {
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec swaylock -f -i ~/.screenlock -l -c 2B303B, mode "default"
-    bindsym e exec --no-startup-id ~/.local/bin/i3exit logout, mode "default"
+    bindsym e exec swaymsg exit, mode "default"
     bindsym s exec --no-startup-id ~/.local/bin/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id ~/.local/bin/i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id ~/.local/bin/i3exit reboot, mode "default"
@@ -287,9 +287,11 @@ output "*" bg ~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill
 exec wl-paste -t text --watch wl-copy -p
 
 # lock and turn off/on screen
+# - lock screen for 10 minutes idle
 exec swayidle -w \
      timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
-     resume 'swaymsg "output * dpms on"'
+     resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -f -i ~/.screenlock -l -c 2B303B'
 
 # start Network-Manager applet
 exec nm-applet --indicator
