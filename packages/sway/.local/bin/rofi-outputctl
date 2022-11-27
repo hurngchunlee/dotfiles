@@ -16,6 +16,16 @@ function all_displays() {
 }
 
 #----------------------------------------------------------------------------------------------
+# function to get the scale of a display determined by the `scale_filter`.
+#
+# scale is needed to calculate the display position
+#----------------------------------------------------------------------------------------------
+function get_display_scale() {
+    display=$1
+    swaymsg -t get_outputs | jq -r ".[] | select(.name == \"${display}\").scale"
+}
+
+#----------------------------------------------------------------------------------------------
 # function to get the name of the primary display.
 #----------------------------------------------------------------------------------------------
 function primary_display() {
@@ -92,25 +102,31 @@ function set_external() {
     xd_res_x=$(echo $xd_mode | awk -F 'x' '{print $1}')
     xd_res_y=$(echo $xd_mode | awk -F 'x' '{print $2}')
     xd_rate=$(get_highest_refresh_rate $xd_name $xd_mode)
+    xd_scale=$(get_display_scale $xd_name)
 
     pd_name=$(primary_display)
     pd_mode=$(get_highest_resolution $pd_name)
     pd_res_x=$(echo $pd_mode | awk -F 'x' '{print $1}')
     pd_res_y=$(echo $pd_mode | awk -F 'x' '{print $2}')
     pd_rate=$(get_highest_refresh_rate $pd_name $pd_mode)
+    pd_scale=$(get_display_scale $pd_name)
 
     case $2 in
         left)
 	    swaymsg "output ${xd_name} enable pos 0 0 mode ${xd_mode}@${xd_rate}Hz"
-	    swaymsg "output ${pd_name} enable pos ${xd_res_x} 0 mode ${pd_mode}@${pd_rate}Hz"
+	    swaymsg "output ${pd_name} enable pos $((${xd_res_x}/${xd_scale})) 0 mode ${pd_mode}@${pd_rate}Hz"
 	    ;;
         right)
 	    swaymsg "output ${pd_name} enable pos 0 0 mode ${pd_mode}@${pd_rate}Hz"
-	    swaymsg "output ${xd_name} enable pos ${pd_res_x} 0 mode ${xd_mode}@${xd_rate}Hz"
+	    swaymsg "output ${xd_name} enable pos $((${pd_res_x}/${pd_scale})) 0 mode ${xd_mode}@${xd_rate}Hz"
 	    ;;
         top)
 	    swaymsg "output ${xd_name} enable pos 0 0 mode ${xd_mode}@${xd_rate}Hz"
-	    swaymsg "output ${pd_name} enable pos 0 ${xd_res_y} mode ${pd_mode}@${pd_rate}Hz"
+	    swaymsg "output ${pd_name} enable pos 0 $((${xd_res_y}/${xd_scale})) mode ${pd_mode}@${pd_rate}Hz"
+	    ;;
+        bottom)
+	    swaymsg "output ${pd_name} enable pos 0 0 mode ${pd_mode}@${pd_rate}Hz"
+	    swaymsg "output ${xd_name} enable pos 0 $((${pd_res_y}/${pd_scale})) mode ${xd_mode}@${xd_rate}Hz"
 	    ;;
         mirror | *)
             # calculate scaling factor (optmized for the primary display)
