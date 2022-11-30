@@ -104,12 +104,16 @@ function set_external() {
     xd_rate=$(get_highest_refresh_rate $xd_name $xd_mode)
     xd_scale=$(get_display_scale $xd_name)
 
+    echo "${xd_name} ${xd_mode} ${xd_res_x}x${xd_res_y} ${xd_rate} ${xd_scale}" > /tmp/rofi-outputctl.log
+
     pd_name=$(primary_display)
     pd_mode=$(get_highest_resolution $pd_name)
     pd_res_x=$(echo $pd_mode | awk -F 'x' '{print $1}')
     pd_res_y=$(echo $pd_mode | awk -F 'x' '{print $2}')
     pd_rate=$(get_highest_refresh_rate $pd_name $pd_mode)
     pd_scale=$(get_display_scale $pd_name)
+
+    echo "${pd_name} ${pd_mode} ${pd_res_x}x${pd_res_y} ${pd_rate} ${pd_scale}" >> /tmp/rofi-outputctl.log
 
     case $2 in
         left)
