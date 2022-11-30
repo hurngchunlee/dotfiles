@@ -1,0 +1,34 @@
+/*
+* wofi style.
+*
+*/
+
+window {
+    opacity: 0.9;
+    margin: 5px;
+    border: 2px solid #F78C6C;
+    font-family: "Noto Sans CJK TC 12";
+    border-radius: 0px;
+    color: white;
+    background-color: #263228;
+}
+
+#input {
+    padding: 10px 10px;
+    border: 2px solid #F78C6C;
+    border-radius: 0px;
+    color: white;
+    background-color: #263228;
+}
+
+#text {
+    margin: 5px;
+}
+
+#entry {
+    margin: 5px;
+}
+
+#scroll {
+    margin: 5px;
+}

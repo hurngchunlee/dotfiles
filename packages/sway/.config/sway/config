@@ -19,7 +19,8 @@ set $term alacritty
 set $email evolution 
 #set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $browser brave
-set $menu rofi -show-icons -show drun
+#set $menu rofi -show-icons -monitor $(~/.local/bin/rofi-get-monitor) -show drun
+set $menu wofi -I -G -S drun
 
 # file manager lf needs to be started with kitty, as it is the only terminal
 # supporting image review on wayland.
@@ -197,7 +198,7 @@ bindsym $mod+v exec eduvpn-gui
 bindsym $mod+d exec $menu
 
 ## open password manager 
-bindsym $mod+p exec ~/.local/bin/tessen -d rofi -a copy
+bindsym $mod+p exec ~/.local/bin/tessen -d wofi -a copy
 
 ## move around
 bindsym $mod+$left focus left
@@ -247,8 +248,8 @@ bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 
 # display control
-bindsym $win+d exec ~/.local/bin/rofi-outputctl
-bindsym $win+p exec ~/.local/bin/rofi-outputctl -p
+bindsym $win+d exec ~/.local/bin/wofi-outputctl
+bindsym $win+p exec ~/.local/bin/wofi-outputctl -p
 
 # laptop lid control
 set $laptop eDP-1
