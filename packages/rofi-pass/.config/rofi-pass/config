@@ -1,11 +1,13 @@
 # rofi command. Make sure to have "$@" as last argument
-_rofi () {
+_rofi() {
     if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
         # for x11 
         rofi -theme ~/.config/rofi/themes/mine -no-auto-select -i "$@"
     else
         # for wayland
-        rofi -theme ~/.config/rofi/themes/mine -no-auto-select -i "$@"
+	m=$(~/.local/bin/rofi-get-monitor)
+	echo $m >> /tmp/rofi-pass.log
+        rofi -theme ~/.config/rofi/themes/mine -monitor $(~/.local/bin/rofi-get-monitor) -no-auto-select -i "$@"
     fi
 }
 
