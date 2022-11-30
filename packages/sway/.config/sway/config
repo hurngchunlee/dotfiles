@@ -20,7 +20,7 @@ set $email evolution
 #set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
 set $browser brave
 #set $menu rofi -show-icons -monitor $(~/.local/bin/rofi-get-monitor) -show drun
-set $menu wofi -I -G -S drun
+set $menu wofi -i -I -G -S drun
 
 # file manager lf needs to be started with kitty, as it is the only terminal
 # supporting image review on wayland.
