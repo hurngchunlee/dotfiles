@@ -47,7 +47,7 @@ function connected_external_displays() {
 function get_highest_refresh_rate() {
     display=$1
     resolution=$2
-    list_modes $display | grep $resolution | grep -o '[0-9][0-9]\.[0-9][0-9]' | sort -n -r | head -n 1
+    list_modes $display | grep $resolution | grep -o -E '\s[0-9]{2,3}(\.[0-9][0-9])?' | sort -n -r | head -n 1 | sed 's/^\s//g'
 }
 
 #----------------------------------------------------------------------------------------------
@@ -103,6 +103,13 @@ function set_external() {
     xd_res_y=$(echo $xd_mode | awk -F 'x' '{print $2}')
     xd_rate=$(get_highest_refresh_rate $xd_name $xd_mode)
     xd_scale=$(get_display_scale $xd_name)
+
+    # sway doesn't seem to always detect scale automatically (??)
+    # in this case, set scale based on resolution
+    # for QHD (1440p) and lower resolution use scale factor 1; otherwise, use scale factor 2
+    if [ "${xd_scale}" == "null" ]; then
+       [ ${xd_res_y} -gt 1440 ] && xd_scale=2 || xd_scale=1
+    fi
 
     echo "${xd_name} ${xd_mode} ${xd_res_x}x${xd_res_y} ${xd_rate} ${xd_scale}" > /tmp/wofi-outputctl.log
 
