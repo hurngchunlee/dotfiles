@@ -6,18 +6,18 @@
 window {
     opacity: 0.9;
     margin: 5px;
-    border: 2px solid #F78C6C;
+    border: 2px solid #ff661a;
     font-family: "Noto Sans CJK TC 12";
     border-radius: 0px;
-    color: white;
+    color: #ffffff;
     background-color: #263228;
 }
 
 #input {
     padding: 10px 10px;
-    border: 2px solid #F78C6C;
+    border: 2px solid #ff661a;
     border-radius: 0px;
-    color: white;
+    color: #ffffff;
     background-color: #263228;
 }
 
@@ -26,9 +26,21 @@ window {
 }
 
 #entry {
+    border-radius: 5px;
     margin: 5px;
+}
+
+#entry.selected {
+    background-color: #0088CC;
 }
 
 #scroll {
     margin: 5px;
+}
+
+scrollbar {
+    margin: 0px;
+    border-radius: 5px;
+    opacity: 0.9;
+    background-color: #64727d;
 }
