@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -a
+
+EMOJI_LIST=${EMOJI_LIST:-$HOME/.local/share/emoji.csv}
+
+sel=$(cat $EMOJI_LIST | grep -v -E '^#' | wofi --dmenu)
+[ $? -eq 0 ] &&
+    echo $sel | awk '{print $1}' | wl-copy &&
+    notify-send "copied: $( wl-paste )"
