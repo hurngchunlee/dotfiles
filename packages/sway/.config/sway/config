@@ -304,5 +304,8 @@ exec gammastep-indicator
 #exec_always fcitx5 -d --replace
 #exec ibus-daemon -drxR --panel /usr/lib/ibus/ibus-ui-gtk3
 
+# a script always run once when sway is (re)-loaded to apply the laptop clamshell mode.
+exec_always ~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state
+
 # start owncloud client
 exec --no-startup-id "sh -c 'sleep 3; owncloud'"
