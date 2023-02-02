@@ -251,6 +251,9 @@ bindsym $mod+Shift+c reload
 bindsym $win+d exec ~/.local/bin/wofi-outputctl
 bindsym $win+p exec ~/.local/bin/wofi-outputctl -p
 
+# type content of the primary clipboard
+bindsym Ctrl+v exec "/usr/bin/wl-paste -p | wtype -"
+
 # laptop lid control
 set $laptop eDP-1
 bindswitch --locked lid:on output $laptop disable
@@ -290,8 +293,8 @@ exec wl-paste -t text --watch wl-copy -p
 # lock and turn off/on screen
 # - lock screen for 10 minutes idle
 exec swayidle -w \
-     timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' \
-     resume 'swaymsg "output * dpms on"' \
+     timeout 10 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
+     resume 'swaymsg "output * power on"' \
      before-sleep 'playerctl -a pause; swaylock -f -i ~/.screenlock -l -c 2B303B'
 
 # start Network-Manager applet
