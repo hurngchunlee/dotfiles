@@ -44,10 +44,11 @@ gaps outer 0
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# enable touchpad tab-to-click, natual scroll
+# enable touchpad tab-to-click, natual scroll, disable-while-typing
 input type:touchpad {
     tap enabled
     natural_scroll enabled
+    dwt enabled
 }
 
 # set workspaces
@@ -252,7 +253,7 @@ bindsym $win+d exec ~/.local/bin/wofi-outputctl
 bindsym $win+p exec ~/.local/bin/wofi-outputctl -p
 
 # type content of the primary clipboard
-bindsym Ctrl+v exec "/usr/bin/wl-paste -p | wtype -"
+bindsym Ctrl+$mod+v exec "/usr/bin/wl-paste -p | wtype -"
 
 # laptop lid control
 set $laptop eDP-1
