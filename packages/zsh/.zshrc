@@ -165,6 +165,9 @@ eval "$(starship init zsh)"
 [ -f $HOME/.config/lf/icons ] && source $HOME/.config/lf/icons
 [ -f $HOME/.config/lf/colors ] && source $HOME/.config/lf/colors
 
+# setting for NPM (Node Package Manager) global installation
+export npm_config_prefix="$HOME/.local"
+
 # shell setting for Anaconda environment
 if [ -f /opt/anaconda3/bin/conda ]; then
 # >>> conda initialize >>>
