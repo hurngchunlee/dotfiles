@@ -22,7 +22,7 @@ function all_displays() {
 #----------------------------------------------------------------------------------------------
 function get_display_scale() {
     display=$1
-    swaymsg -t get_outputs | jq -r ".[] | select(.name == \"${display}\").scale"
+    swaymsg -t get_outputs | jq -r ".[] | select(.name == \"${display}\").scale" | awk -F '.' '{print $1}'
 }
 
 #----------------------------------------------------------------------------------------------
