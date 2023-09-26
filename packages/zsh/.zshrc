@@ -148,6 +148,9 @@ export TERM='xterm-256color'
 # don't do glob expansion for scp command
 alias scp='noglob scp'
 
+# SSH AGENT socket
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # it seems that --disable-gpu prevent flickering whe xbackligh is enabled??
 # ref: https://askubuntu.com/questions/279088/google-chrome-flickering
 alias brave-browser='brave-browser --disable-gpu'
