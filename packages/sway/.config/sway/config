@@ -91,7 +91,7 @@ bindsym $mod+Shift+x move container to workspace $workspacex
 bindsym $mod+Shift+g move container to workspace $workspaceg
 
 # associate applications to workspaces
-assign [app_id="evolution"] $workspace2
+assign [app_id="org.gnome.Evolution"] $workspace2
 assign [class="Code"] $workspace4
 assign [class="code-oss"] $workspace4
 assign [class="rambox"] $workspace5
@@ -306,7 +306,7 @@ exec gammastep-indicator
 
 # input method
 #exec_always fcitx5 -d --replace
-#exec ibus-daemon -drxR --panel /usr/lib/ibus/ibus-ui-gtk3
+#exec ibus-daemon -drxR
 
 # a script always run once when sway is (re)-loaded to apply the laptop clamshell mode.
 exec_always ~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state
