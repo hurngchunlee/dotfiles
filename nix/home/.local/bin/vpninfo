@@ -1,0 +1,18 @@
+#!/bin/bash
+
+iface=tun0
+
+# exit silently if no such iface
+[ ! -d /proc/sys/net/ipv4/conf/${iface} ] && exit 0
+
+name=$( nmcli -c no -t -f NAME,TYPE c show --active | grep ':vpn' | awk -F ':' '{print $1}' )
+ipv4=$( nmcli -c no -t -f ipv4.addresses c show tun0 | awk -F ':' '{print $2}' )
+
+[ "$name" == "" ] && s="inactive" || s="active"
+
+jq --arg class "vpn" \
+   --arg state "$s" \
+   --arg text "$name" \
+   --arg tooltip "IP: $ipv4" \
+   --unbuffered --compact-output --null-input \
+   '{"class": $class, "tooltip": $tooltip, "alt": $state, "text": $text}'

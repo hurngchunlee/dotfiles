@@ -27,6 +27,8 @@
   # The original repo bundles font files directly; copy them too so any
   # app that expects the exact family name "InconsolataLGC Nerd Font Mono"
   # continues to work alongside the Nix-provided versions.
-  home.file.".local/share/fonts/InconsolataLGC".source =
-    ../../packages/fonts/.local/share/fonts/InconsolataLGC;
+  home.file.".local/share/fonts/opentype".source =
+    ../home/.local/share/fonts/opentype;
+  home.file.".local/share/fonts/truetype".source =
+    ../home/.local/share/fonts/truetype;
 }

@@ -1,0 +1,6 @@
+[screencast]
+chooser_type=simple
+## BROKEN IN xdg-desktop-portal-wlr-0.8.0, see https://github.com/emersion/xdg-desktop-portal-wlr/issues/350 ##
+chooser_cmd=swaymsg -t get_outputs | jq -r '.[] | "Monitor: " + .name' | rofi -dmenu -p "select display port"
+output_name=eDP-1
+max_fps=30

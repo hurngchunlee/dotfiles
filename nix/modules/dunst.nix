@@ -50,8 +50,8 @@
         sticky_history  = "yes";
         history_length  = 20;
 
-        dmenu   = "/usr/bin/dmenu -p dunst:";
-        browser = "/usr/bin/brave";
+        dmenu   = "dmenu -p dunst:";
+        browser = "brave";
 
         always_run_script = true;
         title = "Dunst";
@@ -90,7 +90,6 @@
       evolution = {
         appname = "evolution-mail-notification";
         summary = "*";
-        script  = "~/.local/bin/i3ws-set-urgent";
       };
     };
   };

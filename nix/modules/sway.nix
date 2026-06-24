@@ -135,7 +135,7 @@
           "${win}+p" = "exec ~/.local/bin/wofi-outputctl -p";
 
           # Clipboard paste
-          "Ctrl+${mod}+v" = "exec /usr/bin/wl-paste -p | wtype -";
+          "Ctrl+${mod}+v" = "exec wl-paste -p | wtype -";
 
           # Workspaces — switch
           "${mod}+1" = "workspace 1";
@@ -184,10 +184,10 @@
         "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown" = {
           l          = "exec swaylock -f -i ~/.screenlock -l -c 2B303B, mode default";
           e          = "exec swaymsg exit, mode default";
-          s          = "exec --no-startup-id ~/.local/bin/i3exit suspend, mode default";
-          h          = "exec --no-startup-id ~/.local/bin/i3exit hibernate, mode default";
-          r          = "exec --no-startup-id ~/.local/bin/i3exit reboot, mode default";
-          "Shift+s"  = "exec --no-startup-id ~/.local/bin/i3exit shutdown, mode default";
+          s          = "exec systemctl suspend, mode default";
+          h          = "exec systemctl hibernate, mode default";
+          r          = "exec systemctl reboot, mode default";
+          "Shift+s"  = "exec systemctl poweroff, mode default";
           Return     = "mode default";
           Escape     = "mode default";
         };
@@ -228,7 +228,6 @@
         "7" = [{ class = "Vncviewer"; }];
         "8" = [{ app_id = "libreoffice-writer"; } { app_id = "libreoffice-calc"; } { app_id = "libreoffice-impress"; }];
         "9" = [{ class = "Joplin"; } { class = "Typora"; }];
-        "x" = [{ class = "Urxvt"; }];
       };
 
       floating.criteria = [
@@ -383,7 +382,7 @@
       };
     }];
 
-    style = builtins.readFile ../../packages/sway/.config/waybar/style.css;
+    style = builtins.readFile ../home/.config/waybar/style.css;
   };
 
   # --------------------------------------------------------------------------
@@ -396,7 +395,7 @@
       insensitive  = true;
       gtk_dark     = true;
     };
-    style = builtins.readFile ../../packages/wofi/.config/wofi/style.css;
+    style = builtins.readFile ../home/.config/wofi/style.css;
   };
 
   # --------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+dir=$HOME/tmp/screenshots
+mkdir -p $dir
+
+output="$dir/screenshot-$(date +%FT%T).png"
+
+[ ! -z ${1} ] && target=${1} || target=area
+
+grimshot save ${target} - | \
+  swappy -o $output -f - && notify-send -c screenshot "$(basename ${output}) created"

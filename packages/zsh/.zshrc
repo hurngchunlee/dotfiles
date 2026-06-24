@@ -188,3 +188,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 fi
+
+eval "$(direnv hook zsh)"

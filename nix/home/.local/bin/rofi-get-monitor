@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# This script resolves the focused monitor for rofi running on Wayland.
+#
+# Launch rofi with `-monitor $(rofi-get-monitor)`
+#
+# Without it, rofi seems to always display the window on a monitor with
+# the highest ID in the output of `rofi -h`.
+
+SCREEN_POS=$(swaymsg -t get_outputs \
+        | jq -r \
+        '.[] | select(.focused).rect | "\(.width)x\(.height)\\+\(.x)\\+\(.y)"')
+
+xrandr | rg -oP "[A-Z]+[0-9]+(?= [a-z]+ $SCREEN_POS)"

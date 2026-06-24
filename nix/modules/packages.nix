@@ -20,8 +20,7 @@
     gammastep         # colour temperature (Wayland redshift)
     dunst
     libnotify         # notify-send
-    feh               # image viewer (also used by lf)
-    picom             # X11 compositor (i3 fallback)
+    swayimg           # Wayland image viewer (used by lf)
 
     # ---------- Terminal & shell ----------
     alacritty
@@ -38,7 +37,6 @@
     # ---------- File managers ----------
     lf
     ranger
-    w3m               # ranger image preview on X11
 
     # ---------- Launchers ----------
     rofi
@@ -63,16 +61,23 @@
     yq
 
     # ---------- Hardware utilities ----------
-    acpilight         # xbacklightctl / wbacklightctl backend
     brightnessctl
 
     # ---------- Font rendering helpers ----------
     fontconfig
 
+    # ---------- Applications (keybindings / startup) ----------
+    brave             # web browser (mod+b, dunst browser)
+    evolution         # email client (mod+m, workspace 2)
+    eduvpn-client     # EduVPN GUI (mod+v)
+    tessen            # password manager rofi frontend (mod+p)
+    nextcloud-client  # cloud sync (sway startup)
+    owncloud-client   # cloud sync (sway startup)
+    dmenu             # fallback menu (dunst dmenu)
+
     # ---------- Miscellaneous ----------
     gnome-keyring     # ssh-agent / secrets
     gcin              # Chinese input method
     xdotool
-    wl-paste          # alias — already in wl-clipboard
   ];
 }

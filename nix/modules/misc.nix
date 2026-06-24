@@ -33,15 +33,15 @@
   # Cheat CLI cheatsheet tool
   # --------------------------------------------------------------------------
   home.file.".config/cheat/conf.yml".source =
-    ../../packages/cheat/.config/cheat/conf.yml;
+    ../home/.config/cheat/conf.yml;
   home.file.".config/cheat/cheatsheets/personal/ls".source =
-    ../../packages/cheat/.config/cheat/cheatsheets/personal/ls;
+    ../home/.config/cheat/cheatsheets/personal/ls;
 
   # --------------------------------------------------------------------------
   # Highlight syntax highlighter custom filetypes
   # --------------------------------------------------------------------------
   home.file.".highlight/filetypes.conf".source =
-    ../../packages/highlight/.highlight/filetypes.conf;
+    ../home/.highlight/filetypes.conf;
 
   # --------------------------------------------------------------------------
   # Systemd user environment (input method for Wayland)
@@ -56,90 +56,60 @@
   # XDG desktop portal for wlr (screen sharing)
   # --------------------------------------------------------------------------
   home.file.".config/xdg-desktop-portal-wlr/config".source =
-    ../../packages/sway/.config/xdg-desktop-portal-wlr/config;
+    ../home/.config/xdg-desktop-portal-wlr/config;
 
   # --------------------------------------------------------------------------
   # Rofi launcher
   # --------------------------------------------------------------------------
-  home.file.".config/rofi".source = ../../packages/rofi/.config/rofi;
+  home.file.".config/rofi".source = ../home/.config/rofi;
 
   # --------------------------------------------------------------------------
   # Ranger file manager
   # --------------------------------------------------------------------------
-  home.file.".config/ranger".source = ../../packages/ranger/.config/ranger;
+  home.file.".config/ranger".source = ../home/.config/ranger;
 
   # --------------------------------------------------------------------------
   # Conky system monitor
   # --------------------------------------------------------------------------
-  home.file.".conkyrc".source = ../../packages/conky/.conkyrc;
+  home.file.".conkyrc".source = ../home/.conkyrc;
 
-  # --------------------------------------------------------------------------
-  # X11 resources / profile (for i3/Xorg fallback sessions)
-  # --------------------------------------------------------------------------
-  home.file.".Xresources".source = ../../packages/xorg/.Xresources;
-  home.file.".xprofile".source   = ../../packages/xorg/.xprofile;
-  home.file.".Xdefaults".source  = ../../packages/sway/.Xdefaults;
-
-  # --------------------------------------------------------------------------
-  # i3 window manager (X11 fallback)
-  # --------------------------------------------------------------------------
-  home.file.".config/i3".source        = ../../packages/i3/.config/i3;
-  home.file.".config/i3blocks".source  = ../../packages/i3blocks/.config/i3blocks;
-  home.file.".config/sxhkd".source     = ../../packages/sxhkd/.config/sxhkd;
-
-  # --------------------------------------------------------------------------
-  # Picom compositor (X11)
-  # --------------------------------------------------------------------------
-  home.file.".config/picom.conf".source = ../../packages/picom/.config/picom.conf;
-
-  # --------------------------------------------------------------------------
-  # Redshift (X11 colour temperature)
-  # --------------------------------------------------------------------------
-  home.file.".config/redshift/redshift.conf".source =
-    ../../packages/redshift/.config/redshift/redshift.conf;
 
   # --------------------------------------------------------------------------
   # VS Code OSS settings
   # --------------------------------------------------------------------------
   home.file.".config/Code - OSS/User/settings.json".source =
-    ../../packages/vscode/.config/Code\ -\ OSS/User/settings.json;
+    ../home/.config/Code\ -\ OSS/User/settings.json;
 
   # --------------------------------------------------------------------------
-  # Local utility scripts (carried verbatim from sway / i3 packages)
+  # Local utility scripts (carried verbatim from sway packages)
   # --------------------------------------------------------------------------
   home.file.".local/bin" = {
-    source    = ../../packages/sway/.local/bin;
+    source    = ../home/.local/bin;
     recursive = true;
   };
 
-  # i3 scripts (merge into .local/bin; sway scripts take precedence)
-  home.file.".local/bin/i3exit".source          = ../../packages/i3/.local/bin/i3exit;
-  home.file.".local/bin/i3help".source          = ../../packages/i3/.local/bin/i3help;
-  home.file.".local/bin/i3ws-set-urgent".source = ../../packages/i3/.local/bin/i3ws-set-urgent;
-  home.file.".local/bin/pamixerctl".source      = ../../packages/i3/.local/bin/pamixerctl;
-  home.file.".local/bin/amixerctl".source       = ../../packages/i3/.local/bin/amixerctl;
-  home.file.".local/bin/micctl".source          = ../../packages/i3/.local/bin/micctl;
-  home.file.".local/bin/xbacklightctl".source   = ../../packages/i3/.local/bin/xbacklightctl;
-  home.file.".local/bin/xrandrctl".source       = ../../packages/i3/.local/bin/xrandrctl;
-  home.file.".local/bin/xscreenshot".source     = ../../packages/i3/.local/bin/xscreenshot;
-  home.file.".local/bin/progressbar".source     = ../../packages/i3/.local/bin/progressbar;
-  home.file.".local/bin/rofi-eduvpn".source     = ../../packages/i3/.local/bin/rofi-eduvpn;
-  home.file.".local/bin/rofi-wifi-menu".source  = ../../packages/i3/.local/bin/rofi-wifi-menu;
+  home.file.".local/bin/pamixerctl".source      = ../home/.local/bin/pamixerctl;
+  home.file.".local/bin/amixerctl".source       = ../home/.local/bin/amixerctl;
+  home.file.".local/bin/micctl".source          = ../home/.local/bin/micctl;
+  home.file.".local/bin/progressbar".source     = ../home/.local/bin/progressbar;
+  home.file.".local/bin/i3ws-set-urgent".source = ../home/.local/bin/i3ws-set-urgent;
+  home.file.".local/bin/rofi-eduvpn".source     = ../home/.local/bin/rofi-eduvpn;
+  home.file.".local/bin/rofi-wifi-menu".source  = ../home/.local/bin/rofi-wifi-menu;
 
   # rofi-bookmarker scripts
   home.file.".local/bin/rofi-bookmarker".source =
-    ../../packages/rofi-bookmarker/.local/bin/rofi-bookmarker;
+    ../home/.local/bin/rofi-bookmarker;
 
   # --------------------------------------------------------------------------
   # Cursor theme (bundled in the repo)
   # --------------------------------------------------------------------------
-  home.file.".icons/Simp1e-breeze".source = ../../packages/icons/.icons/Simp1e-breeze;
+  home.file.".icons/Simp1e-breeze".source = ../home/.icons/Simp1e-breeze;
   home.file.".icons/DMZ-White-Highlighted".source =
-    ../../packages/icons/.icons/DMZ-White-Highlighted;
+    ../home/.icons/DMZ-White-Highlighted;
 
   # --------------------------------------------------------------------------
   # Wallpapers / screenlock image
   # --------------------------------------------------------------------------
-  home.file."Pictures/wallpapers".source  = ../../packages/wallpapers/Pictures/wallpapers;
-  home.file.".screenlock".source          = ../../packages/wallpapers/.screenlock;
+  home.file."Pictures/wallpapers".source  = ../home/Pictures/wallpapers;
+  home.file.".screenlock".source          = ../home/.screenlock;
 }

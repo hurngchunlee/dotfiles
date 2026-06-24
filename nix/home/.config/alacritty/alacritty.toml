@@ -1,0 +1,45 @@
+[colors.bright]
+black = "#2d2d2d"
+blue = "#6699cc"
+cyan = "#66cccc"
+green = "#99cc99"
+magenta = "#cc99cc"
+red = "#f2777a"
+white = "#d3d0c8"
+yellow = "#ffcc66"
+
+[colors.normal]
+black = "#2d2d2d"
+blue = "#6699cc"
+cyan = "#66cccc"
+green = "#99cc99"
+magenta = "#cc99cc"
+red = "#f2777a"
+white = "#d3d0c8"
+yellow = "#ffcc66"
+
+[colors.primary]
+background = "#000000"
+foreground = "#d3d0c8"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 13
+
+[font.bold]
+family = "InconsolataLGC Nerd Font Mono"
+style = "Bold"
+
+[font.normal]
+family = "InconsolataLGC Nerd Font Mono"
+style = "Regular"
+
+[window]
+decorations = "none"
+dynamic_padding = true
+
+[window.padding]
+x = 2
+y = 2

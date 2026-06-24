@@ -88,11 +88,11 @@
 
   # iRODS vim filetype support (carried over from the stow packages verbatim)
   home.file.".config/nvim/ftdetect/irods.vim".source =
-    ../packages/vim/.vim/ftdetect/irods.vim;
+    ../home/.vim/ftdetect/irods.vim;
   home.file.".config/nvim/ftplugin/irods.vim".source =
-    ../packages/vim/.vim/ftplugin/irods.vim;
+    ../home/.vim/ftplugin/irods.vim;
   home.file.".config/nvim/syntax/irods.vim".source =
-    ../packages/vim/.vim/syntax/irods.vim;
+    ../home/.vim/syntax/irods.vim;
   home.file.".config/nvim/ftplugin/yaml.vim".source =
-    ../packages/vim/.vim/ftplugin/yaml.vim;
+    ../home/.vim/ftplugin/yaml.vim;
 }
