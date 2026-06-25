@@ -297,7 +297,7 @@
         all-outputs    = false;
         format         = "{name} {icon}";
         format-icons   = {
-          "1" = "";
+          "1" = "";
           "2" = "📬";
           "3" = "🌍";
           "4" = "🛠️";
@@ -313,7 +313,7 @@
 
       "custom/vpn" = {
         format       = "{} {icon}";
-        format-icons = { active = ""; };
+        format-icons = { active = ""; };
         exec         = "${../home}/.local/bin/vpninfo";
         exec-if      = "test -d /proc/sys/net/ipv4/conf/tun0";
         return-type  = "json";
@@ -322,30 +322,30 @@
 
       cpu = {
         interval   = 10;
-        format     = "{usage}% ";
+        format     = "{usage}% ";
         max-length = 10;
       };
 
       battery = {
         states       = { warning = 30; critical = 15; };
         format          = "{capacity}% {icon}";
-        format-charging = "{capacity}% ";
+        format-charging = "{capacity}% ";
         format-plugged  = "{capacity}% ﮣ";
-        format-icons    = [ "" "" "" "" "" ];
+        format-icons    = ["" "" "" "" ""];
       };
 
       pulseaudio = {
         format           = "{volume}% {icon}";
-        format-bluetooth = "{volume}% {icon}[]";
-        format-muted     = "";
+        format-bluetooth = "{volume}% {icon}[]";
+        format-muted     = "";
         format-icons = {
-          headphone  = "";
-          hands-free = "";
-          headset    = "";
-          phone      = "";
-          portable   = "";
-          car        = "";
-          default    = [ "" "" ];
+          headphone  = "";
+          hands-free = "";
+          headset    = "";
+          phone      = "";
+          portable   = "";
+          car        = "";
+          default    = ["" ""];
         };
         scroll-step = 1;
         on-click    = "pavucontrol";
