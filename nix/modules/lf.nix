@@ -14,8 +14,8 @@
       scrolloff = 10;
       icons     = true;
       drawbox   = true;
-      previewer = "~/.config/lf/previewer.sh";
-      cleaner   = "~/.config/lf/clear_img.sh";
+      previewer = "${../home}/.config/lf/previewer.sh";
+      cleaner   = "${../home}/.config/lf/clear_img.sh";
     };
 
     keybindings = {
@@ -24,7 +24,7 @@
     };
 
     commands.open = ''
-      ${{
+      ''${{
           test -L $f && f=$(readlink -f $f)
           case $(file --mime-type $f -b) in
               text/*) vim $fx;;

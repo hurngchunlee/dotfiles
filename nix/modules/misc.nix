@@ -78,7 +78,7 @@
   # VS Code OSS settings
   # --------------------------------------------------------------------------
   home.file.".config/Code - OSS/User/settings.json".source =
-    ../home/.config/Code\ -\ OSS/User/settings.json;
+    ../home/.config + "/Code - OSS/User/settings.json";
 
   # --------------------------------------------------------------------------
   # Local utility scripts (carried verbatim from sway packages)
@@ -92,7 +92,6 @@
   home.file.".local/bin/amixerctl".source       = ../home/.local/bin/amixerctl;
   home.file.".local/bin/micctl".source          = ../home/.local/bin/micctl;
   home.file.".local/bin/progressbar".source     = ../home/.local/bin/progressbar;
-  home.file.".local/bin/i3ws-set-urgent".source = ../home/.local/bin/i3ws-set-urgent;
   home.file.".local/bin/rofi-eduvpn".source     = ../home/.local/bin/rofi-eduvpn;
   home.file.".local/bin/rofi-wifi-menu".source  = ../home/.local/bin/rofi-wifi-menu;
 

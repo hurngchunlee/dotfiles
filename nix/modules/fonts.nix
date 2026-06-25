@@ -8,17 +8,12 @@
 
   home.packages = with pkgs; [
     # The primary terminal font used everywhere
-    (nerdfonts.override {
-      fonts = [
-        "DroidSansMono"
-        "DejaVuSansMono"
-        "Inconsolata"       # closest to InconsolataLGC in nixpkgs
-      ];
-    })
-
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.inconsolata
     # CJK + emoji fonts (used in dunst, waybar, GTK)
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
 
     # WQY ZenHei (CJK — bundled as a raw file in the original repo)
     wqy_zenhei

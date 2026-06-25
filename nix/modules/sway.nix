@@ -27,8 +27,7 @@
       };
 
       # Window borders
-      defaultBorderStyle = "pixel";
-      defaultBorderPixels = 3;
+      window.border = 3;
 
       # Window colours  (focused / unfocused / urgent)
       colors = {
@@ -74,7 +73,7 @@
       # Wallpaper
       output = {
         "*" = {
-          bg = "~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill";
+          bg = "${../home}/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill";
         };
       };
 
@@ -88,10 +87,10 @@
           "${mod}+Return"  = "exec alacritty";
           "${mod}+b"       = "exec brave";
           "${mod}+m"       = "exec evolution";
-          "${mod}+z"       = ''exec kitty zsh -c "source ~/.zshrc; lf"'';
+          "${mod}+z"       = ''exec kitty zsh -c "source ${../home}/.zshrc; lf"'';
           "${mod}+v"       = "exec eduvpn-gui";
           "${mod}+d"       = "exec wofi -i -I -G -S drun";
-          "${mod}+p"       = "exec ~/.local/bin/tessen -d wofi -a copy";
+          "${mod}+p"       = "exec ${../home}/.local/bin/tessen -d wofi -a copy";
 
           # Focus
           "${mod}+h" = "focus left";
@@ -123,16 +122,16 @@
           "${mod}+minus"  = "scratchpad show";
 
           # Volume / brightness
-          "XF86AudioRaiseVolume"  = "exec ~/.local/bin/pamixerctl inc";
-          "XF86AudioLowerVolume"  = "exec ~/.local/bin/pamixerctl dec";
-          "XF86AudioMute"         = "exec ~/.local/bin/pamixerctl toggle";
-          "XF86AudioMicMute"      = "exec ~/.local/bin/micctl toggle";
-          "XF86MonBrightnessUp"   = "exec ~/.local/bin/wbacklightctl inc";
-          "XF86MonBrightnessDown" = "exec ~/.local/bin/wbacklightctl dec";
+          "XF86AudioRaiseVolume"  = "exec ${../home}/.local/bin/pamixerctl inc";
+          "XF86AudioLowerVolume"  = "exec ${../home}/.local/bin/pamixerctl dec";
+          "XF86AudioMute"         = "exec ${../home}/.local/bin/pamixerctl toggle";
+          "XF86AudioMicMute"      = "exec ${../home}/.local/bin/micctl toggle";
+          "XF86MonBrightnessUp"   = "exec ${../home}/.local/bin/wbacklightctl inc";
+          "XF86MonBrightnessDown" = "exec ${../home}/.local/bin/wbacklightctl dec";
 
           # Display control
-          "${win}+d" = "exec ~/.local/bin/wofi-outputctl";
-          "${win}+p" = "exec ~/.local/bin/wofi-outputctl -p";
+          "${win}+d" = "exec ${../home}/.local/bin/wofi-outputctl";
+          "${win}+p" = "exec ${../home}/.local/bin/wofi-outputctl -p";
 
           # Clipboard paste
           "Ctrl+${mod}+v" = "exec wl-paste -p | wtype -";
@@ -182,7 +181,7 @@
         };
 
         "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown" = {
-          l          = "exec swaylock -f -i ~/.screenlock -l -c 2B303B, mode default";
+          l          = "exec swaylock -f -i ${../home}/.screenlock -l -c 2B303B, mode default";
           e          = "exec swaymsg exit, mode default";
           s          = "exec systemctl suspend, mode default";
           h          = "exec systemctl hibernate, mode default";
@@ -211,9 +210,9 @@
         };
 
         "Take screenshot (o) output, (a) area, (w) window" = {
-          o      = "exec ~/.local/bin/screenshot output, mode default";
-          a      = "exec ~/.local/bin/screenshot area, mode default";
-          w      = "exec ~/.local/bin/screenshot window, mode default";
+          o      = "exec ${../home}/.local/bin/screenshot output, mode default";
+          a      = "exec ${../home}/.local/bin/screenshot area, mode default";
+          w      = "exec ${../home}/.local/bin/screenshot window, mode default";
           Return = "mode default";
           Escape = "mode default";
         };
@@ -246,19 +245,19 @@
           always = true;
         }
         # GTK settings import
-        { command = "~/.local/bin/import-gsettings"; always = true; }
+        { command = "${../home}/.local/bin/import-gsettings"; always = true; }
         # Clipboard
         { command = "wl-paste -t text --watch wl-copy -p"; }
         # Screen lock / idle
         {
-          command = ''swayidle -w timeout 10 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' resume 'swaymsg "output * power on"' before-sleep 'playerctl -a pause; swaylock -f -i ~/.screenlock -l -c 2B303B' '';
+          command = ''swayidle -w timeout 10 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' resume 'swaymsg "output * power on"' before-sleep 'playerctl -a pause; swaylock -f -i ${../home}/.screenlock -l -c 2B303B' '';
         }
         # Network manager applet
         { command = "nm-applet --indicator"; }
         # Gammastep indicator
         { command = "gammastep-indicator"; }
         # Laptop clamshell handler
-        { command = "~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state"; always = true; }
+        { command = "${../home}/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state"; always = true; }
         # Cloud sync clients
         { command = "sh -c 'sleep 3; owncloud'"; }
         { command = "sh -c 'sleep 3; nextcloud --background'"; }
@@ -315,7 +314,7 @@
       "custom/vpn" = {
         format       = "{} {icon}";
         format-icons = { active = ""; };
-        exec         = "~/.local/bin/vpninfo";
+        exec         = "${../home}/.local/bin/vpninfo";
         exec-if      = "test -d /proc/sys/net/ipv4/conf/tun0";
         return-type  = "json";
         interval     = 5;
@@ -407,7 +406,12 @@
     latitude        = 52.2226;
     longitude       = 4.5322;
     temperature     = { day = 6000; night = 4200; };
-    brightness      = { day = "1.0"; night = "0.8"; };
+    settings        = {
+      general = {
+          brightness-day = "1.0";
+          brightness-night = "0.8";
+      };
+    };
     tray            = true;
   };
 

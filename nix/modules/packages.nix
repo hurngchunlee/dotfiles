@@ -31,7 +31,6 @@
     oh-my-zsh
 
     # ---------- Editor ----------
-    neovim
     vim
 
     # ---------- File managers ----------
@@ -77,7 +76,6 @@
 
     # ---------- Miscellaneous ----------
     gnome-keyring     # ssh-agent / secrets
-    gcin              # Chinese input method
     xdotool
   ];
 }

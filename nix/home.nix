@@ -19,8 +19,8 @@
   # --------------------------------------------------------------------------
   # Home identity
   # --------------------------------------------------------------------------
-  home.username = "honlee";
-  home.homeDirectory = "/home/honlee";
+  home.username = "hclee";
+  home.homeDirectory = "/home/hclee";
 
   # --------------------------------------------------------------------------
   # Let home-manager manage itself
