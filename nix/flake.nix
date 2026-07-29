@@ -20,7 +20,7 @@
         modules = [ ./home.nix ];
         extraSpecialArgs = {
           username = "dccntg";
-          homeDirectory = "/home/dcctg";
+          homeDirectory = "/home/dccntg";
         };
       };
     };
