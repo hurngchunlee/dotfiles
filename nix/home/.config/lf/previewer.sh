@@ -23,7 +23,10 @@ file_info() {
 file="$1"
 width="$2"
 shift
- 
+
+## ensure cache directory exists
+mkdir -p $HOME/.cache/lf
+
 ## file mime type
 ftype=$(file -Lb --mime-type "$file")
 

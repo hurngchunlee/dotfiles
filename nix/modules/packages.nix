@@ -54,7 +54,7 @@
 
     # ---------- Productivity / CLI tools ----------
     #cheat
-    #highlight
+    highlight
     #fzf
     #jq
     #yq
