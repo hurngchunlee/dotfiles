@@ -262,8 +262,6 @@
         }
         # Network manager applet
         { command = "nm-applet --indicator"; }
-        # Gammastep indicator
-        { command = "gammastep-indicator"; }
         # Laptop clamshell handler
         { command = "~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state"; always = true; }
         # Cloud sync clients
