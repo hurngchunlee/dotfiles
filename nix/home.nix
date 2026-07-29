@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, homedir, ... }:
 
 {
   imports = [
@@ -23,8 +23,8 @@
   # --------------------------------------------------------------------------
   # Home identity
   # --------------------------------------------------------------------------
-  home.username = "dccntg";
-  home.homeDirectory = "/home/dccntg";
+  home.username = username;
+  home.homeDirectory = homedir;
 
   # --------------------------------------------------------------------------
   # make packages managed by NIX available to Sway

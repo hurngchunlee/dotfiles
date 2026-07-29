@@ -15,10 +15,13 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."dccntg" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.me = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
         modules = [ ./home.nix ];
+        extraSpecialArgs = {
+          username = "dccntg";
+          homeDirectory = "/home/dcctg";
+        };
       };
     };
 }
