@@ -27,6 +27,13 @@
   home.homeDirectory = "/home/dccntg";
 
   # --------------------------------------------------------------------------
+  # make packages managed by NIX available to Sway
+  # --------------------------------------------------------------------------
+  systemd.user.sessionVariables = {
+    PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/bin";
+  };
+
+  # --------------------------------------------------------------------------
   # Let home-manager manage itself
   # --------------------------------------------------------------------------
   programs.home-manager.enable = true;
