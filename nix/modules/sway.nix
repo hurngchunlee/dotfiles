@@ -6,6 +6,7 @@
   # --------------------------------------------------------------------------
   wayland.windowManager.sway = {
     enable = true;
+    package = null;
 
     config = {
       modifier = "Mod1";       # Alt key
@@ -73,7 +74,7 @@
       # Wallpaper
       output = {
         "*" = {
-          bg = "${../home}/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill";
+          bg = "~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill";
         };
       };
 
@@ -87,10 +88,10 @@
           "${mod}+Return"  = "exec alacritty";
           "${mod}+b"       = "exec brave";
           "${mod}+m"       = "exec evolution";
-          "${mod}+z"       = ''exec kitty zsh -c "source ${../home}/.zshrc; lf"'';
+          "${mod}+z"       = ''exec kitty zsh -c "source ~/.zshrc; lf"'';
           "${mod}+v"       = "exec eduvpn-gui";
           "${mod}+d"       = "exec wofi -i -I -G -S drun";
-          "${mod}+p"       = "exec ${../home}/.local/bin/tessen -d wofi -a copy";
+          "${mod}+p"       = "exec ~/.local/bin/tessen -d wofi -a copy";
 
           # Focus
           "${mod}+h" = "focus left";
@@ -122,16 +123,16 @@
           "${mod}+minus"  = "scratchpad show";
 
           # Volume / brightness
-          "XF86AudioRaiseVolume"  = "exec ${../home}/.local/bin/pamixerctl inc";
-          "XF86AudioLowerVolume"  = "exec ${../home}/.local/bin/pamixerctl dec";
-          "XF86AudioMute"         = "exec ${../home}/.local/bin/pamixerctl toggle";
-          "XF86AudioMicMute"      = "exec ${../home}/.local/bin/micctl toggle";
-          "XF86MonBrightnessUp"   = "exec ${../home}/.local/bin/wbacklightctl inc";
-          "XF86MonBrightnessDown" = "exec ${../home}/.local/bin/wbacklightctl dec";
+          "XF86AudioRaiseVolume"  = "exec ~/.local/bin/pamixerctl inc";
+          "XF86AudioLowerVolume"  = "exec ~/.local/bin/pamixerctl dec";
+          "XF86AudioMute"         = "exec ~/.local/bin/pamixerctl toggle";
+          "XF86AudioMicMute"      = "exec ~/.local/bin/micctl toggle";
+          "XF86MonBrightnessUp"   = "exec ~/.local/bin/wbacklightctl inc";
+          "XF86MonBrightnessDown" = "exec ~/.local/bin/wbacklightctl dec";
 
           # Display control
-          "${win}+d" = "exec ${../home}/.local/bin/wofi-outputctl";
-          "${win}+p" = "exec ${../home}/.local/bin/wofi-outputctl -p";
+          "${win}+d" = "exec ~/.local/bin/wofi-outputctl";
+          "${win}+p" = "exec ~/.local/bin/wofi-outputctl -p";
 
           # Clipboard paste
           "Ctrl+${mod}+v" = "exec wl-paste -p | wtype -";
@@ -210,9 +211,9 @@
         };
 
         "Take screenshot (o) output, (a) area, (w) window" = {
-          o      = "exec ${../home}/.local/bin/screenshot output, mode default";
-          a      = "exec ${../home}/.local/bin/screenshot area, mode default";
-          w      = "exec ${../home}/.local/bin/screenshot window, mode default";
+          o      = "exec ~/.local/bin/screenshot output, mode default";
+          a      = "exec ~/.local/bin/screenshot area, mode default";
+          w      = "exec ~/.local/bin/screenshot window, mode default";
           Return = "mode default";
           Escape = "mode default";
         };
@@ -244,8 +245,15 @@
           command = ''hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway'';
           always = true;
         }
+
+	# NIX home manager environment variables
+	{
+	  command = ". ~/.nix-profile/etc/profile.d/hm-session-vars.sh";
+	  always = true;
+	}
+
         # GTK settings import
-        { command = "${../home}/.local/bin/import-gsettings"; always = true; }
+        { command = "~/.local/bin/import-gsettings"; always = true; }
         # Clipboard
         { command = "wl-paste -t text --watch wl-copy -p"; }
         # Screen lock / idle
@@ -257,7 +265,7 @@
         # Gammastep indicator
         { command = "gammastep-indicator"; }
         # Laptop clamshell handler
-        { command = "${../home}/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state"; always = true; }
+        { command = "~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state"; always = true; }
         # Cloud sync clients
         { command = "sh -c 'sleep 3; owncloud'"; }
         { command = "sh -c 'sleep 3; nextcloud --background'"; }
@@ -314,7 +322,7 @@
       "custom/vpn" = {
         format       = "{} {icon}";
         format-icons = { active = ""; };
-        exec         = "${../home}/.local/bin/vpninfo";
+        exec         = "~/.local/bin/vpninfo";
         exec-if      = "test -d /proc/sys/net/ipv4/conf/tun0";
         return-type  = "json";
         interval     = 5;

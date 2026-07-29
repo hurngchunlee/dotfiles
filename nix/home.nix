@@ -16,11 +16,15 @@
     ./modules/misc.nix
   ];
 
+  targets.genericLinux.enable = true;
+  targets.genericLinux.nixGL.packages = null;
+  targets.genericLinux.gpu.enable = true;
+
   # --------------------------------------------------------------------------
   # Home identity
   # --------------------------------------------------------------------------
-  home.username = "hclee";
-  home.homeDirectory = "/home/hclee";
+  home.username = "dccntg";
+  home.homeDirectory = "/home/dccntg";
 
   # --------------------------------------------------------------------------
   # Let home-manager manage itself
@@ -30,5 +34,5 @@
   # --------------------------------------------------------------------------
   # State version — do not change after first activation
   # --------------------------------------------------------------------------
-  home.stateVersion = "24.11";
+  home.stateVersion = "26.11";
 }

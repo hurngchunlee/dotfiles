@@ -3,6 +3,7 @@
 {
   programs.zsh = {
     enable = true;
+    package = pkgs.emptyDirectory;
 
     # --------------------------------------------------------------------------
     # oh-my-zsh

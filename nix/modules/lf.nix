@@ -14,8 +14,8 @@
       scrolloff = 10;
       icons     = true;
       drawbox   = true;
-      previewer = "${../home}/.config/lf/previewer.sh";
-      cleaner   = "${../home}/.config/lf/clear_img.sh";
+      previewer = "~/.config/lf/previewer.sh";
+      cleaner   = "~/.config/lf/clear_img.sh";
     };
 
     keybindings = {

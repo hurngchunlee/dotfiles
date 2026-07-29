@@ -11,6 +11,7 @@
   # --------------------------------------------------------------------------
   programs.zathura = {
     enable = true;
+    package = pkgs.emptyDirectory;
     options = {
       statusbar-bg = "#222222";
       statusbar-fg = "#ffffff";

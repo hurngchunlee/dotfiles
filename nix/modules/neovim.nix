@@ -15,7 +15,7 @@
       vim-devicons
       vim-code-dark
       vim-fugitive
-      coc-nvim
+      #coc-nvim
       colorizer
     ];
 
