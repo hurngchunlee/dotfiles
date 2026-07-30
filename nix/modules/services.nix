@@ -25,8 +25,6 @@
   # GPG agent
   services.gpg-agent = {
     enable = true;
-    package = pkgs.emptyDirectory;
-
     enableSshSupport = false;
 
     defaultCacheTtl = 3600;
