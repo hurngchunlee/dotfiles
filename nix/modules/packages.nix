@@ -10,7 +10,7 @@
     vim
 
     # ---------- key management ----------
-    pass
+    #pass
 
     # ---------- Applications (keybindings / startup) ----------
     brave             # web browser (mod+b, dunst browser)
