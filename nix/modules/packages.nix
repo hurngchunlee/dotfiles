@@ -9,6 +9,9 @@
     # ---------- Editor ----------
     vim
 
+    # ---------- key management ----------
+    pass
+
     # ---------- Applications (keybindings / startup) ----------
     brave             # web browser (mod+b, dunst browser)
     evolution         # email client (mod+m, workspace 2)
