@@ -89,17 +89,6 @@
     recursive = true;
   };
 
-  home.file.".local/bin/pamixerctl".source      = ../home/.local/bin/pamixerctl;
-  home.file.".local/bin/amixerctl".source       = ../home/.local/bin/amixerctl;
-  home.file.".local/bin/micctl".source          = ../home/.local/bin/micctl;
-  home.file.".local/bin/progressbar".source     = ../home/.local/bin/progressbar;
-  home.file.".local/bin/rofi-eduvpn".source     = ../home/.local/bin/rofi-eduvpn;
-  home.file.".local/bin/rofi-wifi-menu".source  = ../home/.local/bin/rofi-wifi-menu;
-
-  # rofi-bookmarker scripts
-  home.file.".local/bin/rofi-bookmarker".source =
-    ../home/.local/bin/rofi-bookmarker;
-
   # --------------------------------------------------------------------------
   # Cursor theme (bundled in the repo)
   # --------------------------------------------------------------------------
