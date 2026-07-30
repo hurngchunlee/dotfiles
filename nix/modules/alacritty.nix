@@ -19,6 +19,11 @@ in {
     settings = {
       env.TERM = "xterm-256color";
 
+      terminal.shell = {
+        program = "/usr/bin/zsh";
+        args = [ "-l" ];
+      };
+
       font = {
         size = 13;
         normal = {

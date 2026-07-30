@@ -10,10 +10,13 @@
     # --------------------------------------------------------------------------
     oh-my-zsh = {
       enable = true;
-      plugins = [ "zsh-syntax-highlighting" ];
+      plugins = [ ];
       # No theme — Starship is used as the prompt (see modules/starship.nix)
       theme = "";
     };
+
+    autosuggestion.enable = false;
+    syntaxHighlighting.enable = true;
 
     # --------------------------------------------------------------------------
     # Extra init sourced at the end of .zshrc
@@ -49,25 +52,6 @@
       # icons and colors for lf file manager
       [ -f $HOME/.config/lf/icons ] && source $HOME/.config/lf/icons
       [ -f $HOME/.config/lf/colors ] && source $HOME/.config/lf/colors
-
-      # Anaconda / conda (optional — only activate if installed outside Nix)
-      if [ -f /opt/anaconda3/bin/conda ]; then
-        __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-        if [ $? -eq 0 ]; then
-          eval "$__conda_setup"
-        else
-          [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ] \
-            && . "/opt/anaconda3/etc/profile.d/conda.sh" \
-            || export PATH="/opt/anaconda3/bin:$PATH"
-        fi
-        unset __conda_setup
-      fi
-
-      # direnv hook
-      eval "$(direnv hook zsh)"
-
-      # starship prompt (must be last)
-      eval "$(starship init zsh)"
     '';
 
     # --------------------------------------------------------------------------
@@ -96,9 +80,26 @@
     };
   };
 
+  # starship integration
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+
+    settings = {
+      add_newline = false;
+
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol   = "[](bold red)";
+      };
+
+      aws.disabled = true;
+    };
+  };
+
   # direnv integration (generates the hook automatically)
   programs.direnv = {
     enable = true;
-    enableZshIntegration = false; # we call the hook manually above
+    enableZshIntegration = true;
   };
 }

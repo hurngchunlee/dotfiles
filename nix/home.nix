@@ -6,7 +6,6 @@
     ./modules/fonts.nix
     ./modules/git.nix
     ./modules/zsh.nix
-    ./modules/starship.nix
     ./modules/neovim.nix
     ./modules/alacritty.nix
     ./modules/kitty.nix
