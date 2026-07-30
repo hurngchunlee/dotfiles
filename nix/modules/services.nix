@@ -1,6 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  # SSH agent
   systemd.user.services.ssh-agent = {
     Unit = {
       Description = "SSH key agent";
@@ -20,4 +21,16 @@
       WantedBy = [ "default.target" ];
     };
   };
-};
+
+  # GPG agent
+  services.gpg-agent = {
+    enable = true;
+    package = pkgs.emptyDirectory;
+
+    enableSshSupport = false;
+
+    defaultCacheTtl = 3600;
+    maxCacheTtl = 7200;
+    pinentry.package = pkgs.pinentry-gnome3;
+  };
+}
