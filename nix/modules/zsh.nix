@@ -76,7 +76,7 @@
     shellAliases = {
       vi           = "nvim";
       scp          = "noglob scp";
-      brave-browser = "brave-browser --disable-gpu";
+      brave-nogpu  = "brave-browser --disable-gpu";
     };
   };
 
