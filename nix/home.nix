@@ -13,6 +13,7 @@
     ./modules/dunst.nix
     ./modules/lf.nix
     ./modules/misc.nix
+    ./modules/services.nix
   ];
 
   targets.genericLinux.enable = true;
