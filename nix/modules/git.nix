@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.git = {
     enable = true;
+    package = pkgs.emptyDirectory;
 
     userName  = "Hurng-Chun Lee";
     userEmail = "h.lee@donders.ru.nl";
