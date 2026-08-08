@@ -1,10 +1,15 @@
 {pkgs, ...}:
 
 {
+  ## install `evolutionWithPlugins` so that `evolution` is well integrated
+  ## with Evolution's subprocesses.
   home.packages = with pkgs; [
-    evolutionWithPlugins   # email client (mod+m, workspace 2)
+    evolutionWithPlugins
   ];
 
+  ## the following user services override the same services 
+  ## eventually installed by the OS system/image, making sure
+  ## everything is under the management of NIX
   systemd.user.services.evolution-source-registry = {
     Unit = {
       Description = "Evolution source registry";
