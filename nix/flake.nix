@@ -19,8 +19,8 @@
         inherit pkgs;
         modules = [ ./home.nix ];
         extraSpecialArgs = {
-          username = "dccntg";
-          homeDirectory = "/home/dccntg";
+          username = "honlee";
+          homeDirectory = "/home/honlee";
         };
       };
     };

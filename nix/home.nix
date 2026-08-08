@@ -37,7 +37,7 @@
   # --------------------------------------------------------------------------
   # Let home-manager manage itself
   # --------------------------------------------------------------------------
-  programs.home-manager.enable = true;
+  #programs.home-manager.enable = true;
 
   # --------------------------------------------------------------------------
   # State version — do not change after first activation
