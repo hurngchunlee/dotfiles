@@ -448,4 +448,13 @@
       gtk-decoration-layout          = "appmenu:none";
     };
   };
+
+  # --------------------------------------------------------------------------
+  # dconf setting to enale GNOME middle-key paste 
+  # --------------------------------------------------------------------------
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-enable-primary-paste = true;      
+    };
+  };
 }

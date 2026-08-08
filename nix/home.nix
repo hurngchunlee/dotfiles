@@ -12,6 +12,7 @@
     ./modules/sway.nix
     ./modules/dunst.nix
     ./modules/lf.nix
+    ./modules/evolution.nix
     ./modules/misc.nix
     ./modules/services.nix
   ];
