@@ -446,6 +446,7 @@
       gtk-xft-hintstyle              = "hintfull";
       gtk-xft-rgba                   = "rgb";
       gtk-decoration-layout          = "appmenu:none";
+      gtk-application-prefer-dark-theme = 0;
     };
   };
 
@@ -455,6 +456,9 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       gtk-enable-primary-paste = true;      
+      gtk-theme    = "Adwaita";
+      icon-theme   = "Adwaita";
+      color-scheme = "prefer-light";
     };
   };
 }
