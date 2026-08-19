@@ -5,16 +5,20 @@
     enable = true;
     package = pkgs.emptyDirectory;
 
-    userName  = "Hurng-Chun Lee";
-    userEmail = "h.lee@donders.ru.nl";
+    settings = {
+      user = {
+        name  = "Hurng-Chun Lee";
+        email = "h.lee@donders.ru.nl";
+      };
 
-    extraConfig = {
-      core.editor = "vim";
-      pull.rebase  = false;
-    };
-
-    aliases = {
-      lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      extraConfig = {
+        core.editor = "vim";
+        pull.rebase  = false;
+      };
+     
+      aliases = {
+        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      };
     };
   };
 }

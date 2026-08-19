@@ -21,7 +21,7 @@
     # --------------------------------------------------------------------------
     # Extra init sourced at the end of .zshrc
     # --------------------------------------------------------------------------
-    initExtra = ''
+    initContent = ''
       ### Fix slowness of pastes with zsh-syntax-highlighting
       pasteinit() {
         OLD_SELF_INSERT=''${''${(s.:.)widgets[self-insert]}[2,3]}
