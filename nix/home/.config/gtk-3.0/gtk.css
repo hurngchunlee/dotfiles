@@ -1,0 +1,14 @@
+/* Remove rounded corners */
+.titlebar,
+.titlebar .background,
+decoration,
+window,
+window.background {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Remove csd shadows */
+decoration, decoration:backdrop {
+    box-shadow: none;
+}

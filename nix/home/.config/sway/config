@@ -1,0 +1,320 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# set $mod to Alt key
+set $mod Mod1
+
+# set $win to Windows key
+set $win Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# default applications 
+set $term alacritty
+set $email evolution 
+#set $browser brave --enable-features=UseOzonePlatform --ozone-platform=wayland
+set $browser brave
+#set $menu rofi -show-icons -monitor $(~/.local/bin/rofi-get-monitor) -show drun
+set $menu wofi -i -I -G -S drun
+
+# file manager lf needs to be started with kitty, as it is the only terminal
+# supporting image review on wayland.
+# sourcing ~/.zshrc makes the LS_COLORS, LF_COLORS and LF_ICONS available for lf.
+set $fm kitty zsh -c "source ~/.zshrc; lf"
+
+# Font
+font pango:DroidSansMono Nerd Font 13
+
+# Cursor theme and size
+seat seat0 xcursor_theme Simp1e-breeze 32 
+
+# windows border and gaps
+default_border pixel 3
+default_floating_border pixel 3
+for_window [class=".*"] border pixel
+for_window [app_id=".*"] border pixel
+gaps inner 10
+gaps outer 0
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# enable touchpad tab-to-click, natual scroll, disable-while-typing
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
+
+# set workspaces
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspacex "x"
+set $workspaceg "g"
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+x workspace $workspacex
+bindsym $mod+g workspace $workspaceg
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+x move container to workspace $workspacex
+bindsym $mod+Shift+g move container to workspace $workspaceg
+
+# associate applications to workspaces
+assign [app_id="org.gnome.Evolution"] $workspace2
+assign [class="Code"] $workspace4
+assign [class="code-oss"] $workspace4
+assign [class="rambox"] $workspace5
+assign [class="Rambox"] $workspace5
+assign [class="signal"] $workspace5
+assign [class="Signal"] $workspace5
+assign [class="Remmina"] $workspace6
+assign [class="Vncviewer"] $workspace7
+assign [app_id="libreoffice-writer"] $workspace8
+assign [app_id="libreoffice-calc"] $workspace8
+assign [app_id="libreoffice-impress"] $workspace8
+assign [class="Joplin"] $workspace9
+assign [class="Typora"] $workspace9
+assign [class="Urxvt"] $workspacex
+
+# make applications open as floating window
+for_window [class="Yad"] floating enable
+for_window [class="Evolution-alarm-notify"] floating enable
+
+# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# mode for control screenlock, suspend, logout, reboot and shutdown
+# (ref: https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html)
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec swaylock -f -i ~/.screenlock -l -c 2B303B, mode "default"
+    bindsym e exec swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id ~/.local/bin/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.local/bin/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.local/bin/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.local/bin/i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $win+e mode "$mode_system"
+
+# mode for move workspace across displays
+set $mode_move_workspace Move workspace to display (t) top, (b) bottom, (l) left, (r) right
+mode "$mode_move_workspace" {
+    bindsym t move workspace to output up, mode "default"
+    bindsym l move workspace to output left, mode "default"
+    bindsym r move workspace to output right, mode "default"
+    bindsym b move workspace to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $win+w mode "$mode_move_workspace"
+
+# mode for move container across displays
+set $mode_move_container Move container to display (t) top, (b) bottom, (l) left, (r) right
+mode "$mode_move_container" {
+    bindsym t move container to output up, mode "default"
+    bindsym l move container to output left, mode "default"
+    bindsym r move container to output right, mode "default"
+    bindsym b move container to output down, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $win+c mode "$mode_move_container"
+
+# mode for screenshot 
+set $mode_screenshot Take screenshot (o) output, (a) area, (w) window
+mode "$mode_screenshot" {
+    bindsym o exec ~/.local/bin/screenshot output, mode "default"
+    bindsym a exec ~/.local/bin/screenshot area, mode "default"
+    bindsym w exec ~/.local/bin/screenshot window, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+c mode "$mode_screenshot"
+
+## open terminal
+bindsym $mod+Return exec $term
+
+## open email client 
+bindsym $mod+m exec $email
+
+## open browser 
+bindsym $mod+b exec $browser
+
+## open LF file manager 
+bindsym $mod+z exec $fm
+
+## open eduvpn gui 
+bindsym $mod+v exec eduvpn-gui
+
+## open application menu 
+bindsym $mod+d exec $menu
+
+## open password manager 
+bindsym $mod+p exec ~/.local/bin/tessen -d wofi -a copy
+
+## move around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+## swap window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+## window orientation
+bindsym $win+h splith
+bindsym $win+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+f fullscreen
+##bindsym $mod+Shift+f fullscreen global
+bindsym $mod+space floating toggle
+
+## sound control and backlight
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/pamixerctl inc
+bindsym XF86AudioLowerVolume exec ~/.local/bin/pamixerctl dec
+bindsym XF86AudioMute exec ~/.local/bin/pamixerctl toggle
+bindsym XF86AudioMicMute exec ~/.local/bin/micctl toggle
+bindsym XF86MonBrightnessUp exec ~/.local/bin/wbacklightctl inc
+bindsym XF86MonBrightnessDown exec ~/.local/bin/wbacklightctl dec
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $win+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+## kill forcused window
+bindsym $mod+q kill
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# display control
+bindsym $win+d exec ~/.local/bin/wofi-outputctl
+bindsym $win+p exec ~/.local/bin/wofi-outputctl -p
+
+# type content of the primary clipboard
+bindsym Ctrl+$mod+v exec "/usr/bin/wl-paste -p | wtype -"
+
+# laptop lid control
+set $laptop eDP-1
+bindswitch --locked lid:on output $laptop disable
+bindswitch --locked lid:off output $laptop enable
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
+# waybar 
+bar {
+    swaybar_command waybar
+}
+
+# color of windows
+client.unfocused #64727d80 #64727d80 #ffffff #ff661a #64727d80
+client.focused #0088CC #0088CC #ffffff #ff661a #0088cc
+client.urgent  #900000 #900000 #ffffff #ff661a #900000
+
+# Set DPI for display
+#exec --no-startup-id xrandr --dpi 120
+#output "*" scale 1.25
+
+# import gsettings  
+exec_always ~/.local/bin/import-gsettings
+
+# for xdg-desktop-portal-wlr
+#exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway
+
+# Set wallpaper
+#exec_always --no-startup-id feh --randomize --bg-fill --no-xinerama ~/Pictures/wallpapers/*
+output "*" bg ~/Pictures/wallpapers/landscape_art_tree_140205_1920x1080.jpg fill
+
+# clipboard management: copy to primary clickboard for pasting with middle-clicking
+exec wl-paste -t text --watch wl-copy -p
+
+# lock and turn off/on screen
+# - lock screen for 10 minutes idle
+exec swayidle -w \
+     timeout 10 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' \
+     resume 'swaymsg "output * power on"' \
+     before-sleep 'playerctl -a pause; swaylock -f -i ~/.screenlock -l -c 2B303B'
+
+# start Network-Manager applet
+exec nm-applet --indicator
+
+# start gammastep indicator
+exec gammastep-indicator
+
+# input method
+#exec_always fcitx5 -d --replace
+#exec ibus-daemon -drxR
+
+# a script always run once when sway is (re)-loaded to apply the laptop clamshell mode.
+exec_always ~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state
+
+# start owncloud client
+exec --no-startup-id "sh -c 'sleep 3; owncloud'"
+
+# start nextcloud client
+exec --no-startup-id "sh -c 'sleep 3; nextcloud --background'"

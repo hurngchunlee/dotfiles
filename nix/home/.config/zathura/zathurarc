@@ -1,0 +1,12 @@
+# colors
+set statusbar-bg "#222222"
+set statusbar-fg "#ffffff"
+set default-fg "#FFFFFF"
+set default-bg "#222222"
+
+# keybindings (for some reason, the Up, Down, Lef, Right are not working)
+#map [fullscreen] <Up> navigate top
+#map [fullscreen] <Down> navigate bottom
+#map [fullscreen] <Left> navigate previous
+#map [fullscreen] <Right> navigate next
+map p print

@@ -286,3 +286,4 @@
 [evolution]
     appname = evolution-mail-notification
     summary = "*"
+    script  = ~/.local/bin/i3ws-set-urgent
