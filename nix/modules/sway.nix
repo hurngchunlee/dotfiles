@@ -280,6 +280,8 @@
 
       for_window [class=".*"]    border pixel
       for_window [app_id=".*"]   border pixel
+
+      include /etc/sway/config.d/*
     '';
   };
 
@@ -399,13 +401,12 @@
     enable = true;
 
     extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
 
     config = {
       sway = {
-        default = "gtk";
+        default = "wlr";
         "org.freedesktop.impl.portal.ScreenCast" = "wlr";
         "org.freedesktop.impl.portal.Screenshot" = "wlr";
       };

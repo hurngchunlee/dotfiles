@@ -5,6 +5,13 @@
     # ---------- content display/preview used by lf ----------
     highlight
     swayimg
+    ffmpegthumbnailer
+    poppler-utils
+    p7zip
+    unzip
+    imagemagick
+    file
+    zathura
 
     # ---------- Text editor ----------
     vim
@@ -18,6 +25,7 @@
 
     # ---------- audio control ----------
     pamixer
+    pavucontrol
     libcanberra-gtk3
 
     # ---------- screenshot and screencast tools ----------

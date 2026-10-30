@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/bin/env bash
 f=$1
 w=$2
 h=$3

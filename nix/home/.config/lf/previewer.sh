@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 draw() {
     [ -n "$FIFO_UEBERZUG" ] && ~/.config/lf/draw_ueberzurg.sh "$@"
     [ -n "$(which kitty 2>/dev/null)" ] && ~/.config/lf/draw_kitty.sh "$@"
