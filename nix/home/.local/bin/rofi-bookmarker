@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # open bookmark URL with $BROWSER
 function bk_open() {

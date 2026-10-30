@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # usage: exec_always ~/.local/bin/sway-reload-clamshell.sh /proc/acpi/button/lid/LID0/state
 

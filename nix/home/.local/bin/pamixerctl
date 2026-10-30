@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Retrives volume level from the defaul sink of pulseaudio.
 function get_volume_level {

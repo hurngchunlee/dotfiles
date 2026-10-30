@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This script resolves the focused monitor for rofi running on Wayland.
 #

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
   # "Eighties Dark" colour palette shared across alacritty, kitty, sway
@@ -20,7 +20,7 @@ in {
       env.TERM = "xterm-256color";
 
       terminal.shell = {
-        program = "/usr/bin/zsh";
+        program = "${pkgs.zsh}/bin/zsh";
         args = [ "-l" ];
       };
 
@@ -46,9 +46,9 @@ in {
       };
 
       window = {
-        decorations    = "none";
-        dynamic_padding = true;
-        padding = { x = 2; y = 2; };
+       #decorations    = "none";
+       dynamic_padding = true;
+       padding = { x = 2; y = 2; };
       };
     };
   };

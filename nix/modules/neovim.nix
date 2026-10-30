@@ -85,14 +85,4 @@
       let g:airline#extensions#tabline#left_alt_sep = ""
     '';
   };
-
-  # iRODS vim filetype support (carried over from the stow packages verbatim)
-  home.file.".config/nvim/ftdetect/irods.vim".source =
-    ../home/.vim/ftdetect/irods.vim;
-  home.file.".config/nvim/ftplugin/irods.vim".source =
-    ../home/.vim/ftplugin/irods.vim;
-  home.file.".config/nvim/syntax/irods.vim".source =
-    ../home/.vim/syntax/irods.vim;
-  home.file.".config/nvim/ftplugin/yaml.vim".source =
-    ../home/.vim/ftplugin/yaml.vim;
 }

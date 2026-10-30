@@ -88,7 +88,7 @@
           "${mod}+Return"  = "exec alacritty";
           "${mod}+b"       = "exec brave";
           "${mod}+m"       = "exec evolution";
-          "${mod}+z"       = ''exec kitty zsh -c "source ~/.zshrc; lf"'';
+          "${mod}+z"       = ''exec kitty ${pkgs.zsh}/bin/zsh -c "source ~/.zshrc; lf"'';
           "${mod}+v"       = "exec eduvpn-gui";
           "${mod}+d"       = "exec wofi -i -I -G -S drun";
           "${mod}+p"       = "exec ~/.local/bin/tessen -d wofi -a copy";
@@ -294,6 +294,8 @@
       height  = 37;
       spacing = 4;
 
+      "gtk-layer-shell" = false;
+
       "modules-left"   = [ "sway/workspaces" "sway/mode" ];
       "modules-center" = [];
       "modules-right"  = [ "custom/vpn" "cpu" "battery" "pulseaudio" "clock" "tray" ];
@@ -389,6 +391,26 @@
 
     style = builtins.readFile ../home/.config/waybar/style.css;
   };
+
+  # --------------------------------------------------------------------------
+  # xdg-portal configuration and preferences
+  # --------------------------------------------------------------------------
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+
+    config = {
+      sway = {
+        default = "gtk";
+        "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+        "org.freedesktop.impl.portal.Screenshot" = "wlr";
+      };
+    };
+ };
 
   # --------------------------------------------------------------------------
   # Wofi launcher

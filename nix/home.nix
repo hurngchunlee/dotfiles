@@ -12,14 +12,14 @@
     ./modules/sway.nix
     ./modules/dunst.nix
     ./modules/lf.nix
-    ./modules/evolution.nix
+    #./modules/evolution.nix
     ./modules/misc.nix
     ./modules/services.nix
   ];
 
-  targets.genericLinux.enable = true;
-  targets.genericLinux.nixGL.packages = null;
-  targets.genericLinux.gpu.enable = true;
+  #targets.genericLinux.enable = true;
+  #targets.genericLinux.nixGL.packages = null;
+  #targets.genericLinux.gpu.enable = true;
 
   # --------------------------------------------------------------------------
   # Home identity
@@ -37,10 +37,11 @@
   # --------------------------------------------------------------------------
   # Let home-manager manage itself
   # --------------------------------------------------------------------------
-  #programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
   # --------------------------------------------------------------------------
   # State version — do not change after first activation
   # --------------------------------------------------------------------------
-  home.stateVersion = "26.11";
+  home.stateVersion = "26.05";
+    
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 function notify() {
     msgId='1000'
 
