@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
     enable = true;
-    package = pkgs.emptyDirectory;
 
     # --------------------------------------------------------------------------
     # oh-my-zsh
@@ -50,8 +49,8 @@
       export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
       # icons and colors for lf file manager
-      [ -f $HOME/.config/lf/icons ] && source $HOME/.config/lf/icons
-      [ -f $HOME/.config/lf/colors ] && source $HOME/.config/lf/colors
+      [ -f ${config.xdg.configHome}/lf/icons ] && source ${config.xdg.configHome}/lf/icons
+      [ -f ${config.xdg.configHome}/lf/colors ] && source ${config.xdg.configHome}/lf/colors
     '';
 
     # --------------------------------------------------------------------------
@@ -90,7 +89,7 @@
 
       character = {
         success_symbol = "[➜](bold green)";
-        error_symbol   = "[](bold red)";
+        error_symbol   = "[](bold red)";
       };
 
       aws.disabled = true;

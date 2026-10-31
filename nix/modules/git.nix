@@ -3,7 +3,6 @@
 {
   programs.git = {
     enable = true;
-    package = pkgs.emptyDirectory;
 
     settings = {
       user = {

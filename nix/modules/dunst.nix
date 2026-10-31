@@ -1,6 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    libnotify
+  ];
+
   services.dunst = {
     enable = true;
 
@@ -45,7 +50,6 @@
 
         icon_position  = "left";
         max_icon_size  = 32;
-        #conflic: icon_path      = "/usr/share/icons/hicolor/32x32/apps:/usr/share/icons/hicolor/scalable/apps/";
 
         sticky_history  = "yes";
         history_length  = 20;

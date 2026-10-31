@@ -1,6 +1,52 @@
 { pkgs, config, ... }:
 
 {
+
+  imports = [
+    ./alacritty.nix
+    ./dunst.nix
+    ./fonts.nix
+    ./gammastep.nix
+    ./git.nix
+    ./kitty.nix
+    ./lf.nix
+    ./misc.nix
+    ./neovim.nix
+    ./pass.nix
+    ./ssh-agent.nix
+    ./wofi.nix
+    ./zsh.nix
+  ];
+
+  # --------------------------------------------------------------------------
+  # packages required
+  # --------------------------------------------------------------------------
+  home.packages = with pkgs; [
+    # ---------- utilities ----------
+    jq
+    bc
+    wl-clipboard
+    libnotify
+    networkmanagerapplet
+
+    # ---------- audio control ----------
+    pamixer
+    pavucontrol
+    libcanberra-gtk3
+
+    # ---------- screenshot and screencast tools ----------
+    slurp
+    grim
+    swappy
+    sway-contrib.grimshot
+
+    # ---------- Applications --------
+    brave             # web browser (mod+b, dunst browser)
+    tessen            # password manager rofi frontend (mod+p)
+    nextcloud-client  # cloud sync (sway startup)
+    owncloud-client   # cloud sync (sway startup)
+  ];
+
   # --------------------------------------------------------------------------
   # Sway window manager
   # --------------------------------------------------------------------------
@@ -246,11 +292,11 @@
           always = true;
         }
 
-	# NIX home manager environment variables
-	{
-	  command = ". ~/.nix-profile/etc/profile.d/hm-session-vars.sh";
-	  always = true;
-	}
+        # NIX home manager environment variables
+        {
+          command = ". ~/.nix-profile/etc/profile.d/hm-session-vars.sh";
+          always = true;
+        }
 
         # GTK settings import
         { command = "~/.local/bin/import-gsettings"; always = true; }
@@ -391,7 +437,89 @@
       };
     }];
 
-    style = builtins.readFile ../home/.config/waybar/style.css;
+    style = ''
+      * {
+          /* the following two causes the checkbox not being shown*/
+          /* border: none; */
+          /* min-height: 0; */
+          border-radius: 0;
+          font-family: DroidSansMono Nerd Font;
+          font-size: 18px;
+      }
+      window#waybar {
+          background: rgba(43, 48, 59, 0.9);
+          border-bottom: 3px solid rgb(100, 114, 125);
+          color: white;
+      }
+      tooltip {
+        background: rgba(43, 48, 59, 0.8);
+        border: 1px solid rgba(100, 114, 125, 0.8);
+      }
+      tooltip label {
+        color: white;
+      }
+      #workspaces button {
+          padding: 5px 10px;
+          background: transparent;
+          box-shadow: none;
+          text-shadow: none;
+          color: white;
+          border: none;
+          border-bottom: 3px solid transparent;
+      }
+      #workspaces button.focused {
+          background: #0172aa;
+          border-bottom: 3px solid #0088CC;
+      }
+      #workspaces button:hover {
+          border-bottom: 3px solid #F9AF4F;
+      }
+      #workspaces button.urgent {
+          background: #600000;
+          border-bottom: 3px solid #900000;
+      }
+      #mode {
+          padding: 0 10px;
+          background: #8600b3;
+          border: 3px solid #ad53cc;
+          color: white;
+      }
+      #custom-vpn, #clock, #battery, #tray, #cpu, #pulseaudio {
+          padding: 0 10px;
+          background: transparent;
+          border-bottom: 3px solid rgb(100, 114, 125);
+          color: white;
+      }
+      #custom-vpn {
+          color: #91B362;
+      }
+      #tray menu {
+          /* font setting doesn't seem to work within the context menu style */
+          font-family: Noto Sans CJK TC;
+          background: rgba(43, 48, 59, 0.8);
+          border: 1px solid rgba(100, 114, 125, 0.8);
+          color: white;
+      }
+      #battery.charging {
+          color: #91B362;
+      }
+      #battery.warning {
+          color: #F9AF4F;
+      }
+      @keyframes blink {
+          to {
+              color: #900000;
+          }
+      }
+      #battery.critical:not(.charging) {
+          color: #600000;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+    '';
   };
 
   # --------------------------------------------------------------------------
@@ -414,37 +542,6 @@
  };
 
   # --------------------------------------------------------------------------
-  # Wofi launcher
-  # --------------------------------------------------------------------------
-  programs.wofi = {
-    enable = true;
-    settings = {
-      allow_images = true;
-      insensitive  = true;
-      gtk_dark     = true;
-    };
-    style = builtins.readFile ../home/.config/wofi/style.css;
-  };
-
-  # --------------------------------------------------------------------------
-  # Gammastep (Wayland redshift equivalent)
-  # --------------------------------------------------------------------------
-  services.gammastep = {
-    enable          = true;
-    provider        = "manual";
-    latitude        = 52.2226;
-    longitude       = 4.5322;
-    temperature     = { day = 6000; night = 4200; };
-    settings        = {
-      general = {
-          brightness-day = "1.0";
-          brightness-night = "0.8";
-      };
-    };
-    tray            = true;
-  };
-
-  # --------------------------------------------------------------------------
   # GTK theming
   # --------------------------------------------------------------------------
   gtk = {
@@ -456,6 +553,7 @@
       name = "Simp1e-breeze";
       size = 32;
     };
+
     gtk3.extraConfig = {
       gtk-toolbar-style              = "GTK_TOOLBAR_BOTH_HORIZ";
       gtk-toolbar-icon-size          = "GTK_ICON_SIZE_LARGE_TOOLBAR";
@@ -471,6 +569,23 @@
       gtk-decoration-layout          = "appmenu:none";
       gtk-application-prefer-dark-theme = 0;
     };
+
+    gtk3.extraCss = ''
+      /* Remove rounded corners */
+      .titlebar,
+      .titlebar .background,
+      decoration,
+      window,
+      window.background {
+          border-radius: 0;
+          box-shadow: none;
+      }
+
+      /* Remove csd shadows */
+      decoration, decoration:backdrop {
+          box-shadow: none;
+      }
+    '';
   };
 
   # --------------------------------------------------------------------------
@@ -484,4 +599,55 @@
       color-scheme = "prefer-light";
     };
   };
+
+  xdg.configFile = {
+    # --------------------------------------------------------------------------
+    # Systemd user environment (input method for Wayland)
+    # --------------------------------------------------------------------------
+    "environment.d/input.conf".text = ''
+      GTK_IM_MODULE=ibus
+      QT_IM_MODULE=ibus
+      XMODIFIERS=@im=ibus
+    '';
+
+    # --------------------------------------------------------------------------
+    # XDG desktop portal for wlr (screen sharing)
+    # --------------------------------------------------------------------------
+    "xdg-desktop-portal-wlr/config".text = ''
+      [screencast]
+      chooser_type=dmenu
+      chooser_cmd=swaymsg -t get_outputs | jq -r '.[] | "Monitor: " + .name' | wofi -dmenu -p "select display port"
+      output_name=eDP-1
+      max_fps=30    
+    '';
+  };
+
+  # --------------------------------------------------------------------------
+  # Local utility scripts (carried verbatim from sway packages)
+  # --------------------------------------------------------------------------
+  home.file.".local/bin" = {
+    source    = ../home/.local/bin;
+    recursive = true;
+  };
+
+  # --------------------------------------------------------------------------
+  # Cursor theme (bundled in the repo)
+  # --------------------------------------------------------------------------
+  home.file.".icons/Simp1e-breeze".source = ../home/.icons/Simp1e-breeze;
+  home.file.".icons/DMZ-White-Highlighted".source =
+    ../home/.icons/DMZ-White-Highlighted;
+
+  # --------------------------------------------------------------------------
+  # Wallpapers / screenlock image
+  # --------------------------------------------------------------------------
+  home.file."Pictures/wallpapers".source  = ../home/Pictures/wallpapers;
+  home.file.".screenlock".source          = ../home/.screenlock;
+
+  # --------------------------------------------------------------------------
+  # make packages managed by NIX available to Sway
+  # --------------------------------------------------------------------------
+  systemd.user.sessionVariables = {
+    PATH = "$HOME/.nix-profile/bin:$HOME/.local/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/bin";
+  };
+
 }

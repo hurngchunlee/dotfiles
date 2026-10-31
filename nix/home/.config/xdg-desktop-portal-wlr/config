@@ -1,5 +1,0 @@
-[screencast]
-chooser_type=dmenu
-chooser_cmd=swaymsg -t get_outputs | jq -r '.[] | "Monitor: " + .name' | wofi -dmenu -p "select display port"
-output_name=eDP-1
-max_fps=30

@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    vim
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -15,7 +20,6 @@
       vim-devicons
       vim-code-dark
       vim-fugitive
-      #coc-nvim
       colorizer
     ];
 

@@ -13,6 +13,11 @@ let
     white   = "#d3d0c8";
   };
 in {
+
+  imports = [
+    ./zsh.nix
+  ];
+
   programs.alacritty = {
     enable = true;
 
