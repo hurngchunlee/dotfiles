@@ -10,6 +10,6 @@
     "nix/nix.conf".text = ''
       experimental-features = nix-command flakes
     '';
-    "Code - OSS/User/settings.json".source = ../home/config + "/Code - OSS/User/settings.json";
+    "Code - OSS/User/settings.json".source = ../home/.config + "/Code - OSS/User/settings.json";
   };
 }
