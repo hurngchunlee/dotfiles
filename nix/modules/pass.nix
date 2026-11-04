@@ -8,6 +8,11 @@
     gopass
   ];
 
+  programs.browserpass = {
+    enable = true;
+    browsers = [ "brave" ];
+  };
+
   # GPG agent
   services.gpg-agent = {
     enable = true;

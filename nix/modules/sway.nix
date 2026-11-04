@@ -46,6 +46,8 @@
     tessen            # password manager rofi frontend (mod+p)
     nextcloud-client  # cloud sync (sway startup)
     owncloud-client   # cloud sync (sway startup)
+    signal-desktop    # signal
+    mattermost-desktop # mattermost
   ];
 
   # --------------------------------------------------------------------------
@@ -314,6 +316,9 @@
         # Cloud sync clients
         { command = "sh -c 'sleep 3; owncloud'"; }
         { command = "sh -c 'sleep 3; nextcloud --background'"; }
+        # communication and chat 
+        { command = "mattermost-desktop"; }
+        { command = "signal-desktop"; }
       ];
     };
 
