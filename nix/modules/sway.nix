@@ -26,6 +26,7 @@
     jq
     bc
     wl-clipboard
+    wtype
     libnotify
     networkmanagerapplet
 
