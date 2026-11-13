@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Compose and send notification using the dunstify.
+function notify() {
+
+    msgId='1003'
+    dunstify="dunstify -r ${msgId} -a micctl"
+
+    amixer get Capture | egrep -o '\[on\]' >/dev/null 2>&1
+
+    [ $? -eq 0 ] &&
+        (emoji="🎤"; msg="Mic unmuted."; ${dunstify} "${emoji} ${msg}") ||
+        (emoji="🙊"; msg="Mic muted.";   ${dunstify} "${emoji} ${msg}")
+
+    
+}
+
+# reload i3blocks process, but always return 0.
+function reload_i3blocks {
+    pkill -RTMIN+1 i3blocks || return 0
+}
+
+case $1 in
+toggle)
+    #amixer -q -D pulse sset Capture toggle &&
+    pamixer --default-source -t &&
+        reload_i3blocks && notify
+esac
